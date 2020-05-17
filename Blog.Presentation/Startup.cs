@@ -16,6 +16,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 
 namespace Blog.Presentation
 {
@@ -85,7 +86,10 @@ namespace Blog.Presentation
 
             #region Swagger
 
-            
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+            });
 
             #endregion
 
@@ -102,10 +106,20 @@ namespace Blog.Presentation
 
             app.UseHttpsRedirection();
 
+           
+
             app.UseRouting();
 
             app.UseCors("Blog");
+ #region Swagger
+            app.UseSwagger();
 
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            }); 
+            #endregion
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

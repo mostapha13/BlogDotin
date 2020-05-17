@@ -35,7 +35,7 @@ namespace Blog.Presentation.Controllers
             }
             catch (Exception)
             {
-                return JsonStatus.Error("خطایی رخ داده است");
+                return JsonStatus.Error(new{info= "خطایی رخ داده است" });
             }
         }
         #endregion
@@ -46,7 +46,7 @@ namespace Blog.Presentation.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return JsonStatus.Error("اطلاعات بدرستی وارد نشده است.");
+                return JsonStatus.Error(new{info= "اطلاعات بدرستی وارد نشده است." });
             }
             try
             {
@@ -56,7 +56,7 @@ namespace Blog.Presentation.Controllers
             }
             catch (Exception)
             {
-                return JsonStatus.Error("خطایی رخ داده است");
+                return JsonStatus.Error(new{info= "خطایی رخ داده است" });
             }
         }
         #endregion
@@ -67,7 +67,7 @@ namespace Blog.Presentation.Controllers
         {
             if (subject == null)
             {
-                return JsonStatus.Error("اطلاعات بدرستی وارد نشده است.");
+                return JsonStatus.Error(new{info= "اطلاعات بدرستی وارد نشده است." });
             }
             try
             {
@@ -78,7 +78,7 @@ namespace Blog.Presentation.Controllers
             }
             catch (Exception)
             {
-                return JsonStatus.Error("خطایی رخ داده است");
+                return JsonStatus.Error(new{info= "خطایی رخ داده است" });
             }
         }
 

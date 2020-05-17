@@ -6,7 +6,6 @@ C:\ForDotin\Backend\Blog\Blog.DataAccessRead\bin\Debug\netcoreapp3.1\Blog.Servic
 C:\ForDotin\Backend\Blog\Blog.DataAccessRead\bin\Debug\netcoreapp3.1\Blog.Service.pdb
 C:\ForDotin\Backend\Blog\Blog.DataAccessRead\bin\Debug\netcoreapp3.1\Blog.Domain.pdb
 C:\ForDotin\Backend\Blog\Blog.DataAccessRead\obj\Debug\netcoreapp3.1\Blog.DataAccessRead.csprojAssemblyReference.cache
-C:\ForDotin\Backend\Blog\Blog.DataAccessRead\obj\Debug\netcoreapp3.1\Blog.DataAccessRead.csproj.CoreCompileInputs.cache
 C:\ForDotin\Backend\Blog\Blog.DataAccessRead\obj\Debug\netcoreapp3.1\Blog.DataAccessRead.AssemblyInfoInputs.cache
 C:\ForDotin\Backend\Blog\Blog.DataAccessRead\obj\Debug\netcoreapp3.1\Blog.DataAccessRead.AssemblyInfo.cs
 C:\ForDotin\Backend\Blog\Blog.DataAccessRead\obj\Debug\netcoreapp3.1\Blog.DataAccessRead.csproj.CopyComplete

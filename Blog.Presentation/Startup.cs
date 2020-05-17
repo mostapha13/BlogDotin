@@ -2,7 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Blog.DataAccessRead.Implementation;
+using Blog.DataAccessWrite.Implementation;
 using Blog.Domain.Context;
+using Blog.Service.Read;
+using Blog.Service.Write;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -38,6 +42,53 @@ namespace Blog.Presentation
 
             #endregion
 
+            #region IOC
+
+            #region Read
+
+            services.AddScoped<IAuthorRepositoryRead, AuthorRepositoryRead>();
+            services.AddScoped<ICommentRepositoryRead, CommentRepositoryRead>();
+            services.AddScoped<IPostRepositoryRead, PostRepositoryRead>();
+            services.AddScoped<ISubjectRepositoryRead, SubjectRepositoryRead>();
+
+            #endregion
+
+
+            #region Write
+
+            services.AddScoped<IAuthorRepositoryWrite, AuthorRepositoryWrite>();
+            services.AddScoped<ICommentRepositoryWrite, CommentRepositoryWrite>();
+            services.AddScoped<IPostRepositoryWrite, PostRepositoryWrite>();
+            services.AddScoped<ISubjectRepositoryWrite, SubjectRepositoryWrite>();
+
+
+            #endregion
+
+
+            #endregion
+
+            #region CORS
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("Blog", buider =>
+                    {
+                        buider
+                            .AllowAnyOrigin()
+                            .AllowAnyHeader()
+                            .AllowAnyMethod()
+                            .Build();
+                    });
+            });
+
+            #endregion
+
+            #region Swagger
+
+            
+
+            #endregion
+
             services.AddControllers();
         }
 
@@ -52,6 +103,8 @@ namespace Blog.Presentation
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("Blog");
 
             app.UseAuthorization();
 

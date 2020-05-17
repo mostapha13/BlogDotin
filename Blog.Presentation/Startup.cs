@@ -102,24 +102,30 @@ namespace Blog.Presentation
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
             }
 
             app.UseHttpsRedirection();
+            app.UseStaticFiles();
 
-           
-
-            app.UseRouting();
-
-            app.UseCors("Blog");
- #region Swagger
+            #region Swagger
             app.UseSwagger();
 
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-            }); 
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Blog");
+                // c.RoutePrefix = string.Empty;
+            });
+
+
             #endregion
+
+            app.UseRouting();
+
+            app.UseCors("Blog");
+
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

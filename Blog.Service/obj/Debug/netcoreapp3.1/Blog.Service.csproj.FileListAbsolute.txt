@@ -4,9 +4,9 @@ C:\ForDotin\Backend\Blog\Blog.Service\bin\Debug\netcoreapp3.1\Blog.Service.pdb
 C:\ForDotin\Backend\Blog\Blog.Service\bin\Debug\netcoreapp3.1\Blog.Domain.dll
 C:\ForDotin\Backend\Blog\Blog.Service\bin\Debug\netcoreapp3.1\Blog.Domain.pdb
 C:\ForDotin\Backend\Blog\Blog.Service\obj\Debug\netcoreapp3.1\Blog.Service.csprojAssemblyReference.cache
-C:\ForDotin\Backend\Blog\Blog.Service\obj\Debug\netcoreapp3.1\Blog.Service.csproj.CoreCompileInputs.cache
 C:\ForDotin\Backend\Blog\Blog.Service\obj\Debug\netcoreapp3.1\Blog.Service.AssemblyInfoInputs.cache
 C:\ForDotin\Backend\Blog\Blog.Service\obj\Debug\netcoreapp3.1\Blog.Service.AssemblyInfo.cs
 C:\ForDotin\Backend\Blog\Blog.Service\obj\Debug\netcoreapp3.1\Blog.Service.csproj.CopyComplete
 C:\ForDotin\Backend\Blog\Blog.Service\obj\Debug\netcoreapp3.1\Blog.Service.dll
 C:\ForDotin\Backend\Blog\Blog.Service\obj\Debug\netcoreapp3.1\Blog.Service.pdb
+C:\ForDotin\Backend\Blog\Blog.Service\obj\Debug\netcoreapp3.1\Blog.Service.csproj.CoreCompileInputs.cache

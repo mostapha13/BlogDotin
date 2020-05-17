@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "fwsm1OAzYRncQeEMTJofXi7XZ8cy268I6xbMSOzO9YnIjLfIf1018ij3GcjceK8fJCqg84aArgOxYO8arN1bYA==",
+  "dgSpecHash": "WT2OndAXVJDEP+BuQTlbAzbU7deEm+1/vKyKkr0L8iod9dTT6GgcmvHHTxgofu7V8H1A4dh4mDIppOkmQQa8ww==",
   "success": true,
   "projectFilePath": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessRead\\Blog.DataAccessRead.csproj",
   "expectedPackageFiles": [
@@ -31,6 +31,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\mostapha\\.nuget\\packages\\microsoft.openapi\\1.1.4\\microsoft.openapi.1.1.4.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
+    "C:\\Users\\mostapha\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",

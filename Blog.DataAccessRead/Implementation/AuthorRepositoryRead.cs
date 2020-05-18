@@ -34,6 +34,54 @@ namespace Blog.DataAccessRead.Implementation
 
 
 
+        #region GetAuthorById
+
+        public async Task<Author> GetAuthorById(long authorId)
+        {
+            return await _context.QuerySingleOrDefaultAsync<Author>("SELECT * FROM dbo.Authors where id=@authorId",new { @authorId =authorId});
+        }
+
+        #endregion
+
+
+
+        #region MyRegion
+
+        public async Task<bool> IsEmailExist(string email)
+        {
+            var user =await _context.QuerySingleOrDefaultAsync("SELECT * FROM dbo.Authors WHERE Email=@email",new{ @email =email.ToLower().Trim()});
+
+            if (user!=null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        #endregion
+
+
+
+        #region IsUserNameExist
+
+        public async Task<bool> IsUserNameExist(string userName)
+        {
+            var user = await _context.QuerySingleOrDefaultAsync<int>("SELECT count(*) FROM dbo.Authors WHERE UserName=@userName",new{ @userName = userName .ToLower().Trim()});
+            if (user>0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        #endregion
+
         #region Dispose
         public void Dispose()
         {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Blog.DataAccessWrite.DTOs.Author;
 using Blog.DataAccessWrite.Utilites.Result;
 using Blog.Domain.Entites;
 using Blog.Service.Read;
@@ -26,11 +27,12 @@ namespace Blog.Presentation.Controllers
 
         #region GetAllAuthour
 
-        [HttpGet]
+        [HttpGet("GetAllAuthour")]
         public async Task<IActionResult> GetAllAuthour()
         {
             try
             {
+
                 return JsonStatus.Success(await _read.GetAllAuthor());
             }
             catch (Exception)
@@ -42,8 +44,8 @@ namespace Blog.Presentation.Controllers
 
         #region AddAuthor
 
-        [HttpPost]
-        public async Task<IActionResult> AddAuthor(Author author)
+        [HttpPost("AddAuthor")]
+        public async Task<IActionResult> AddAuthor([FromBody]AuthorViewModel author)
         {
             if (!ModelState.IsValid)
             {
@@ -52,11 +54,29 @@ namespace Blog.Presentation.Controllers
             
             try
             {
-                await _write.AddAuthor(author);
+                if (await _read.IsEmailExist(author.Email.Trim().ToLower()))
+                {
+                    return JsonStatus.Error(new { info = "ایمیل وارد شده تکراری می باشد." });
+                }
+
+                if (await _read.IsUserNameExist(author.UserName.Trim().ToLower()))
+                {
+                    return JsonStatus.Error(new { info = "نام کاربری وارد شده تکراری می باشد." });
+                }
+                Author auth=new Author()
+                {
+                    FirstName = author.FirstName,
+                    LastName = author.LastName,
+                    UserName=author.UserName.Trim().ToLower(),
+                    Email = author.Email.Trim().ToLower(),
+                    IsDelete = false
+
+                };
+                await _write.AddAuthor(auth);
                 await _write.Save();
                 return JsonStatus.Success();
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return JsonStatus.Error(new{info= "حطایی رخ داده است" });
             }
@@ -65,12 +85,13 @@ namespace Blog.Presentation.Controllers
         #endregion
 
         #region RemoveAuthor
-        [HttpPost]
-        public async Task<IActionResult> RemoveAuthor(Author author)
+        [HttpGet("RemoveAuthor/{authorId}")]
+        public async Task<IActionResult> RemoveAuthor(int authorId)
         {
+            var author = await _read.GetAuthorById(authorId);
             if (author==null)
             {
-                return JsonStatus.Error(new{info= "اطلاعات بدرستی وارد نشده است." });
+                return JsonStatus.Error(new{info= "کاربری یافت نشد." });
             }
             try
             {

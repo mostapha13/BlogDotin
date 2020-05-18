@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Blog.Domain.Entites
+namespace Blog.DataAccessWrite.DTOs.Author
 {
-  public class Author:BaseEntity
+   public class AuthorViewModel
     {
-
         #region Propertise
 
         [Display(Name = "نام")]
@@ -36,14 +35,6 @@ namespace Blog.Domain.Entites
         [MaxLength(500, ErrorMessage = "طول فیلید {0} باید حداکثر {1} باشد")]
 
         public string Email { get; set; }
-
-        #endregion
-
-
-        #region Relations
-
-        public virtual List<Post> Posts { get; set; }
-
 
         #endregion
 

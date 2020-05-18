@@ -10,6 +10,8 @@ namespace Blog.Service.Read
    {
        Task<IEnumerable<Subject>> GetAllSubject();
 
-       
+       Task<Subject> GetSubjectById(int subjectId);
+
+
    }
 }

@@ -10,7 +10,11 @@ namespace Blog.Service.Read
   {
       Task<IEnumerable<Author>> GetAllAuthor();
 
+      Task<Author> GetAuthorById(long authorId);
 
-      
+      Task<bool> IsEmailExist(string email);
+
+      Task<bool> IsUserNameExist(string userName);
+
   }
 }

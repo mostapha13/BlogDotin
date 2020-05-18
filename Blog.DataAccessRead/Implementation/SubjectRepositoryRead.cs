@@ -29,9 +29,19 @@ namespace Blog.DataAccessRead.Implementation
         public async Task<IEnumerable<Subject>> GetAllSubject()
         {
             return await _context.QueryAsync<Subject>("SELECT * FROM dbo.Subjects");
-        } 
+        }
         #endregion
 
+
+        #region GetSubjectById
+      public async Task<Subject> GetSubjectById(int subjectId)
+      {
+          return await _context.QuerySingleOrDefaultAsync<Subject>("SELECT * FROM dbo.Subjects WHERE id=@subjectId",new{ @subjectId =subjectId});
+
+      }
+
+
+        #endregion
 
         #region Dispose
         public void Dispose()

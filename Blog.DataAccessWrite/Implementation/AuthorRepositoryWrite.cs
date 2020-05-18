@@ -24,6 +24,9 @@ public class AuthorRepositoryWrite : IAuthorRepositoryWrite
         #region AddAuthor
         public async Task AddAuthor(Author author)
         {
+            author.CreateDate=DateTime.Now;
+            author.UpdateDate = author.CreateDate;
+
             await _context.Authors.AddAsync(author);
         }
         #endregion

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Blog.DataAccessWrite.DTOs.Subject;
 using Blog.DataAccessWrite.Utilites.Result;
 using Blog.Domain.Entites;
 using Blog.Service.Read;
@@ -26,7 +27,7 @@ namespace Blog.Presentation.Controllers
         #endregion
 
         #region GetAllSubject
-        [HttpGet]
+        [HttpGet("GetAllSubject")]
         public async Task<IActionResult> GetAllSubject()
         {
             try
@@ -41,15 +42,23 @@ namespace Blog.Presentation.Controllers
         #endregion
 
         #region AddSubject
-        [HttpPost]
-        public async Task<IActionResult> AddSubject(Subject subject)
+        [HttpPost("AddSubject")]
+        public async Task<IActionResult> AddSubject([FromBody]SubjectViewModel subjectvm)
         {
             if (!ModelState.IsValid)
             {
                 return JsonStatus.Error(new{info= "اطلاعات بدرستی وارد نشده است." });
             }
+
+           
             try
             {
+
+                
+                Subject subject=new Subject()
+                {
+                    Title = subjectvm.Title
+                };
                 await _write.AddSubject(subject);
                 await _write.Save();
                 return JsonStatus.Success();
@@ -62,9 +71,11 @@ namespace Blog.Presentation.Controllers
         #endregion
 
         #region RemoveSubject
-        [HttpPost]
-        public async Task<IActionResult> RemoveSubject(Subject subject)
+        [HttpGet("RemoveSubject/{id}")]
+        public async Task<IActionResult> RemoveSubject(int id)
         {
+
+            var subject =await _read.GetSubjectById(id);
             if (subject == null)
             {
                 return JsonStatus.Error(new{info= "اطلاعات بدرستی وارد نشده است." });

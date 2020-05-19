@@ -95,5 +95,29 @@ namespace Blog.Presentation.Controllers
 
         #endregion
 
+
+        #region GetAuthorForComboBox
+
+        [HttpGet("GetSubjectForComboBox")]
+        public async Task<IActionResult> GetSubjectForComboBox()
+        {
+            var subjectListCombo=await _read.GetSubjectForComboBox();
+
+            List<SubjectForCombobox> subjectList=new List<SubjectForCombobox>();
+
+            foreach (var subject in subjectListCombo)
+            {
+                subjectList.Add(new SubjectForCombobox()
+                {
+                    Id = subject.Id,
+                    Title = subject.Title
+                });
+
+            }
+
+            return new ObjectResult(subjectList);
+        }
+
+        #endregion
     }
 }

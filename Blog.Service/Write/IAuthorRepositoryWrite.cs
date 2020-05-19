@@ -10,7 +10,7 @@ namespace Blog.Service.Write
    {
 
        Task AddAuthor(Author author);
-      // Task UpdateAuthor(Author author);
+       void UpdateAuthor(Author author);
        void RemoveAuthor(Author author);
       // Task RemoveAuthorById(long authorId);
 

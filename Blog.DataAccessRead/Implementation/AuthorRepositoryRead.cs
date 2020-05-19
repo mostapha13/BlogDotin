@@ -45,7 +45,7 @@ namespace Blog.DataAccessRead.Implementation
 
 
 
-        #region MyRegion
+        #region IsEmailExist
 
         public async Task<bool> IsEmailExist(string email)
         {
@@ -79,6 +79,17 @@ namespace Blog.DataAccessRead.Implementation
                 return false;
             }
         }
+
+        #endregion
+
+
+        #region GetAllAuthorForCombobox
+
+        public async Task<IEnumerable<Author>> GetAllAuthorForCombobox()
+        {
+            return await _context.QueryAsync<Author>("SELECT * FROM dbo.Authors");
+        }
+
 
         #endregion
 

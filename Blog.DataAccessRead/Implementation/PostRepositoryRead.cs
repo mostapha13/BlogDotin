@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Blog.Domain.Context;
 using Blog.Domain.Entites;
+using Blog.Service.DTOs;
 using Blog.Service.Read;
 using Dapper;
 using Microsoft.Data.SqlClient;
@@ -50,9 +51,18 @@ namespace Blog.DataAccessRead.Implementation
         public async Task<IEnumerable<Post>> GetPostBySubjectId(long subjectId)
         {
             return await _context.QueryAsync<Post>("SELECT * FROM dbo.Posts WHERE SubjectId=@subjectId",new { subjectId});
-        } 
+        }
         #endregion
 
+
+        #region GetPostList
+
+        public async Task<IEnumerable<PostListViewModel>> GetPostList()
+        {
+            return await _context.QueryAsync<PostListViewModel>("EXEC GetAllPostList");
+        }
+
+        #endregion
 
         #region Dispose
         public void Dispose()

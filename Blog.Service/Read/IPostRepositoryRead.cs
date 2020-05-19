@@ -4,6 +4,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using Blog.Domain.Entites;
+using Blog.Service.DTOs;
 
 namespace Blog.Service.Read
 {
@@ -15,6 +16,8 @@ namespace Blog.Service.Read
        Task<IEnumerable<Post>> GetPostBySubjectId(long subjectId);
 
        Task<Post> GetPostById(long postId);
+
+       Task<IEnumerable<PostListViewModel>> GetPostList();
 
    }
 }

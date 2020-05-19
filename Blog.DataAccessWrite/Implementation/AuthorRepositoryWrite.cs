@@ -9,36 +9,44 @@ using Blog.Service.Write;
 namespace Blog.DataAccessWrite.Implementation
 {
 
-public class AuthorRepositoryWrite : IAuthorRepositoryWrite
-{
+    public class AuthorRepositoryWrite : IAuthorRepositoryWrite
+    {
         #region Constructor
         private readonly BlogContext _context;
 
         public AuthorRepositoryWrite(BlogContext context)
         {
             _context = context;
-        } 
+        }
         #endregion
 
 
         #region AddAuthor
         public async Task AddAuthor(Author author)
         {
-            author.CreateDate=DateTime.Now;
+            author.CreateDate = DateTime.Now;
             author.UpdateDate = author.CreateDate;
 
             await _context.Authors.AddAsync(author);
         }
         #endregion
 
-         
+
         #region RemoveAuthor
         public void RemoveAuthor(Author author)
         {
-              _context.Remove(author);
-        } 
+            _context.Remove(author);
+        }
         #endregion
-         
+
+        #region UpdateAuthor
+
+        public void  UpdateAuthor(Author author)
+        {
+             _context.Authors.Update(author);
+        }
+
+        #endregion
 
         #region Save
         public async Task Save()

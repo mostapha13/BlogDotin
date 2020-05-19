@@ -24,6 +24,8 @@ namespace Blog.DataAccessWrite.Implementation
 
         public async Task AddComment(Comment comment)
         {
+            comment.CreateDate=DateTime.Now;
+            comment.UpdateDate = comment.CreateDate;
             await _context.Comments.AddAsync(comment);
         } 
         #endregion

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Blog.DataAccessWrite.DTOs.Post;
 using Blog.DataAccessWrite.Utilites.Result;
 using Blog.Domain.Entites;
 using Blog.Service.Read;
@@ -85,8 +86,8 @@ namespace Blog.Presentation.Controllers
 
         #region AddPost
 
-        [HttpPost]
-        public async Task<IActionResult> AddPost(Post post)
+        [HttpPost("AddPost")]
+        public async Task<IActionResult> AddPost([FromBody] PostViewModel postvm)
         {
             if (!ModelState.IsValid)
             {
@@ -94,11 +95,19 @@ namespace Blog.Presentation.Controllers
             }
             try
             {
+                Post post=new Post()
+                {
+                    Title = postvm.Title,
+                    AuthoId =Int64.Parse(postvm.AuthorId),
+                    SubjectId =Int64.Parse(postvm.SubjectId),
+                    Text = postvm.Text
+                };
+
                 await _write.AddPost(post);
                 await _write.Save();
                 return JsonStatus.Success();
             }
-            catch (Exception )
+            catch (Exception e )
             {
                 return JsonStatus.Error(new{info= "خطایی رخ داده است" });
             }
@@ -106,15 +115,25 @@ namespace Blog.Presentation.Controllers
 
         #endregion
 
+        #region GetPostForList
+        [HttpGet("GetPostForList")]
+        public async Task<IActionResult> GetPostForList()
+        {
+            return new ObjectResult(await _read.GetPostList());
+        }
+
+        #endregion
+
 
         #region RemovePost
 
-        [HttpPost]
-        public async Task<IActionResult> RemovePost(Post post)
+        [HttpGet("RemovePost/{postId}")]
+        public async Task<IActionResult> RemovePost(long postId)
         {
+            var post =await _read.GetPostById(postId);
             if (post == null)
             {
-                return JsonStatus.Error(new{info= "اطلاعات بدرستی وارد نشده است." });
+                return JsonStatus.Error(new{info= "کاربری یافت نشد." });
             }
 
             try
@@ -127,6 +146,27 @@ namespace Blog.Presentation.Controllers
             {
                 return JsonStatus.Error(new{info= "خطایی رخ داده است" });
             }
+        }
+
+        #endregion
+
+        #region GetPostForComboBox
+        [HttpGet("GetPostForComboBox")]
+        public async Task<IActionResult> GetPostForComboBox()
+        {
+            List<PostForCombobox> listPost=new List<PostForCombobox>();
+            var posts =await _read.GetAllPost();
+
+            foreach (var post in posts)
+            {
+                listPost.Add(new PostForCombobox()
+                {
+                    Id = post.Id,
+                    Post =post.Title
+                });
+            }
+
+            return new ObjectResult(listPost);
         }
 
         #endregion

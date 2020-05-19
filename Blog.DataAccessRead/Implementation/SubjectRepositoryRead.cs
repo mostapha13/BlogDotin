@@ -43,6 +43,16 @@ namespace Blog.DataAccessRead.Implementation
 
         #endregion
 
+
+        #region GetSubjectForComboBox
+
+        public async Task<IEnumerable<Subject>> GetSubjectForComboBox()
+        {
+            return await _context.QueryAsync<Subject>("SELECT * FROM dbo.Subjects");
+        }
+
+        #endregion
+
         #region Dispose
         public void Dispose()
         {

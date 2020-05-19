@@ -13,5 +13,7 @@ namespace Blog.Service.Read
        Task<Subject> GetSubjectById(int subjectId);
 
 
+       Task<IEnumerable<Subject>> GetSubjectForComboBox();
+
    }
 }

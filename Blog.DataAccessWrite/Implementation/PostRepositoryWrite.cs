@@ -23,6 +23,8 @@ namespace Blog.DataAccessWrite.Implementation
 
         public async Task AddPost(Post post)
         {
+            post.CreateDate=DateTime.Now;
+            post.UpdateDate = post.CreateDate;
             await _context.Posts.AddAsync(post);
         }
 

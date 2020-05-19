@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Blog.Domain.Context;
 using Blog.Domain.Entites;
+using Blog.Service.DTOs;
 using Blog.Service.Read;
 using Dapper;
 using Microsoft.Data.SqlClient;
@@ -37,10 +38,17 @@ namespace Blog.DataAccessRead.Implementation
         public async Task<Comment> GetCommentById(long CommentId)
         {
             return await _context.QuerySingleOrDefaultAsync<Comment>(@"SELECT * FROM dbo.Comments WHERE Id=@CommentId", new { CommentId });
-        } 
+        }
         #endregion
 
+        #region GetAllCommentList
 
+        public async Task<IEnumerable<CommentListViewModel>> GetAllCommentList()
+        {
+            return await _context.QueryAsync<CommentListViewModel>("EXEC GetAllCommentList");
+        }
+
+        #endregion
 
         #region Dispose
         public void Dispose()

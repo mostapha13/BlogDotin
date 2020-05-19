@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Blog.Domain.Entites;
+using Blog.Service.DTOs;
 
 namespace Blog.Service.Read
 {
@@ -11,5 +12,7 @@ namespace Blog.Service.Read
        Task<IEnumerable<Comment>> GetAllComment();
 
        Task<Comment> GetCommentById(long CommentId);
+       Task<IEnumerable<CommentListViewModel>> GetAllCommentList();
+
    }
 }

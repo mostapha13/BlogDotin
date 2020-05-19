@@ -16,5 +16,7 @@ namespace Blog.Service.Read
 
       Task<bool> IsUserNameExist(string userName);
 
+      Task<IEnumerable<Author>> GetAllAuthorForCombobox();
+
   }
 }

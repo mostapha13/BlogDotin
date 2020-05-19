@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Blog.DataAccessWrite.DTOs.Comment;
 using Blog.DataAccessWrite.Utilites.Result;
 using Blog.Domain.Entites;
 using Blog.Service.Read;
@@ -11,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Blog.Presentation.Controllers
 {
-   
+
     public class CommentController : BaseController
     {
         #region Constructor
@@ -22,7 +23,7 @@ namespace Blog.Presentation.Controllers
         {
             _read = read;
             _write = write;
-        } 
+        }
         #endregion
 
         #region GetAllComment
@@ -34,9 +35,9 @@ namespace Blog.Presentation.Controllers
             {
                 return JsonStatus.Success(await _read.GetAllComment());
             }
-            catch (Exception )
+            catch (Exception)
             {
-                return JsonStatus.Error(new {info= "خطایی رخ داده است" });
+                return JsonStatus.Error(new { info = "خطایی رخ داده است" });
             }
         }
 
@@ -53,33 +54,51 @@ namespace Blog.Presentation.Controllers
             }
             catch (Exception)
             {
-                return JsonStatus.Error(new{info= "خطایی رخ داده است" });
+                return JsonStatus.Error(new { info = "خطایی رخ داده است" });
             }
         }
 
         #endregion
 
         #region AddComment
-        [HttpPost]
-        public async Task<IActionResult> AddComment(Comment comment)
+        [HttpPost("AddComment")]
+        public async Task<IActionResult> AddComment(CommentViewModel commentvm)
         {
             if (!ModelState.IsValid)
             {
-                return JsonStatus.Error(new {info= "اطلاعات بدرستی وارد نشده است." });
+                return JsonStatus.Error(new { info = "اطلاعات بدرستی وارد نشده است." });
             }
+
+
             try
             {
+
+                Comment comment = new Comment()
+                {
+                    PostId = long.Parse(commentvm.PostId),
+                    Text = commentvm.Text
+                };
                 await _write.AddComment(comment);
+                await _write.Save();
                 return JsonStatus.Success();
             }
-            catch (Exception )
+            catch (Exception)
             {
-                return JsonStatus.Error(new{info= "خطایی رخ داده است" });
+                return JsonStatus.Error(new { info = "خطایی رخ داده است" });
             }
         }
 
         #endregion
 
+
+        #region GetAllCommentList
+        [HttpGet("GetAllCommentList")]
+        public async Task<IActionResult> GetAllCommentList()
+        {
+            return new ObjectResult(await _read.GetAllCommentList());
+        }
+
+        #endregion
 
         #region RemoveComment
 
@@ -88,20 +107,22 @@ namespace Blog.Presentation.Controllers
         {
             if (comment == null)
             {
-                return JsonStatus.Error(new{info= "اطلاعات بدرستی وارد نشده است." });
+                return JsonStatus.Error(new { info = "اطلاعات بدرستی وارد نشده است." });
             }
             try
             {
-                 _write.RemoveComment(comment);
+                _write.RemoveComment(comment);
                 await _write.Save();
                 return JsonStatus.Success();
             }
-            catch (Exception )
+            catch (Exception)
             {
-                return JsonStatus.Error(new{info= "خطایی رخ داده است" });
+                return JsonStatus.Error(new { info = "خطایی رخ داده است" });
             }
         }
 
         #endregion
+
+
     }
 }

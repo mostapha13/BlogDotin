@@ -102,9 +102,10 @@ namespace Blog.Presentation.Controllers
 
         #region RemoveComment
 
-        [HttpPost]
-        public async Task<IActionResult> RemoveComment(Comment comment)
+        [HttpGet("RemoveComment/{id}")]
+        public async Task<IActionResult> RemoveComment(long id)
         {
+            var comment =await _read.GetCommentById(id);
             if (comment == null)
             {
                 return JsonStatus.Error(new { info = "اطلاعات بدرستی وارد نشده است." });

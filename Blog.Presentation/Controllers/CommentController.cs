@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Blog.DataAccessWrite.DTOs.Comment;
-using Blog.DataAccessWrite.Utilites.Result;
 using Blog.Domain.CommentClasses;
-using Blog.Service.Read;
-using Blog.Service.Write;
+using Blog.Domain.CommentClasses.Command;
+using Blog.Domain.CommentClasses.DTOs;
+using Blog.Domain.CommentClasses.Query;
+using Blog.Presentation.Utilites.Result;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,10 +16,10 @@ namespace Blog.Presentation.Controllers
     public class CommentController : BaseController
     {
         #region Constructor
-        private ICommentRepositoryRead _read;
-        private ICommentRepositoryWrite _write;
+        private ICommentRepositoryQuery _read;
+        private ICommentRepositoryCommand _write;
 
-        public CommentController(ICommentRepositoryRead read, ICommentRepositoryWrite write)
+        public CommentController(ICommentRepositoryQuery read, ICommentRepositoryCommand write)
         {
             _read = read;
             _write = write;
@@ -62,7 +62,7 @@ namespace Blog.Presentation.Controllers
 
         #region AddComment
         [HttpPost("AddComment")]
-        public async Task<IActionResult> AddComment(CommentViewModel commentvm)
+        public async Task<IActionResult> AddComment(Domain.CommentClasses.DTOs.Comment commentvm)
         {
             if (!ModelState.IsValid)
             {
@@ -73,7 +73,7 @@ namespace Blog.Presentation.Controllers
             try
             {
 
-                Comment comment = new Comment()
+                Domain.CommentClasses.Comment comment = new Domain.CommentClasses.Comment()
                 {
                     PostId = long.Parse(commentvm.PostId),
                     Text = commentvm.Text

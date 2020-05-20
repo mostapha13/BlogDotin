@@ -4,12 +4,12 @@
     "C:\\ForDotin\\Backend\\Blog\\Blog.Presentation\\Blog.Presentation.csproj": {}
   },
   "projects": {
-    "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessRead\\Blog.DataAccessRead.csproj": {
+    "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessRead\\Blog.DataAccessQuery.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessRead\\Blog.DataAccessRead.csproj",
-        "projectName": "Blog.DataAccessRead",
-        "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessRead\\Blog.DataAccessRead.csproj",
+        "projectUniqueName": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessRead\\Blog.DataAccessQuery.csproj",
+        "projectName": "Blog.DataAccessQuery",
+        "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessRead\\Blog.DataAccessQuery.csproj",
         "packagesPath": "C:\\Users\\mostapha\\.nuget\\packages\\",
         "outputPath": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessRead\\obj\\",
         "projectStyle": "PackageReference",
@@ -92,12 +92,12 @@
         }
       }
     },
-    "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessWrite\\Blog.DataAccessWrite.csproj": {
+    "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessWrite\\Blog.DataAccessCommand.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessWrite\\Blog.DataAccessWrite.csproj",
-        "projectName": "Blog.DataAccessWrite",
-        "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessWrite\\Blog.DataAccessWrite.csproj",
+        "projectUniqueName": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessWrite\\Blog.DataAccessCommand.csproj",
+        "projectName": "Blog.DataAccessCommand",
+        "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessWrite\\Blog.DataAccessCommand.csproj",
         "packagesPath": "C:\\Users\\mostapha\\.nuget\\packages\\",
         "outputPath": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessWrite\\obj\\",
         "projectStyle": "PackageReference",
@@ -304,11 +304,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessRead\\Blog.DataAccessRead.csproj": {
-                "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessRead\\Blog.DataAccessRead.csproj"
+              "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessRead\\Blog.DataAccessQuery.csproj": {
+                "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessRead\\Blog.DataAccessQuery.csproj"
               },
-              "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessWrite\\Blog.DataAccessWrite.csproj": {
-                "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessWrite\\Blog.DataAccessWrite.csproj"
+              "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessWrite\\Blog.DataAccessCommand.csproj": {
+                "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessWrite\\Blog.DataAccessCommand.csproj"
               }
             }
           }

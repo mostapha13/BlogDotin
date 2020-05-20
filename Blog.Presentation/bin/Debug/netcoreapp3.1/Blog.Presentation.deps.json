@@ -24,8 +24,8 @@
     ".NETCoreApp,Version=v3.1": {
       "Blog.Presentation/1.0.0": {
         "dependencies": {
-          "Blog.DataAccessRead": "1.0.0",
-          "Blog.DataAccessWrite": "1.0.0",
+          "Blog.DataAccessCommand": "1.0.0",
+          "Blog.DataAccessQuery": "1.0.0",
           "Microsoft.EntityFrameworkCore": "3.1.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.4",
           "Microsoft.EntityFrameworkCore.Sqlite": "3.1.2",
@@ -2633,23 +2633,7 @@
           "System.Xml.XmlDocument": "4.3.0"
         }
       },
-      "Blog.DataAccessRead/1.0.0": {
-        "dependencies": {
-          "Blog.Service": "1.0.0",
-          "Dapper": "2.0.35",
-          "Newtonsoft.Json": "12.0.3",
-          "Swashbuckle.AspNetCore": "5.4.1",
-          "Swashbuckle.AspNetCore.SwaggerGen": "5.4.1",
-          "Swashbuckle.AspNetCore.SwaggerUI": "5.4.1"
-        },
-        "runtime": {
-          "Blog.DataAccessRead.dll": {}
-        },
-        "compile": {
-          "Blog.DataAccessRead.dll": {}
-        }
-      },
-      "Blog.DataAccessWrite/1.0.0": {
+      "Blog.DataAccessCommand/1.0.0": {
         "dependencies": {
           "Blog.Service": "1.0.0",
           "Microsoft.AspNetCore.Mvc.Razor": "2.2.0",
@@ -2659,10 +2643,26 @@
           "Swashbuckle.AspNetCore.SwaggerUI": "5.4.1"
         },
         "runtime": {
-          "Blog.DataAccessWrite.dll": {}
+          "Blog.DataAccessCommand.dll": {}
         },
         "compile": {
-          "Blog.DataAccessWrite.dll": {}
+          "Blog.DataAccessCommand.dll": {}
+        }
+      },
+      "Blog.DataAccessQuery/1.0.0": {
+        "dependencies": {
+          "Blog.Service": "1.0.0",
+          "Dapper": "2.0.35",
+          "Newtonsoft.Json": "12.0.3",
+          "Swashbuckle.AspNetCore": "5.4.1",
+          "Swashbuckle.AspNetCore.SwaggerGen": "5.4.1",
+          "Swashbuckle.AspNetCore.SwaggerUI": "5.4.1"
+        },
+        "runtime": {
+          "Blog.DataAccessQuery.dll": {}
+        },
+        "compile": {
+          "Blog.DataAccessQuery.dll": {}
         }
       },
       "Blog.Domain/1.0.0": {
@@ -5768,12 +5768,12 @@
       "path": "system.xml.xmlserializer/4.3.0",
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
     },
-    "Blog.DataAccessRead/1.0.0": {
+    "Blog.DataAccessCommand/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Blog.DataAccessWrite/1.0.0": {
+    "Blog.DataAccessQuery/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

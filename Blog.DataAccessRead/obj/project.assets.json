@@ -5201,9 +5201,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessRead\\Blog.DataAccessRead.csproj",
-      "projectName": "Blog.DataAccessRead",
-      "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessRead\\Blog.DataAccessRead.csproj",
+      "projectUniqueName": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessRead\\Blog.DataAccessQuery.csproj",
+      "projectName": "Blog.DataAccessQuery",
+      "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessRead\\Blog.DataAccessQuery.csproj",
       "packagesPath": "C:\\Users\\mostapha\\.nuget\\packages\\",
       "outputPath": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessRead\\obj\\",
       "projectStyle": "PackageReference",

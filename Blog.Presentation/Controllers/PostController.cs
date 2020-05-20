@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Blog.DataAccessWrite.DTOs.Post;
-using Blog.DataAccessWrite.Utilites.Result;
 using Blog.Domain.PostClasses;
-using Blog.Service.Read;
-using Blog.Service.Write;
+using Blog.Domain.PostClasses.Command;
+using Blog.Domain.PostClasses.DTOs;
+using Blog.Domain.PostClasses.Query;
+using Blog.Presentation.Utilites.Result;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,10 +16,10 @@ namespace Blog.Presentation.Controllers
     public class PostController : BaseController
     {
         #region Constructor
-        private IPostRepositoryRead _read;
-        private IPostRepositoryWrite _write;
+        private IPostRepositoryQuery _read;
+        private IPostRepositoryCommand _write;
 
-        public PostController(IPostRepositoryRead read, IPostRepositoryWrite write)
+        public PostController(IPostRepositoryQuery read, IPostRepositoryCommand write)
         {
             _read = read;
             _write = write;
@@ -87,7 +87,7 @@ namespace Blog.Presentation.Controllers
         #region AddPost
 
         [HttpPost("AddPost")]
-        public async Task<IActionResult> AddPost([FromBody] PostViewModel postvm)
+        public async Task<IActionResult> AddPost([FromBody] Domain.PostClasses.DTOs.Post postvm)
         {
             if (!ModelState.IsValid)
             {
@@ -95,11 +95,11 @@ namespace Blog.Presentation.Controllers
             }
             try
             {
-                Post post=new Post()
+                Domain.PostClasses.Post post=new Domain.PostClasses.Post()
                 {
                     Title = postvm.Title,
-                    AuthoId =Int64.Parse(postvm.AuthorId),
-                    SubjectId =Int64.Parse(postvm.SubjectId),
+                    AuthoId = long.Parse(postvm.AuthorId),
+                    SubjectId = long.Parse(postvm.SubjectId),
                     Text = postvm.Text
                 };
 

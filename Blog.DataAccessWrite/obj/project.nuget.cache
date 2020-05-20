@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "C/d3ejOplI5I+7ELbVzyP3+mIy7vn6K7agHPbW0lugW0oPnfeHf6JfH3D6aRg9EEaYpt0aSODVkIbAZ8bZZ/3w==",
+  "dgSpecHash": "McGtgFQxhZW0av2kNbml16s1Z4bA4GWFY7o88Bid+ZsxlTovULLtG1M8I2F83tK9Bggjj1dR1sdz61bKRhUz3A==",
   "success": true,
-  "projectFilePath": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessWrite\\Blog.DataAccessWrite.csproj",
+  "projectFilePath": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessWrite\\Blog.DataAccessCommand.csproj",
   "expectedPackageFiles": [
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

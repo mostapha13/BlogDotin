@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Blog.DataAccessWrite.DTOs.Subject;
-using Blog.DataAccessWrite.Utilites.Result;
 using Blog.Domain.SubjectClasses;
-using Blog.Service.Read;
-using Blog.Service.Write;
+using Blog.Domain.SubjectClasses.Command;
+using Blog.Domain.SubjectClasses.DTOs;
+using Blog.Domain.SubjectClasses.Query;
+using Blog.Presentation.Utilites.Result;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,10 +16,10 @@ namespace Blog.Presentation.Controllers
     public class SubjectController : BaseController
     {
         #region Constructor
-        private ISubjectRepositoryRead _read;
-        private ISubjectRepositoryWrite _write;
+        private ISubjectRepositoryQuery _read;
+        private ISubjectRepositoryCommand _write;
 
-        public SubjectController(ISubjectRepositoryRead read, ISubjectRepositoryWrite write)
+        public SubjectController(ISubjectRepositoryQuery read, ISubjectRepositoryCommand write)
         {
             _read = read;
             _write = write;
@@ -43,7 +43,7 @@ namespace Blog.Presentation.Controllers
 
         #region AddSubject
         [HttpPost("AddSubject")]
-        public async Task<IActionResult> AddSubject([FromBody]SubjectViewModel subjectvm)
+        public async Task<IActionResult> AddSubject([FromBody] Domain.SubjectClasses.DTOs.Subject subjectvm)
         {
             if (!ModelState.IsValid)
             {
@@ -54,8 +54,8 @@ namespace Blog.Presentation.Controllers
             try
             {
 
-                
-                Subject subject=new Subject()
+
+                Domain.SubjectClasses.Subject subject=new Domain.SubjectClasses.Subject()
                 {
                     Title = subjectvm.Title
                 };

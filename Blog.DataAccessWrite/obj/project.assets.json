@@ -8942,9 +8942,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessWrite\\Blog.DataAccessWrite.csproj",
-      "projectName": "Blog.DataAccessWrite",
-      "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessWrite\\Blog.DataAccessWrite.csproj",
+      "projectUniqueName": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessWrite\\Blog.DataAccessCommand.csproj",
+      "projectName": "Blog.DataAccessCommand",
+      "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessWrite\\Blog.DataAccessCommand.csproj",
       "packagesPath": "C:\\Users\\mostapha\\.nuget\\packages\\",
       "outputPath": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessWrite\\obj\\",
       "projectStyle": "PackageReference",

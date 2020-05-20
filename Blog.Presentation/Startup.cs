@@ -2,11 +2,23 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Blog.DataAccessRead.Implementation;
-using Blog.DataAccessWrite.Implementation;
-using Blog.Domain.Context;
-using Blog.Service.Read;
-using Blog.Service.Write;
+using Blog.DataAccessRead.AuthorClasses.Query;
+using Blog.DataAccessRead.CommentClasses.Query;
+using Blog.DataAccessRead.PostClasses.Query;
+using Blog.DataAccessRead.SubjectClasses.Query;
+using Blog.DataAccessWrite.AuthorClasses.Command;
+using Blog.DataAccessWrite.CommentClasses.Command;
+using Blog.DataAccessWrite.Context;
+using Blog.DataAccessWrite.PostClasses.Command;
+using Blog.DataAccessWrite.SubjectClasses.Command;
+using Blog.Domain.AuthorClasses.Command;
+using Blog.Domain.AuthorClasses.Query;
+using Blog.Domain.CommentClasses.Command;
+using Blog.Domain.CommentClasses.Query;
+using Blog.Domain.PostClasses.Command;
+using Blog.Domain.PostClasses.Query;
+using Blog.Domain.SubjectClasses.Command;
+using Blog.Domain.SubjectClasses.Query;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -36,31 +48,37 @@ namespace Blog.Presentation
 
             #region DBContext
 
-            services.AddDbContext<BlogContext>(options =>
+            services.AddDbContext<Blog.DataAccessRead.Context.BlogContext>(options =>
                 {
                     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
                 });
+
+
+            services.AddDbContext<Blog.DataAccessWrite.Context.BlogContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+            });
 
             #endregion
 
             #region IOC
 
-            #region Read
+            #region Query
 
-            services.AddScoped<IAuthorRepositoryRead, AuthorRepositoryRead>();
-            services.AddScoped<ICommentRepositoryRead, CommentRepositoryRead>();
-            services.AddScoped<IPostRepositoryRead, PostRepositoryRead>();
-            services.AddScoped<ISubjectRepositoryRead, SubjectRepositoryRead>();
+            services.AddScoped<IAuthorRepositoryQuery, AuthorRepositoryQuery>();
+            services.AddScoped<ICommentRepositoryQuery, CommentRepositoryQuery>();
+            services.AddScoped<IPostRepositoryQuery, PostRepositoryQuery>();
+            services.AddScoped<ISubjectRepositoryQuery, SubjectRepositoryQuery>();
 
             #endregion
 
 
-            #region Write
+            #region Command
 
-            services.AddScoped<IAuthorRepositoryWrite, AuthorRepositoryWrite>();
-            services.AddScoped<ICommentRepositoryWrite, CommentRepositoryWrite>();
-            services.AddScoped<IPostRepositoryWrite, PostRepositoryWrite>();
-            services.AddScoped<ISubjectRepositoryWrite, SubjectRepositoryWrite>();
+            services.AddScoped<IAuthorRepositoryCommand, AuthorRepositoryCommand>();
+            services.AddScoped<ICommentRepositoryCommand, CommentRepositoryCommand>();
+            services.AddScoped<IPostRepositoryCommand, PostRepositoryCommand>();
+            services.AddScoped<ISubjectRepositoryCommand, SubjectRepositoryCommand>();
 
 
             #endregion
@@ -88,7 +106,7 @@ namespace Blog.Presentation
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Blog API", Version = "v1" });
             });
 
             #endregion

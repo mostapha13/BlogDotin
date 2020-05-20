@@ -3266,28 +3266,7 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Blog.DataAccessRead/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
-        "dependencies": {
-          "Blog.Service": "1.0.0",
-          "Dapper": "2.0.35",
-          "Newtonsoft.Json": "12.0.3",
-          "Swashbuckle.AspNetCore": "5.4.1",
-          "Swashbuckle.AspNetCore.SwaggerGen": "5.4.1",
-          "Swashbuckle.AspNetCore.SwaggerUI": "5.4.1"
-        },
-        "compile": {
-          "bin/placeholder/Blog.DataAccessRead.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Blog.DataAccessRead.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
-      },
-      "Blog.DataAccessWrite/1.0.0": {
+      "Blog.DataAccessCommand/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
@@ -3299,10 +3278,31 @@
           "Swashbuckle.AspNetCore.SwaggerUI": "5.4.1"
         },
         "compile": {
-          "bin/placeholder/Blog.DataAccessWrite.dll": {}
+          "bin/placeholder/Blog.DataAccessCommand.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Blog.DataAccessWrite.dll": {}
+          "bin/placeholder/Blog.DataAccessCommand.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
+      "Blog.DataAccessQuery/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Blog.Service": "1.0.0",
+          "Dapper": "2.0.35",
+          "Newtonsoft.Json": "12.0.3",
+          "Swashbuckle.AspNetCore": "5.4.1",
+          "Swashbuckle.AspNetCore.SwaggerGen": "5.4.1",
+          "Swashbuckle.AspNetCore.SwaggerUI": "5.4.1"
+        },
+        "compile": {
+          "bin/placeholder/Blog.DataAccessQuery.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Blog.DataAccessQuery.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
@@ -9884,15 +9884,15 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
-    "Blog.DataAccessRead/1.0.0": {
+    "Blog.DataAccessCommand/1.0.0": {
       "type": "project",
-      "path": "../Blog.DataAccessRead/Blog.DataAccessRead.csproj",
-      "msbuildProject": "../Blog.DataAccessRead/Blog.DataAccessRead.csproj"
+      "path": "../Blog.DataAccessWrite/Blog.DataAccessCommand.csproj",
+      "msbuildProject": "../Blog.DataAccessWrite/Blog.DataAccessCommand.csproj"
     },
-    "Blog.DataAccessWrite/1.0.0": {
+    "Blog.DataAccessQuery/1.0.0": {
       "type": "project",
-      "path": "../Blog.DataAccessWrite/Blog.DataAccessWrite.csproj",
-      "msbuildProject": "../Blog.DataAccessWrite/Blog.DataAccessWrite.csproj"
+      "path": "../Blog.DataAccessRead/Blog.DataAccessQuery.csproj",
+      "msbuildProject": "../Blog.DataAccessRead/Blog.DataAccessQuery.csproj"
     },
     "Blog.Domain/1.0.0": {
       "type": "project",
@@ -9907,8 +9907,8 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Blog.DataAccessRead >= 1.0.0",
-      "Blog.DataAccessWrite >= 1.0.0",
+      "Blog.DataAccessCommand >= 1.0.0",
+      "Blog.DataAccessQuery >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 3.1.4",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.4",
       "Microsoft.EntityFrameworkCore.Sqlite >= 3.1.2",
@@ -9955,11 +9955,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessRead\\Blog.DataAccessRead.csproj": {
-              "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessRead\\Blog.DataAccessRead.csproj"
+            "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessRead\\Blog.DataAccessQuery.csproj": {
+              "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessRead\\Blog.DataAccessQuery.csproj"
             },
-            "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessWrite\\Blog.DataAccessWrite.csproj": {
-              "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessWrite\\Blog.DataAccessWrite.csproj"
+            "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessWrite\\Blog.DataAccessCommand.csproj": {
+              "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessWrite\\Blog.DataAccessCommand.csproj"
             }
           }
         }

@@ -20,8 +20,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Blog.DataAccessRead\Blog.DataAccessRead.csproj" />
-    <ProjectReference Include="..\Blog.DataAccessWrite\Blog.DataAccessWrite.csproj" />
+    <ProjectReference Include="..\Blog.DataAccessRead\Blog.DataAccessQuery.csproj" />
+    <ProjectReference Include="..\Blog.DataAccessWrite\Blog.DataAccessCommand.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Utilites\Result\" />
   </ItemGroup>
 
 

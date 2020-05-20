@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WT2OndAXVJDEP+BuQTlbAzbU7deEm+1/vKyKkr0L8iod9dTT6GgcmvHHTxgofu7V8H1A4dh4mDIppOkmQQa8ww==",
+  "dgSpecHash": "N+aHdsBrCd1FApHeQ1hgveJPxwBr/WU2ZCuA5g0Sa+qT7PBg8JvvvDiQ7+288UAChvoRanBOxRU7lkbpA9kjaw==",
   "success": true,
-  "projectFilePath": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessRead\\Blog.DataAccessRead.csproj",
+  "projectFilePath": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessRead\\Blog.DataAccessQuery.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mostapha\\.nuget\\packages\\dapper\\2.0.35\\dapper.2.0.35.nupkg.sha512",
     "C:\\Users\\mostapha\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",

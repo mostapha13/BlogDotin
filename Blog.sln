@@ -17,9 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog.Service", "Blog.Servic
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03-DataAccess", "03-DataAccess", "{E7082128-69E7-4D2D-A399-D6BE3F1F73AF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog.DataAccessWrite", "Blog.DataAccessWrite\Blog.DataAccessWrite.csproj", "{1A176B29-815C-49D9-8A60-634B62B4AB7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog.DataAccessCommand", "Blog.DataAccessWrite\Blog.DataAccessCommand.csproj", "{1A176B29-815C-49D9-8A60-634B62B4AB7E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog.DataAccessRead", "Blog.DataAccessRead\Blog.DataAccessRead.csproj", "{8736CBCE-29FF-4E0C-93E2-0993C0BFC27E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog.DataAccessQuery", "Blog.DataAccessRead\Blog.DataAccessQuery.csproj", "{8736CBCE-29FF-4E0C-93E2-0993C0BFC27E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

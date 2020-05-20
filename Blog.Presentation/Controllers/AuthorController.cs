@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Blog.DataAccessWrite.DTOs.Author;
-using Blog.DataAccessWrite.Utilites.Result;
 using Blog.Domain.AuthorClasses;
-using Blog.Service.Read;
-using Blog.Service.Write;
+using Blog.Domain.AuthorClasses.Command;
+using Blog.Domain.AuthorClasses.DTOs;
+using Blog.Domain.AuthorClasses.Query;
+using Blog.Presentation.Utilites.Result;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -16,10 +16,10 @@ namespace Blog.Presentation.Controllers
     public class AuthorController : BaseController
     {
         #region Constructor
-        private IAuthorRepositoryRead _read;
-        private IAuthorRepositoryWrite _write;
+        private IAuthorRepositoryQuery _read;
+        private IAuthorRepositoryCommand _write;
 
-        public AuthorController(IAuthorRepositoryRead read, IAuthorRepositoryWrite write)
+        public AuthorController(IAuthorRepositoryQuery read, IAuthorRepositoryCommand write)
         {
             _read = read;
             _write = write;
@@ -63,7 +63,7 @@ namespace Blog.Presentation.Controllers
         #region AddAuthor
 
         [HttpPost("AddAuthor")]
-        public async Task<IActionResult> AddAuthor([FromBody]AuthorViewModel author)
+        public async Task<IActionResult> AddAuthor([FromBody] Domain.AuthorClasses.DTOs.Author author)
         {
             if (!ModelState.IsValid)
             {
@@ -81,7 +81,7 @@ namespace Blog.Presentation.Controllers
                 {
                     return JsonStatus.Error(new { info = "نام کاربری وارد شده تکراری می باشد." });
                 }
-                Author auth = new Author()
+                Domain.AuthorClasses.Author auth = new Domain.AuthorClasses.Author()
                 {
                     FirstName = author.FirstName,
                     LastName = author.LastName,
@@ -127,7 +127,7 @@ namespace Blog.Presentation.Controllers
         #region EditAuthor
 
         [HttpPost("EditAuthor")]
-        public async Task<IActionResult> EditAuthor(AuthorForEditViewModel authorEdit)
+        public async Task<IActionResult> EditAuthor(AuthorForEdit authorEdit)
         {
             if (!ModelState.IsValid)
             {
@@ -138,8 +138,8 @@ namespace Blog.Presentation.Controllers
             
             try
             {
-             
-                Author author=new Author()
+
+                Domain.AuthorClasses.Author author=new Domain.AuthorClasses.Author()
                 {
                     Id = authorEdit.Id,
                     CreateDate = authorEdit.CreateDate,

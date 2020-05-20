@@ -6,7 +6,6 @@ using Blog.Domain.PostClasses;
 using Blog.Domain.PostClasses.Command;
 using Blog.Domain.PostClasses.DTOs;
 using Blog.Domain.PostClasses.Query;
-using Blog.Presentation.Utilites.Result;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,8 +15,8 @@ namespace Blog.Presentation.Controllers
     public class PostController : BaseController
     {
         #region Constructor
-        private IPostRepositoryQuery _read;
-        private IPostRepositoryCommand _write;
+        private readonly IPostRepositoryQuery _read;
+        private readonly IPostRepositoryCommand _write;
 
         public PostController(IPostRepositoryQuery read, IPostRepositoryCommand write)
         {
@@ -35,11 +34,11 @@ namespace Blog.Presentation.Controllers
             {
                
                
-                return JsonStatus.Success( await _read.GetAllPost());
+                return Success( await _read.GetAllPost());
             }
             catch (Exception )
             {
-                return JsonStatus.Error(new {info= "خطایی رخ داده است" });
+                return Error(new {info= "خطایی رخ داده است" });
             }
         }
 
@@ -54,11 +53,11 @@ namespace Blog.Presentation.Controllers
         {
             try
             {
-                return JsonStatus.Success(await _read.GetPostById(postId));
+                return Success(await _read.GetPostById(postId));
             }
             catch (Exception)
             {
-                return JsonStatus.Error(new{info= "خطایی رخ داده است" });
+                return Error(new{info= "خطایی رخ داده است" });
             }
         }
 
@@ -73,11 +72,11 @@ namespace Blog.Presentation.Controllers
         {
             try
             {
-                return JsonStatus.Success(await _read.GetPostBySubjectId(subjectId));
+                return Success(await _read.GetPostBySubjectId(subjectId));
             }
             catch (Exception)
             {
-                return JsonStatus.Error(new{info= "خطایی رخ داده است" });
+                return Error(new{info= "خطایی رخ داده است" });
             }
         }
 
@@ -91,7 +90,7 @@ namespace Blog.Presentation.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return JsonStatus.Error(new{info= "اطلاعات بدرستی وارد نشده است." });
+                return Error(new{info= "اطلاعات بدرستی وارد نشده است." });
             }
             try
             {
@@ -105,11 +104,11 @@ namespace Blog.Presentation.Controllers
 
                 await _write.AddPost(post);
                 await _write.Save();
-                return JsonStatus.Success();
+                return Success();
             }
             catch (Exception)
             {
-                return JsonStatus.Error(new{info= "خطایی رخ داده است" });
+                return Error(new{info= "خطایی رخ داده است" });
             }
         }
 
@@ -133,18 +132,18 @@ namespace Blog.Presentation.Controllers
             var post =await _read.GetPostById(postId);
             if (post == null)
             {
-                return JsonStatus.Error(new{info= "کاربری یافت نشد." });
+                return Error(new{info= "کاربری یافت نشد." });
             }
 
             try
             {
                  _write.RemovePost(post);
                 await _write.Save();
-                return JsonStatus.Success();
+                return Success();
             }
             catch (Exception)
             {
-                return JsonStatus.Error(new{info= "خطایی رخ داده است" });
+                return Error(new{info= "خطایی رخ داده است" });
             }
         }
 

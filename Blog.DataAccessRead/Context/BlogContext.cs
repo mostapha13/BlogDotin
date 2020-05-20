@@ -7,7 +7,7 @@ using Blog.Domain.PostClasses;
 using Blog.Domain.SubjectClasses;
 using Microsoft.EntityFrameworkCore;
 
-namespace Blog.DataAccessRead.Context
+namespace Blog.DataAccessQuery.Context
 {
    public class BlogContext:DbContext
     {
@@ -16,13 +16,13 @@ namespace Blog.DataAccessRead.Context
             
         }
 
-        public DbSet<Post> Posts { get; set; }
+        //public DbSet<Post> Posts { get; set; }
 
-        public DbSet<Author> Authors { get; set; }
+        //public DbSet<Author> Authors { get; set; }
 
-        public DbSet<Comment> Comments { get; set; }
+        //public DbSet<Comment> Comments { get; set; }
 
-        public DbSet<Subject> Subjects { get; set; }
+        //public DbSet<Subject> Subjects { get; set; }
 
 
         #region OnModelCreating

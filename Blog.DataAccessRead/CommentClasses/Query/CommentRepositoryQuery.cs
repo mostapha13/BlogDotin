@@ -19,7 +19,7 @@ namespace Blog.DataAccessRead.CommentClasses.Query
 
         public CommentRepositoryQuery(IConfiguration configuration)
         {
-            _context = new SqlConnection(configuration["ConnectionStrings:DefaultConnection"]);
+            _context = new SqlConnection(configuration["ConnectionStrings:QueryConnection"]);
         } 
         #endregion
 

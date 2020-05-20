@@ -6,6 +6,7 @@ namespace Blog.Domain.CommentClasses.DTOs
 {
    public class CommentList
     {
+        #region Propertise
         public long Id { get; set; }
 
         public long PostId { get; set; }
@@ -14,6 +15,7 @@ namespace Blog.Domain.CommentClasses.DTOs
         public string Text { get; set; }
         public DateTime CreateDate { get; set; }
 
-        public DateTime UpdateDate { get; set; }
+        public DateTime UpdateDate { get; set; } 
+        #endregion
     }
 }

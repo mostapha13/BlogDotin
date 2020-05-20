@@ -2,13 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Blog.DataAccessCommand.AuthorClasses.Command;
 using Blog.DataAccessRead.AuthorClasses.Query;
 using Blog.DataAccessRead.CommentClasses.Query;
 using Blog.DataAccessRead.PostClasses.Query;
 using Blog.DataAccessRead.SubjectClasses.Query;
-using Blog.DataAccessWrite.AuthorClasses.Command;
 using Blog.DataAccessWrite.CommentClasses.Command;
-using Blog.DataAccessWrite.Context;
 using Blog.DataAccessWrite.PostClasses.Command;
 using Blog.DataAccessWrite.SubjectClasses.Command;
 using Blog.Domain.AuthorClasses.Command;
@@ -48,15 +47,15 @@ namespace Blog.Presentation
 
             #region DBContext
 
-            services.AddDbContext<Blog.DataAccessRead.Context.BlogContext>(options =>
+            services.AddDbContext<Blog.DataAccessQuery.Context.BlogContext>(options =>
                 {
-                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                    options.UseSqlServer(Configuration["ConnectionStrings:QueryConnection"]);
                 });
 
 
-            services.AddDbContext<Blog.DataAccessWrite.Context.BlogContext>(options =>
+            services.AddDbContext<Blog.DataAccessCommand.Context.BlogContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                options.UseSqlServer(Configuration["ConnectionStrings:CommandConnection"]);
             });
 
             #endregion

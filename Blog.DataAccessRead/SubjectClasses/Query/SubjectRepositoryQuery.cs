@@ -16,11 +16,11 @@ namespace Blog.DataAccessRead.SubjectClasses.Query
     public class SubjectRepositoryQuery : ISubjectRepositoryQuery
     {
         #region Constructor
-        private SqlConnection _context;
+        private readonly SqlConnection _context;
 
         public SubjectRepositoryQuery(IConfiguration configuration)
         {
-            _context = new SqlConnection(configuration["ConnectionStrings:DefaultConnection"]);
+            _context = new SqlConnection(configuration["ConnectionStrings:QueryConnection"]);
         }
 
         #endregion

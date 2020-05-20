@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using Blog.DataAccessWrite.Context;
+using Blog.DataAccessCommand.Context;
 using Blog.Domain.AuthorClasses;
 using Blog.Domain.AuthorClasses.Command;
 
-namespace Blog.DataAccessWrite.AuthorClasses.Command
+namespace Blog.DataAccessCommand.AuthorClasses.Command
 {
 
     public class AuthorRepositoryCommand : IAuthorRepositoryCommand

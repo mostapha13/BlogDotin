@@ -22,7 +22,7 @@ namespace Blog.DataAccessRead.PostClasses.Query
 
         public PostRepositoryQuery(IConfiguration configuration)
         {
-            _context = new SqlConnection(configuration["ConnectionStrings:DefaultConnection"]);
+            _context = new SqlConnection(configuration["ConnectionStrings:QueryConnection"]);
         }
 
         #endregion

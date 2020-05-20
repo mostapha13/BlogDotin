@@ -7,7 +7,7 @@ using Blog.Domain.PostClasses;
 using Blog.Domain.SubjectClasses;
 using Microsoft.EntityFrameworkCore;
 
-namespace Blog.DataAccessWrite.Context
+namespace Blog.DataAccessCommand.Context
 {
    public class BlogContext:DbContext
     {

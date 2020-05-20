@@ -12,6 +12,52 @@ namespace Blog.Presentation.Controllers
     [ApiController]
     public class BaseController : Controller
     {
-      
+
+
+        #region Success
+
+        public static JsonResult Success()
+        {
+            return new JsonResult(new { status = "success" });
+        }
+
+        public static JsonResult Success(object resultData)
+        {
+            return new JsonResult(new { status = "success", data = resultData });
+        }
+
+
+        #endregion
+
+
+        #region Error
+        public static JsonResult Error()
+        {
+            return new JsonResult(new { status = "error" });
+        }
+
+        public static JsonResult Error(object resultData)
+        {
+            return new JsonResult(new { status = "error", data = resultData });
+        }
+        #endregion
+
+
+        //#region NotFound
+        //public static JsonResult NotFound()
+        //{
+        //    return new JsonResult(new { status = "notfound" });
+        //}
+
+        //public static JsonResult NotFound(object resultData)
+        //{
+        //    return new JsonResult(new { status = "notfound", data = resultData });
+        //}
+
+        //#endregion
+
+
+
+
     }
 }

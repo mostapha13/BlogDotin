@@ -6,7 +6,6 @@ using Blog.Domain.SubjectClasses;
 using Blog.Domain.SubjectClasses.Command;
 using Blog.Domain.SubjectClasses.DTOs;
 using Blog.Domain.SubjectClasses.Query;
-using Blog.Presentation.Utilites.Result;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,8 +15,8 @@ namespace Blog.Presentation.Controllers
     public class SubjectController : BaseController
     {
         #region Constructor
-        private ISubjectRepositoryQuery _read;
-        private ISubjectRepositoryCommand _write;
+        private readonly ISubjectRepositoryQuery _read;
+        private readonly ISubjectRepositoryCommand _write;
 
         public SubjectController(ISubjectRepositoryQuery read, ISubjectRepositoryCommand write)
         {
@@ -32,11 +31,11 @@ namespace Blog.Presentation.Controllers
         {
             try
             {
-                return JsonStatus.Success(await _read.GetAllSubject());
+                return Success(await _read.GetAllSubject());
             }
             catch (Exception)
             {
-                return JsonStatus.Error(new{info= "خطایی رخ داده است" });
+                return Error(new{info= "خطایی رخ داده است" });
             }
         }
         #endregion
@@ -47,7 +46,7 @@ namespace Blog.Presentation.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return JsonStatus.Error(new{info= "اطلاعات بدرستی وارد نشده است." });
+                return Error(new{info= "اطلاعات بدرستی وارد نشده است." });
             }
 
            
@@ -61,11 +60,11 @@ namespace Blog.Presentation.Controllers
                 };
                 await _write.AddSubject(subject);
                 await _write.Save();
-                return JsonStatus.Success();
+                return Success();
             }
             catch (Exception)
             {
-                return JsonStatus.Error(new{info= "خطایی رخ داده است" });
+                return Error(new{info= "خطایی رخ داده است" });
             }
         }
         #endregion
@@ -78,18 +77,18 @@ namespace Blog.Presentation.Controllers
             var subject =await _read.GetSubjectById(id);
             if (subject == null)
             {
-                return JsonStatus.Error(new{info= "اطلاعات بدرستی وارد نشده است." });
+                return Error(new{info= "اطلاعات بدرستی وارد نشده است." });
             }
             try
             {
                 _write.RemoveSubject(subject);
                await _write.Save();
-               return JsonStatus.Success();
+               return Success();
 
             }
             catch (Exception)
             {
-                return JsonStatus.Error(new{info= "خطایی رخ داده است" });
+                return Error(new{info= "خطایی رخ داده است" });
             }
         }
 
@@ -101,11 +100,11 @@ namespace Blog.Presentation.Controllers
         {
             try
             {
-                return JsonStatus.Success(await _read.GetAllSubjectPost(id));
+                return Success(await _read.GetAllSubjectPost(id));
             }
             catch (Exception)
             {
-                return JsonStatus.Error(new { info = "خطایی رخ داده است" });
+                return Error(new { info = "خطایی رخ داده است" });
             }
         }
 

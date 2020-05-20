@@ -6,7 +6,6 @@ using Blog.Domain.AuthorClasses;
 using Blog.Domain.AuthorClasses.Command;
 using Blog.Domain.AuthorClasses.DTOs;
 using Blog.Domain.AuthorClasses.Query;
-using Blog.Presentation.Utilites.Result;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -16,8 +15,8 @@ namespace Blog.Presentation.Controllers
     public class AuthorController : BaseController
     {
         #region Constructor
-        private IAuthorRepositoryQuery _read;
-        private IAuthorRepositoryCommand _write;
+        private readonly IAuthorRepositoryQuery _read;
+        private readonly IAuthorRepositoryCommand _write;
 
         public AuthorController(IAuthorRepositoryQuery read, IAuthorRepositoryCommand write)
         {
@@ -34,11 +33,11 @@ namespace Blog.Presentation.Controllers
             try
             {
 
-                return JsonStatus.Success(await _read.GetAllAuthor());
+                return Success(await _read.GetAllAuthor());
             }
             catch (Exception)
             {
-                return JsonStatus.Error(new { info = "خطایی رخ داده است" });
+                return Error(new { info = "خطایی رخ داده است" });
             }
         }
         #endregion
@@ -49,11 +48,11 @@ namespace Blog.Presentation.Controllers
         {
             try
             {
-                return JsonStatus.Success(await _read.GetAuthorById(id));
+                return Success(await _read.GetAuthorById(id));
             }
             catch (Exception)
             {
-                return JsonStatus.Error(new { info = "خطایی رخ داده است" });
+                return Error(new { info = "خطایی رخ داده است" });
             }
         }
 
@@ -67,19 +66,19 @@ namespace Blog.Presentation.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return JsonStatus.Error(new { info = "اطلاعات بدرستی وارد نشده است." });
+                return Error(new { info = "اطلاعات بدرستی وارد نشده است." });
             }
 
             try
             {
                 if (await _read.IsEmailExist(author.Email.Trim().ToLower()))
                 {
-                    return JsonStatus.Error(new { info = "ایمیل وارد شده تکراری می باشد." });
+                    return Error(new { info = "ایمیل وارد شده تکراری می باشد." });
                 }
 
                 if (await _read.IsUserNameExist(author.UserName.Trim().ToLower()))
                 {
-                    return JsonStatus.Error(new { info = "نام کاربری وارد شده تکراری می باشد." });
+                    return Error(new { info = "نام کاربری وارد شده تکراری می باشد." });
                 }
                 Domain.AuthorClasses.Author auth = new Domain.AuthorClasses.Author()
                 {
@@ -92,11 +91,11 @@ namespace Blog.Presentation.Controllers
                 };
                 await _write.AddAuthor(auth);
                 await _write.Save();
-                return JsonStatus.Success();
+                return Success();
             }
             catch (Exception)
             {
-                return JsonStatus.Error(new { info = "خطایی رخ داده است" });
+                return Error(new { info = "خطایی رخ داده است" });
             }
         }
 
@@ -109,17 +108,17 @@ namespace Blog.Presentation.Controllers
             var author = await _read.GetAuthorById(authorId);
             if (author == null)
             {
-                return JsonStatus.Error(new { info = "کاربری یافت نشد." });
+                return Error(new { info = "کاربری یافت نشد." });
             }
             try
             {
                 _write.RemoveAuthor(author);
                 await _write.Save();
-                return JsonStatus.Success();
+                return Success();
             }
             catch (Exception)
             {
-                return JsonStatus.Error(new { info = "خطایی رخ داده است" });
+                return Error(new { info = "خطایی رخ داده است" });
             }
         }
         #endregion
@@ -131,7 +130,7 @@ namespace Blog.Presentation.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return JsonStatus.Error(new { info = "اطلاعات بدرستی وارد نشده است." });
+                return Error(new { info = "اطلاعات بدرستی وارد نشده است." });
 
             }
 
@@ -153,11 +152,11 @@ namespace Blog.Presentation.Controllers
 
                 _write.UpdateAuthor(author);
                 await _write.Save();
-                return JsonStatus.Success();
+                return Success();
             }
             catch (Exception)
             {
-                return JsonStatus.Error(new { info = "خطایی رخ داده است" });
+                return Error(new { info = "خطایی رخ داده است" });
             }
         }
 

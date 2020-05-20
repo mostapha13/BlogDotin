@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Utilites\Result\" />
+    <Folder Include="Utilites\" />
   </ItemGroup>
 
 

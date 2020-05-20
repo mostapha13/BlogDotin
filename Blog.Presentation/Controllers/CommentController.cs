@@ -6,7 +6,6 @@ using Blog.Domain.CommentClasses;
 using Blog.Domain.CommentClasses.Command;
 using Blog.Domain.CommentClasses.DTOs;
 using Blog.Domain.CommentClasses.Query;
-using Blog.Presentation.Utilites.Result;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,8 +15,8 @@ namespace Blog.Presentation.Controllers
     public class CommentController : BaseController
     {
         #region Constructor
-        private ICommentRepositoryQuery _read;
-        private ICommentRepositoryCommand _write;
+        private readonly ICommentRepositoryQuery _read;
+        private readonly ICommentRepositoryCommand _write;
 
         public CommentController(ICommentRepositoryQuery read, ICommentRepositoryCommand write)
         {
@@ -33,11 +32,11 @@ namespace Blog.Presentation.Controllers
         {
             try
             {
-                return JsonStatus.Success(await _read.GetAllComment());
+                return Success(await _read.GetAllComment());
             }
             catch (Exception)
             {
-                return JsonStatus.Error(new { info = "خطایی رخ داده است" });
+                return Error(new { info = "خطایی رخ داده است" });
             }
         }
 
@@ -50,11 +49,11 @@ namespace Blog.Presentation.Controllers
         {
             try
             {
-                return JsonStatus.Success(await _read.GetCommentById(commentId));
+                return Success(await _read.GetCommentById(commentId));
             }
             catch (Exception)
             {
-                return JsonStatus.Error(new { info = "خطایی رخ داده است" });
+                return Error(new { info = "خطایی رخ داده است" });
             }
         }
 
@@ -66,7 +65,7 @@ namespace Blog.Presentation.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return JsonStatus.Error(new { info = "اطلاعات بدرستی وارد نشده است." });
+                return Error(new { info = "اطلاعات بدرستی وارد نشده است." });
             }
 
 
@@ -80,11 +79,11 @@ namespace Blog.Presentation.Controllers
                 };
                 await _write.AddComment(comment);
                 await _write.Save();
-                return JsonStatus.Success();
+                return Success();
             }
             catch (Exception)
             {
-                return JsonStatus.Error(new { info = "خطایی رخ داده است" });
+                return Error(new { info = "خطایی رخ داده است" });
             }
         }
 
@@ -108,17 +107,17 @@ namespace Blog.Presentation.Controllers
             var comment =await _read.GetCommentById(id);
             if (comment == null)
             {
-                return JsonStatus.Error(new { info = "اطلاعات بدرستی وارد نشده است." });
+                return Error(new { info = "اطلاعات بدرستی وارد نشده است." });
             }
             try
             {
                 _write.RemoveComment(comment);
                 await _write.Save();
-                return JsonStatus.Success();
+                return Success();
             }
             catch (Exception)
             {
-                return JsonStatus.Error(new { info = "خطایی رخ داده است" });
+                return Error(new { info = "خطایی رخ داده است" });
             }
         }
 

@@ -14,11 +14,11 @@ namespace Blog.DataAccessRead.AuthorClasses.Query
    public class AuthorRepositoryQuery: IAuthorRepositoryQuery
     {
         #region Constructor
-        private SqlConnection _context;
+        private readonly SqlConnection _context;
 
         public AuthorRepositoryQuery(IConfiguration configuration)
         {
-            _context = new SqlConnection(configuration["ConnectionStrings:DefaultConnection"]);
+            _context = new SqlConnection(configuration["ConnectionStrings:QueryConnection"]);
         }
         #endregion
 

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Blog.DataAccessWrite.DTOs.Post;
 using Blog.DataAccessWrite.Utilites.Result;
-using Blog.Domain.Entites;
+using Blog.Domain.PostClasses;
 using Blog.Service.Read;
 using Blog.Service.Write;
 using Microsoft.AspNetCore.Http;
@@ -107,7 +107,7 @@ namespace Blog.Presentation.Controllers
                 await _write.Save();
                 return JsonStatus.Success();
             }
-            catch (Exception e )
+            catch (Exception)
             {
                 return JsonStatus.Error(new{info= "خطایی رخ داده است" });
             }

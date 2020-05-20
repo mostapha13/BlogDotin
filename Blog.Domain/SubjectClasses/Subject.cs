@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using Blog.Domain.BaseEntityClasses;
+using Blog.Domain.PostClasses;
 
-namespace Blog.Domain.Entites
+namespace Blog.Domain.SubjectClasses
 {
    public class Subject:BaseEntity
     {

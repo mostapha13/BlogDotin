@@ -1,10 +1,10 @@
-﻿using Blog.Domain.Entites;
-using Blog.Service.Write;
+﻿using Blog.Service.Write;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Blog.Domain.Context;
+using Blog.Domain.PostClasses;
 
 namespace Blog.DataAccessWrite.Implementation
 {

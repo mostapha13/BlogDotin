@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Blog.Domain.Entites
+namespace Blog.Domain.BaseEntityClasses
 {
    public class BaseEntity
     {

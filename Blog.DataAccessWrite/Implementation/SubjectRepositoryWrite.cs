@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Blog.Domain.Context;
-using Blog.Domain.Entites;
+using Blog.Domain.SubjectClasses;
 using Blog.Service.Write;
 
 namespace Blog.DataAccessWrite.Implementation

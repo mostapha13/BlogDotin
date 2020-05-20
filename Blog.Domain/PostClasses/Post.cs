@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using Blog.Domain.AuthorClasses;
+using Blog.Domain.BaseEntityClasses;
+using Blog.Domain.CommentClasses;
+using Blog.Domain.SubjectClasses;
 
-namespace Blog.Domain.Entites
+namespace Blog.Domain.PostClasses
 {
    public class Post:BaseEntity
     {

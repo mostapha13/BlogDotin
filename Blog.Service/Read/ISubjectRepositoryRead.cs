@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.Text;
 using System.Threading.Tasks;
-using Blog.Domain.Entites;
+using Blog.Domain.SubjectClasses;
 using Blog.Service.DTOs;
 
 namespace Blog.Service.Read

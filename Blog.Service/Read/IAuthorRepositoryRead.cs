@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using Blog.Domain.Entites;
+using Blog.Domain.AuthorClasses;
 
 namespace Blog.Service.Read
 {

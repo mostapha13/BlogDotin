@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Blog.DataAccessWrite.DTOs.Comment;
 using Blog.DataAccessWrite.Utilites.Result;
-using Blog.Domain.Entites;
+using Blog.Domain.CommentClasses;
 using Blog.Service.Read;
 using Blog.Service.Write;
 using Microsoft.AspNetCore.Http;

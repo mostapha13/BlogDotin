@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Blog.Domain.Entites;
+using Blog.Domain.AuthorClasses;
+using Blog.Domain.CommentClasses;
+using Blog.Domain.PostClasses;
+using Blog.Domain.SubjectClasses;
 using Microsoft.EntityFrameworkCore;
 
 namespace Blog.Domain.Context

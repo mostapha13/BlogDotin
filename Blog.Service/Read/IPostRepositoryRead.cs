@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
-using Blog.Domain.Entites;
+using Blog.Domain.PostClasses;
 using Blog.Service.DTOs;
 
 namespace Blog.Service.Read

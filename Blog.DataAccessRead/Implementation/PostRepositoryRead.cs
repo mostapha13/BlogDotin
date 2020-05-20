@@ -5,7 +5,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using Blog.Domain.Context;
-using Blog.Domain.Entites;
+using Blog.Domain.PostClasses;
 using Blog.Service.DTOs;
 using Blog.Service.Read;
 using Dapper;

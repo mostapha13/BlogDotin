@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Blog.Domain.CommentClasses;
 using Blog.Domain.Context;
-using Blog.Domain.Entites;
 using Blog.Service.DTOs;
 using Blog.Service.Read;
 using Dapper;

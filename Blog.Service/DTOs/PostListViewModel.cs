@@ -21,7 +21,8 @@ namespace Blog.Service.DTOs
         public DateTime CreateDate { get; set; }
 
         public DateTime UpdateDate { get; set; }
-         
+
+        public int CommentPost { get; set; }
        
 
 

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Text;
 using System.Threading.Tasks;
 using Blog.Domain.Entites;
+using Blog.Service.DTOs;
 
 namespace Blog.Service.Read
 {
@@ -14,6 +16,6 @@ namespace Blog.Service.Read
 
 
        Task<IEnumerable<Subject>> GetSubjectForComboBox();
-
+       Task<IEnumerable<AllSubjectPostViewModel>> GetAllSubjectPost(long subjectId);
    }
 }

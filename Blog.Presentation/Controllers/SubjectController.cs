@@ -95,6 +95,22 @@ namespace Blog.Presentation.Controllers
 
         #endregion
 
+        #region AllSubjectPost
+        [HttpGet("AllSubjectPost/{id}")]
+        public async Task<IActionResult> AllSubjectPost(long id)
+        {
+            try
+            {
+                return JsonStatus.Success(await _read.GetAllSubjectPost(id));
+            }
+            catch (Exception)
+            {
+                return JsonStatus.Error(new { info = "خطایی رخ داده است" });
+            }
+        }
+
+        #endregion
+
 
         #region GetAuthorForComboBox
 

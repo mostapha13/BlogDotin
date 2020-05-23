@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Blog.DataAccessCommand.AuthorClasses.Config;
+using Blog.DataAccessCommand.CommentClasses.Config;
+using Blog.DataAccessCommand.PostClasses.Config;
+using Blog.DataAccessCommand.SubjectClasses.Config;
 using Blog.Domain;
 using Blog.Domain.AuthorClasses;
 using Blog.Domain.CommentClasses;
@@ -31,6 +35,33 @@ namespace Blog.DataAccessCommand.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+          
+
+            #region ValidatorAuthor
+
+            modelBuilder.ApplyConfiguration(new AuthorValidator());
+
+            #endregion
+
+            #region ValidatorPost
+
+            modelBuilder.ApplyConfiguration(new PostValidator());
+
+            #endregion
+
+            #region ValidatorSubject
+
+            modelBuilder.ApplyConfiguration(new SubjectValidator());
+
+            #endregion
+
+            #region ValidatorComment
+            modelBuilder.ApplyConfiguration(new CommentValidator()); 
+            #endregion
+
+
+
+
             base.OnModelCreating(modelBuilder);
         }
 

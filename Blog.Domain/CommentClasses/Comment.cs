@@ -13,18 +13,7 @@ namespace Blog.Domain.CommentClasses
 
         #region Propertise
 
-
-
-        [Display(Name = "پست")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "{0} وارد نشده است")]
-        [MaxLength(250, ErrorMessage = "طول فیلید {0} باید حداکثر {1} باشد")]
-
         public long PostId { get; set; }
-
-        [Display(Name = "متن")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "{0} وارد نشده است")]
-        [MaxLength(1500, ErrorMessage = "طول فیلید {0} باید حداکثر {1} باشد")]
-
         public string Text { get; set; }
 
         #endregion

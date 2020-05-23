@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Blog.Domain.AuthorClasses;
-using Blog.Domain.AuthorClasses.Command;
+using Blog.Domain.AuthorClasses.Commands;
 using Blog.Domain.AuthorClasses.DTOs;
-using Blog.Domain.AuthorClasses.Query;
+using Blog.Domain.AuthorClasses.Queries;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -86,7 +86,7 @@ namespace Blog.Presentation.Controllers
                     LastName = author.LastName,
                     UserName = author.UserName.Trim().ToLower(),
                     Email = author.Email.Trim().ToLower(),
-                    IsDelete = false
+                    
 
                 };
                 await _write.AddAuthor(auth);
@@ -145,7 +145,7 @@ namespace Blog.Presentation.Controllers
                     Email = authorEdit.Email.Trim().ToLower(),
                     FirstName = authorEdit.FirstName,
                     LastName = authorEdit.LastName,
-                    IsDelete = authorEdit.IsDelete,
+                  
                     UserName = authorEdit.UserName,
                     UpdateDate = DateTime.Now
                 };

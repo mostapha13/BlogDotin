@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Blog.Domain.CommentClasses;
-using Blog.Domain.CommentClasses.Command;
+using Blog.Domain.CommentClasses.Commands;
 using Blog.Domain.CommentClasses.DTOs;
-using Blog.Domain.CommentClasses.Query;
+using Blog.Domain.CommentClasses.Queries;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

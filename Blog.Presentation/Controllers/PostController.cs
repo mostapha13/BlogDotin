@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Blog.Domain.PostClasses;
-using Blog.Domain.PostClasses.Command;
+using Blog.Domain.PostClasses.Commands;
 using Blog.Domain.PostClasses.DTOs;
-using Blog.Domain.PostClasses.Query;
+using Blog.Domain.PostClasses.Queries;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

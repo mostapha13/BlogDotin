@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "Ze/mh5etNWT7H7a/r6OynO5fjuht5VXoG2NWJJW/RmqPx7exnrS2kJ1IO5Eku78u8Z/G5bggRm6LSHR2tlBurA==",
+  "dgSpecHash": "MhpE3pls0QdTsWYvfSSF1aJxPiYUyjOEDWhsCWijSdPOv2ffeXI/141Kd3jXKNXgM8sGR+pLvgshJZPKvYpT7A==",
   "success": true,
   "projectFilePath": "C:\\ForDotin\\Backend\\Blog\\Blog.Presentation\\Blog.Presentation.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mostapha\\.nuget\\packages\\dapper\\2.0.35\\dapper.2.0.35.nupkg.sha512",
+    "C:\\Users\\mostapha\\.nuget\\packages\\fluentvalidation\\8.6.2\\fluentvalidation.8.6.2.nupkg.sha512",
+    "C:\\Users\\mostapha\\.nuget\\packages\\fluentvalidation.aspnetcore\\8.6.2\\fluentvalidation.aspnetcore.8.6.2.nupkg.sha512",
+    "C:\\Users\\mostapha\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\8.6.2\\fluentvalidation.dependencyinjectionextensions.8.6.2.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",

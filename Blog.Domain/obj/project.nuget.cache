@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "nRawtqCaocua3ZWH4wVzXi17yy+FL4AM36EXaQIlV4umrM9nZcsPlHVvEG4v35yWZbIDqL06qm48VHmD3pZvWA==",
+  "dgSpecHash": "lO25dbvkn+WaTYKI1XpiMX1Z9FjCXLQGExhJsW92o0XmUrO1dyWqcq5avL+wfLgYckM3KasSnatWgrjVTMC/Fw==",
   "success": true,
   "projectFilePath": "C:\\ForDotin\\Backend\\Blog\\Blog.Domain\\Blog.Domain.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\mostapha\\.nuget\\packages\\fluentvalidation\\8.6.2\\fluentvalidation.8.6.2.nupkg.sha512",
+    "C:\\Users\\mostapha\\.nuget\\packages\\fluentvalidation.aspnetcore\\8.6.2\\fluentvalidation.aspnetcore.8.6.2.nupkg.sha512",
+    "C:\\Users\\mostapha\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\8.6.2\\fluentvalidation.dependencyinjectionextensions.8.6.2.nupkg.sha512",
     "C:\\Users\\mostapha\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\mostapha\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
     "C:\\Users\\mostapha\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

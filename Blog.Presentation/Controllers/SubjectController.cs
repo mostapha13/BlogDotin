@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Blog.Domain.SubjectClasses;
-using Blog.Domain.SubjectClasses.Command;
+using Blog.Domain.SubjectClasses.Commands;
 using Blog.Domain.SubjectClasses.DTOs;
-using Blog.Domain.SubjectClasses.Query;
+using Blog.Domain.SubjectClasses.Queries;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

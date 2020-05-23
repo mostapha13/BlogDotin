@@ -10,14 +10,14 @@ namespace Blog.Domain.BaseEntityClasses
 
         #region Propertise
 
-        [Key]
+       [Key]
         public long Id { get; set; }
 
         public DateTime CreateDate { get; set; }
 
         public DateTime UpdateDate { get; set; }
 
-        public bool IsDelete { get; set; }
+      //  public bool IsDelete { get; set; }
 
         #endregion
 

@@ -2,22 +2,26 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Blog.DataAccessCommand.AuthorClasses.Command;
-using Blog.DataAccessRead.AuthorClasses.Query;
-using Blog.DataAccessRead.CommentClasses.Query;
-using Blog.DataAccessRead.PostClasses.Query;
-using Blog.DataAccessRead.SubjectClasses.Query;
-using Blog.DataAccessWrite.CommentClasses.Command;
-using Blog.DataAccessWrite.PostClasses.Command;
-using Blog.DataAccessWrite.SubjectClasses.Command;
-using Blog.Domain.AuthorClasses.Command;
-using Blog.Domain.AuthorClasses.Query;
-using Blog.Domain.CommentClasses.Command;
-using Blog.Domain.CommentClasses.Query;
-using Blog.Domain.PostClasses.Command;
-using Blog.Domain.PostClasses.Query;
-using Blog.Domain.SubjectClasses.Command;
-using Blog.Domain.SubjectClasses.Query;
+using Blog.DataAccessCommand.AuthorClasses.Config;
+using Blog.DataAccessCommand.AuthorClasses.Repository;
+using Blog.DataAccessCommand.CommentClasses.Repository;
+using Blog.DataAccessCommand.PostClasses.Repository;
+using Blog.DataAccessCommand.SubjectClasses.Repository;
+using Blog.DataAccessQuery.AuthorClasses.Repository;
+using Blog.DataAccessQuery.CommentClasses.Repository;
+using Blog.DataAccessQuery.PostClasses.Repository;
+using Blog.DataAccessQuery.SubjectClasses.Repository;
+using Blog.Domain.AuthorClasses;
+using Blog.Domain.AuthorClasses.Commands;
+using Blog.Domain.AuthorClasses.Queries;
+using Blog.Domain.CommentClasses.Commands;
+using Blog.Domain.CommentClasses.Queries;
+using Blog.Domain.PostClasses.Commands;
+using Blog.Domain.PostClasses.Queries;
+using Blog.Domain.SubjectClasses.Commands;
+using Blog.Domain.SubjectClasses.Queries;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -43,17 +47,19 @@ namespace Blog.Presentation
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddControllers();
 
             #region DBContext
 
-           
+
             services.AddDbContext<Blog.DataAccessCommand.Context.BlogContext>(options =>
             {
                 options.UseSqlServer(Configuration["ConnectionStrings:CommandConnection"]);
             });
 
             #endregion
+
+
 
             #region IOC
 
@@ -105,7 +111,9 @@ namespace Blog.Presentation
 
             #endregion
 
-            services.AddControllers();
+    
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -132,6 +140,7 @@ namespace Blog.Presentation
 
 
             #endregion
+
 
             app.UseRouting();
 

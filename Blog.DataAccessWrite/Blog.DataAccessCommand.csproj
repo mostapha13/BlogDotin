@@ -7,6 +7,30 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200520151634_init_0022.cs" />
     <Compile Remove="Migrations\20200520151634_init_0022.Designer.cs" />
+    <Compile Remove="Migrations\20200523063113_ini.cs" />
+    <Compile Remove="Migrations\20200523063113_ini.Designer.cs" />
+    <Compile Remove="Migrations\20200523065709_ini01.cs" />
+    <Compile Remove="Migrations\20200523065709_ini01.Designer.cs" />
+    <Compile Remove="Migrations\20200523070804_ini01.cs" />
+    <Compile Remove="Migrations\20200523070804_ini01.Designer.cs" />
+    <Compile Remove="Migrations\20200523073208_ini01.cs" />
+    <Compile Remove="Migrations\20200523073208_ini01.Designer.cs" />
+    <Compile Remove="Migrations\20200523073834_ini_Flu.cs" />
+    <Compile Remove="Migrations\20200523073834_ini_Flu.Designer.cs" />
+    <Compile Remove="Migrations\20200523074618_ini_Flu.cs" />
+    <Compile Remove="Migrations\20200523074618_ini_Flu.Designer.cs" />
+    <Compile Remove="Migrations\20200523075330_ini_Flu.cs" />
+    <Compile Remove="Migrations\20200523075330_ini_Flu.Designer.cs" />
+    <Compile Remove="Migrations\20200523081108_ini_Flu.cs" />
+    <Compile Remove="Migrations\20200523081108_ini_Flu.Designer.cs" />
+    <Compile Remove="Migrations\20200523083124_ini_Validator.cs" />
+    <Compile Remove="Migrations\20200523083124_ini_Validator.Designer.cs" />
+    <Compile Remove="Migrations\20200523083325_ini_Validator.cs" />
+    <Compile Remove="Migrations\20200523083325_ini_Validator.Designer.cs" />
+    <Compile Remove="Migrations\20200523085048_ini_Validator.cs" />
+    <Compile Remove="Migrations\20200523085048_ini_Validator.Designer.cs" />
+    <Compile Remove="Migrations\20200523090558_ini_Validator.cs" />
+    <Compile Remove="Migrations\20200523090558_ini_Validator.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -14,6 +38,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="8.6.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor" Version="2.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.4.1" />
@@ -22,7 +47,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Migrations\" />
+    <Folder Include="BaseEntityClasses\" />
   </ItemGroup>
 
 </Project>

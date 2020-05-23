@@ -17,7 +17,7 @@ namespace Blog.Domain.BaseEntityClasses
 
         public DateTime UpdateDate { get; set; }
 
-      //  public bool IsDelete { get; set; }
+         public bool IsDelete { get; set; }
 
         #endregion
 

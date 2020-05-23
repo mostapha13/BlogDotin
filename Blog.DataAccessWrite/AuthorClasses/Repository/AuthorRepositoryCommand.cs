@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Blog.DataAccessCommand.Context;
 using Blog.Domain.AuthorClasses;
 using Blog.Domain.AuthorClasses.Commands;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace Blog.DataAccessCommand.AuthorClasses.Repository
 {
@@ -24,8 +25,7 @@ namespace Blog.DataAccessCommand.AuthorClasses.Repository
         #region AddAuthor
         public async Task AddAuthor(Author author)
         {
-            author.CreateDate = DateTime.Now;
-            author.UpdateDate = author.CreateDate;
+            
 
             await _context.Authors.AddAsync(author);
         }
@@ -54,6 +54,10 @@ namespace Blog.DataAccessCommand.AuthorClasses.Repository
             await _context.SaveChangesAsync();
         }
         #endregion
+
+ 
+
+        
 
         #region Dispose
         public void Dispose()

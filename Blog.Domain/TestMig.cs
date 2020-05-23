@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Blog.Domain.BaseEntityClasses;
 
-namespace Blog.Domain.CommentClasses.DTOs
+namespace Blog.Domain
 {
-   public class Comment
+  public class TestMig:BaseEntity
     {
-        public string PostId { get; set; }
-
         public string Text { get; set; }
     }
 }

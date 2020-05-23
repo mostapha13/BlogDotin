@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Blog.Domain.SubjectClasses.DTOs
 {
-   public class Subject
+   public class SubjectDTO
     {
 
         #region Propertise

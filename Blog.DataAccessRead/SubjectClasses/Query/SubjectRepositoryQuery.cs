@@ -40,10 +40,10 @@ namespace Blog.DataAccessRead.SubjectClasses.Query
         #region GetAllSubjectPost
 
 
-        public async Task<IEnumerable<AllSubject>> GetAllSubjectPost(long subjectId=1)
+        public async Task<IEnumerable<AllSubjectDTO>> GetAllSubjectPost(long subjectId=1)
         {
 
-            return await _context.QueryAsync<AllSubject>("EXEC GetAllSubjectPost @subjectId",new{ @subjectId = subjectId });
+            return await _context.QueryAsync<AllSubjectDTO>("EXEC GetAllSubjectPost @subjectId",new{ @subjectId = subjectId });
         }
 
         #endregion

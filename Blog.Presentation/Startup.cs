@@ -47,12 +47,7 @@ namespace Blog.Presentation
 
             #region DBContext
 
-            services.AddDbContext<Blog.DataAccessQuery.Context.BlogContext>(options =>
-                {
-                    options.UseSqlServer(Configuration["ConnectionStrings:QueryConnection"]);
-                });
-
-
+           
             services.AddDbContext<Blog.DataAccessCommand.Context.BlogContext>(options =>
             {
                 options.UseSqlServer(Configuration["ConnectionStrings:CommandConnection"]);

@@ -16,6 +16,6 @@ namespace Blog.Domain.SubjectClasses.Query
 
 
        Task<IEnumerable<Subject>> GetSubjectForComboBox();
-       Task<IEnumerable<AllSubject>> GetAllSubjectPost(long subjectId);
+       Task<IEnumerable<AllSubjectDTO>> GetAllSubjectPost(long subjectId);
    }
 }

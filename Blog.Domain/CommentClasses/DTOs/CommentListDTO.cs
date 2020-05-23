@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Blog.Domain.CommentClasses.DTOs
 {
-   public class CommentList
+   public class CommentListDTO
     {
         #region Propertise
         public long Id { get; set; }

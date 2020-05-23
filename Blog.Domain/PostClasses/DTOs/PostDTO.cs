@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Blog.Domain.PostClasses.DTOs
 {
-   public class Post
+   public class PostDTO
     {
 
 

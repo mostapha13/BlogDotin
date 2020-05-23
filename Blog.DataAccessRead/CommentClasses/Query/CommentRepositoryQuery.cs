@@ -42,9 +42,9 @@ namespace Blog.DataAccessRead.CommentClasses.Query
 
         #region GetAllCommentList
 
-        public async Task<IEnumerable<CommentList>> GetAllCommentList()
+        public async Task<IEnumerable<CommentListDTO>> GetAllCommentList()
         {
-            return await _context.QueryAsync<CommentList>("EXEC GetAllCommentList");
+            return await _context.QueryAsync<CommentListDTO>("EXEC GetAllCommentList");
         }
 
         #endregion

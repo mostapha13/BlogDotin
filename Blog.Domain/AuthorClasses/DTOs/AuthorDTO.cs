@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Blog.Domain.AuthorClasses.DTOs
 {
-   public class Author
+   public class AuthorDTO
     {
         #region Propertise
 

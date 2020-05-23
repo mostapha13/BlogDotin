@@ -17,7 +17,7 @@ namespace Blog.Domain.PostClasses.Query
 
        Task<Post> GetPostById(long postId);
 
-       Task<IEnumerable<PostList>> GetPostList();
+       Task<IEnumerable<PostListDTO>> GetPostList();
 
    }
 }

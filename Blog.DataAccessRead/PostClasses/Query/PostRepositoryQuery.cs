@@ -56,9 +56,9 @@ namespace Blog.DataAccessRead.PostClasses.Query
 
         #region GetPostList
 
-        public async Task<IEnumerable<PostList>> GetPostList()
+        public async Task<IEnumerable<PostListDTO>> GetPostList()
         {
-            return await _context.QueryAsync<PostList>("EXEC GetAllPostList");
+            return await _context.QueryAsync<PostListDTO>("EXEC GetAllPostList");
         }
 
         #endregion

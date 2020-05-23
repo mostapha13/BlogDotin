@@ -86,7 +86,7 @@ namespace Blog.Presentation.Controllers
         #region AddPost
 
         [HttpPost("AddPost")]
-        public async Task<IActionResult> AddPost([FromBody] Domain.PostClasses.DTOs.Post postvm)
+        public async Task<IActionResult> AddPost([FromBody] Domain.PostClasses.DTOs.PostDTO postvm)
         {
             if (!ModelState.IsValid)
             {
@@ -153,12 +153,12 @@ namespace Blog.Presentation.Controllers
         [HttpGet("GetPostForComboBox")]
         public async Task<IActionResult> GetPostForComboBox()
         {
-            List<PostForCombobox> listPost=new List<PostForCombobox>();
+            List<PostForComboboxDTO> listPost=new List<PostForComboboxDTO>();
             var posts =await _read.GetAllPost();
 
             foreach (var post in posts)
             {
-                listPost.Add(new PostForCombobox()
+                listPost.Add(new PostForComboboxDTO()
                 {
                     Id = post.Id,
                     Post =post.Title

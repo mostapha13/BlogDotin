@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Blog.Domain.AuthorClasses.DTOs
+namespace Blog.Domain.SubjectClasses.DTOs
 {
-   public class AuthorForCombobox
+   public class SubjectForComboboxDTO
     {
 
         public long Id { get; set; }
 
-        public string FullName { get; set; }
-
+        public string Title { get; set; }
     }
 }

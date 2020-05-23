@@ -61,7 +61,7 @@ namespace Blog.Presentation.Controllers
 
         #region AddComment
         [HttpPost("AddComment")]
-        public async Task<IActionResult> AddComment(Domain.CommentClasses.DTOs.Comment commentvm)
+        public async Task<IActionResult> AddComment(Domain.CommentClasses.DTOs.CommentDTO commentvm)
         {
             if (!ModelState.IsValid)
             {

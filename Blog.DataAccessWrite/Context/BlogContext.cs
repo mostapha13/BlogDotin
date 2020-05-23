@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Blog.Domain;
 using Blog.Domain.AuthorClasses;
 using Blog.Domain.CommentClasses;
 using Blog.Domain.PostClasses;
@@ -24,6 +25,7 @@ namespace Blog.DataAccessCommand.Context
 
         public DbSet<Subject> Subjects { get; set; }
 
+        
 
         #region OnModelCreating
 

@@ -62,7 +62,7 @@ namespace Blog.Presentation.Controllers
         #region AddAuthor
 
         [HttpPost("AddAuthor")]
-        public async Task<IActionResult> AddAuthor([FromBody] Domain.AuthorClasses.DTOs.Author author)
+        public async Task<IActionResult> AddAuthor([FromBody] Domain.AuthorClasses.DTOs.AuthorDTO author)
         {
             if (!ModelState.IsValid)
             {
@@ -126,7 +126,7 @@ namespace Blog.Presentation.Controllers
         #region EditAuthor
 
         [HttpPost("EditAuthor")]
-        public async Task<IActionResult> EditAuthor(AuthorForEdit authorEdit)
+        public async Task<IActionResult> EditAuthor(AuthorForEditDTO authorEdit)
         {
             if (!ModelState.IsValid)
             {
@@ -169,10 +169,10 @@ namespace Blog.Presentation.Controllers
         {
             var listAuthor = await _read.GetAllAuthorForCombobox();
 
-            List<AuthorForCombobox> listAuthorCombo = new List<AuthorForCombobox>();
+            List<AuthorForComboboxDTO> listAuthorCombo = new List<AuthorForComboboxDTO>();
             foreach (var author in listAuthor)
             {
-                listAuthorCombo.Add(new AuthorForCombobox()
+                listAuthorCombo.Add(new AuthorForComboboxDTO()
                 {
                     Id = author.Id,
                     FullName = author.FirstName + ' ' + author.LastName

@@ -42,7 +42,7 @@ namespace Blog.Presentation.Controllers
 
         #region AddSubject
         [HttpPost("AddSubject")]
-        public async Task<IActionResult> AddSubject([FromBody] Domain.SubjectClasses.DTOs.Subject subjectvm)
+        public async Task<IActionResult> AddSubject([FromBody] Domain.SubjectClasses.DTOs.SubjectDTO subjectvm)
         {
             if (!ModelState.IsValid)
             {
@@ -118,11 +118,11 @@ namespace Blog.Presentation.Controllers
         {
             var subjectListCombo=await _read.GetSubjectForComboBox();
 
-            List<SubjectForCombobox> subjectList=new List<SubjectForCombobox>();
+            List<SubjectForComboboxDTO> subjectList=new List<SubjectForComboboxDTO>();
 
             foreach (var subject in subjectListCombo)
             {
-                subjectList.Add(new SubjectForCombobox()
+                subjectList.Add(new SubjectForComboboxDTO()
                 {
                     Id = subject.Id,
                     Title = subject.Title

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Blog.Domain.SubjectClasses.DTOs
 {
-   public class AllSubject
+   public class AllSubjectDTO
     {
 
         public long SubjectsId { get; set; }

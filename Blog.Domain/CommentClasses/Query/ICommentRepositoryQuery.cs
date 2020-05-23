@@ -12,7 +12,7 @@ namespace Blog.Domain.CommentClasses.Query
        Task<IEnumerable<Comment>> GetAllComment();
 
        Task<Comment> GetCommentById(long CommentId);
-       Task<IEnumerable<CommentList>> GetAllCommentList();
+       Task<IEnumerable<CommentListDTO>> GetAllCommentList();
 
    }
 }

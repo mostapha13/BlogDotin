@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Blog.Domain.PostClasses.DTOs
 {
-   public class PostList
+   public class PostListDTO
     {
 
         public long Id { get; set; }

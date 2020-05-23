@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Blog.Domain.AuthorClasses.DTOs
 {
-   public class AuthorForEdit
+   public class AuthorForEditDTO
     {
         #region Propertise
 

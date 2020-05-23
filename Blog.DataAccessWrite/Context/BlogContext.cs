@@ -12,6 +12,7 @@ using Blog.Domain;
 using Blog.Domain.AuthorClasses;
 using Blog.Domain.BaseEntityClasses;
 using Blog.Domain.CommentClasses;
+using Blog.Domain.LogClasses;
 using Blog.Domain.PostClasses;
 using Blog.Domain.SubjectClasses;
 using Microsoft.EntityFrameworkCore;
@@ -32,6 +33,9 @@ namespace Blog.DataAccessCommand.Context
         public DbSet<Comment> Comments { get; set; }
 
         public DbSet<Subject> Subjects { get; set; }
+
+        public DbSet<Log> Log { get; set; }
+            
 
         
 

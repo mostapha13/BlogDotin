@@ -8,6 +8,8 @@ using Blog.Domain.SubjectClasses.DTOs;
 using Blog.Domain.SubjectClasses.Queries;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Serilog;
 
 namespace Blog.Presentation.Controllers
 {
@@ -29,12 +31,15 @@ namespace Blog.Presentation.Controllers
         [HttpGet("GetAllSubject")]
         public async Task<IActionResult> GetAllSubject()
         {
+            string functionName = "GetAllSubject:Get:";
+            Log.Information(functionName);
             try
             {
                 return Success(await _read.GetAllSubject());
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                Log.Error($"Error:{e.Message} ** {functionName}");
                 return Error(new{info= "خطایی رخ داده است" });
             }
         }
@@ -42,10 +47,13 @@ namespace Blog.Presentation.Controllers
 
         #region AddSubject
         [HttpPost("AddSubject")]
-        public async Task<IActionResult> AddSubject([FromBody] Domain.SubjectClasses.DTOs.SubjectDTO subjectvm)
+        public async Task<IActionResult> AddSubject([FromBody] Domain.SubjectClasses.DTOs.SubjectDTO subjectDto)
         {
+            string functionName = "AddSubject:Post:"+JsonConvert.SerializeObject(subjectDto);
+            Log.Information(functionName);
             if (!ModelState.IsValid)
             {
+                Log.Error($"Error: ** {functionName}");
                 return Error(new{info= "اطلاعات بدرستی وارد نشده است." });
             }
 
@@ -56,14 +64,15 @@ namespace Blog.Presentation.Controllers
 
                 Domain.SubjectClasses.Subject subject=new Domain.SubjectClasses.Subject()
                 {
-                    Title = subjectvm.Title
+                    Title = subjectDto.Title
                 };
                 await _write.AddSubject(subject);
                 await _write.Save();
                 return Success();
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                Log.Error($"Error:{e.Message} ** {functionName}");
                 return Error(new{info= "خطایی رخ داده است" });
             }
         }
@@ -73,10 +82,12 @@ namespace Blog.Presentation.Controllers
         [HttpGet("RemoveSubject/{id}")]
         public async Task<IActionResult> RemoveSubject(int id)
         {
-
+            string functionName = "RemoveSubject:Get:" + id;
+            Log.Information(functionName);
             var subject =await _read.GetSubjectById(id);
             if (subject == null)
             {
+                Log.Error($"Error ** {functionName}");
                 return Error(new{info= "اطلاعات بدرستی وارد نشده است." });
             }
             try
@@ -86,8 +97,9 @@ namespace Blog.Presentation.Controllers
                return Success();
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                Log.Error($"Error:{e.Message} ** {functionName}");
                 return Error(new{info= "خطایی رخ داده است" });
             }
         }
@@ -98,12 +110,15 @@ namespace Blog.Presentation.Controllers
         [HttpGet("AllSubjectPost/{id}")]
         public async Task<IActionResult> AllSubjectPost(long id)
         {
+            string functionName = "AllSubjectPost:Get:" + id;
+            Log.Information(functionName);
             try
             {
                 return Success(await _read.GetAllSubjectPost(id));
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                Log.Error($"Error:{e.Message} ** {functionName}");
                 return Error(new { info = "خطایی رخ داده است" });
             }
         }
@@ -116,6 +131,8 @@ namespace Blog.Presentation.Controllers
         [HttpGet("GetSubjectForComboBox")]
         public async Task<IActionResult> GetSubjectForComboBox()
         {
+            string functionName = "GetSubjectForComboBox:Get:";
+            Log.Information(functionName);
             var subjectListCombo=await _read.GetSubjectForComboBox();
 
             List<SubjectForComboboxDTO> subjectList=new List<SubjectForComboboxDTO>();

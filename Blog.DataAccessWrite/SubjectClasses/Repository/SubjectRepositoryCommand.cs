@@ -23,8 +23,7 @@ namespace Blog.DataAccessCommand.SubjectClasses.Repository
         #region AddSubject
         public async Task AddSubject(Subject subject)
         {
-            subject.CreateDate=DateTime.Now;
-            subject.UpdateDate = subject.CreateDate;
+           
             await _context.Subjects.AddAsync(subject);
         }
 

@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using MediatR;
 
 namespace Blog.Domain.BaseEntityClasses
 {
-   public class BaseEntity
+   public class BaseEntity:IRequest<bool>
     {
 
         #region Propertise

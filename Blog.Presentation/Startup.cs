@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Blog.DataAccessCommand.AuthorClasses.Config;
 using Blog.DataAccessCommand.AuthorClasses.Repository;
@@ -22,6 +23,7 @@ using Blog.Domain.SubjectClasses.Commands;
 using Blog.Domain.SubjectClasses.Queries;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -47,6 +49,15 @@ namespace Blog.Presentation
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            #region MediatR
+           
+           // services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddMediatR(typeof(Author).GetTypeInfo().Assembly);
+
+            services.AddScoped(typeof(IAuthorRepositoryCommand), typeof(AuthorRepositoryCommand));
+            #endregion
+
+
             services.AddControllers();
 
             #region DBContext

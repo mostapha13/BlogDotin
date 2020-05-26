@@ -44,6 +44,16 @@ namespace Blog.DataAccessCommand.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
+            #region QueryFilterIsDelete
+
+            modelBuilder.Entity<Author>().HasQueryFilter(a => !a.IsDelete);
+            modelBuilder.Entity<Subject>().HasQueryFilter(s => !s.IsDelete);
+            modelBuilder.Entity<Post>().HasQueryFilter(p => !p.IsDelete);
+            modelBuilder.Entity<Comment>().HasQueryFilter(c => !c.IsDelete);
+
+            #endregion
+
+
             #region Validator
 
             #region ValidatorAuthor
@@ -71,18 +81,8 @@ namespace Blog.DataAccessCommand.Context
 
             #endregion
 
-            #region QueryFilterIsDelete
 
-            modelBuilder.Entity<Author>().HasQueryFilter(a => !a.IsDelete);
-            modelBuilder.Entity<Subject>().HasQueryFilter(s => !s.IsDelete);
-            modelBuilder.Entity<Post>().HasQueryFilter(p => !p.IsDelete);
-            modelBuilder.Entity<Comment>().HasQueryFilter(c => !c.IsDelete); 
-
-            #endregion
-
-
-
-            base.OnModelCreating(modelBuilder);
+          //  base.OnModelCreating(modelBuilder);
         }
 
         #endregion

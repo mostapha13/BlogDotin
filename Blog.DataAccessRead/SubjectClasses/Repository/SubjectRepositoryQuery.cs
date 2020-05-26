@@ -31,9 +31,9 @@ namespace Blog.DataAccessQuery.SubjectClasses.Repository
         {
             return await _context.QueryAsync<Domain.SubjectClasses.Subject>(
                 @"SELECT Subjects.*,
-                    (SELECT COUNT(*) FROM dbo.Posts
-                    WHERE dbo.Posts.SubjectId=dbo.Subjects.id) AS CntPost
-                    FROM dbo.Subjects");
+                    (SELECT COUNT(*) FROM dbo.Posts  WHERE IsDelete=0
+                    AND dbo.Posts.SubjectId=dbo.Subjects.id) AS CntPost
+                    FROM dbo.Subjects  WHERE IsDelete=0 ");
         }
         #endregion
 
@@ -51,7 +51,7 @@ namespace Blog.DataAccessQuery.SubjectClasses.Repository
         #region GetSubjectById
         public async Task<Domain.SubjectClasses.Subject> GetSubjectById(int subjectId)
       {
-          return await _context.QuerySingleOrDefaultAsync<Domain.SubjectClasses.Subject>("SELECT * FROM dbo.Subjects WHERE id=@subjectId",new{ subjectId = subjectId });
+          return await _context.QuerySingleOrDefaultAsync<Domain.SubjectClasses.Subject>("SELECT * FROM dbo.Subjects WHERE isDelete=0 AND id=@subjectId", new{ subjectId = subjectId });
 
       }
 
@@ -63,7 +63,7 @@ namespace Blog.DataAccessQuery.SubjectClasses.Repository
 
         public async Task<IEnumerable<Domain.SubjectClasses.Subject>> GetSubjectForComboBox()
         {
-            return await _context.QueryAsync<Domain.SubjectClasses.Subject>("SELECT * FROM dbo.Subjects");
+            return await _context.QueryAsync<Domain.SubjectClasses.Subject>("SELECT * FROM dbo.Subjects WHERE isDelete=0");
         }
 
         #endregion

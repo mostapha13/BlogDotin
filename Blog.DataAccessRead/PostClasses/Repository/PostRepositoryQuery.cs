@@ -33,7 +33,7 @@ namespace Blog.DataAccessQuery.PostClasses.Repository
 
         public async Task<IEnumerable<Domain.PostClasses.Post>> GetAllPost()
         {
-            return await _context.QueryAsync<Domain.PostClasses.Post>(@"SELECT * FROM dbo.Posts");
+            return await _context.QueryAsync<Domain.PostClasses.Post>(@"SELECT * FROM dbo.Posts WHERE isDelete=0");
         }
 
         #endregion
@@ -42,14 +42,14 @@ namespace Blog.DataAccessQuery.PostClasses.Repository
         #region GetPostById
         public async Task<Domain.PostClasses.Post> GetPostById(long postId)
         {
-            return await _context.QuerySingleOrDefaultAsync<Domain.PostClasses.Post>(@"SELECT * FROM dbo.Posts WHERE id=@postId",new{ postId });
+            return await _context.QuerySingleOrDefaultAsync<Domain.PostClasses.Post>(@"SELECT * FROM dbo.Posts WHERE isDelete=0 AND id=@postId", new{ postId });
         }
         #endregion
 
         #region GetPostBySubjectId
         public async Task<IEnumerable<Domain.PostClasses.Post>> GetPostBySubjectId(long subjectId)
         {
-            return await _context.QueryAsync<Domain.PostClasses.Post>("SELECT * FROM dbo.Posts WHERE SubjectId=@subjectId",new { subjectId});
+            return await _context.QueryAsync<Domain.PostClasses.Post>("SELECT * FROM dbo.Posts WHERE isDelete=0 AND SubjectId=@subjectId", new { subjectId});
         }
         #endregion
 

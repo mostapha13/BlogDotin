@@ -27,7 +27,7 @@ namespace Blog.DataAccessQuery.AuthorClasses.Repository
         #region GetAllAuthor
         public async Task<IEnumerable<Author>> GetAllAuthor()
         {
-            return await _context.QueryAsync<Author>("SELECT * FROM dbo.Authors");
+            return await _context.QueryAsync<Author>("SELECT * FROM dbo.Authors where isDelete=0");
         }
         #endregion
 
@@ -37,7 +37,7 @@ namespace Blog.DataAccessQuery.AuthorClasses.Repository
 
         public async Task<Author> GetAuthorById(long authorId)
         {
-            return await _context.QuerySingleOrDefaultAsync<Author>("SELECT * FROM dbo.Authors where id=@authorId",new { @authorId =authorId});
+            return await _context.QuerySingleOrDefaultAsync<Author>("SELECT * FROM dbo.Authors where isDelete=0 and id=@authorId", new { @authorId =authorId});
         }
 
         #endregion
@@ -48,7 +48,7 @@ namespace Blog.DataAccessQuery.AuthorClasses.Repository
 
         public async Task<bool> IsEmailExist(string email)
         {
-            var user =await _context.QuerySingleOrDefaultAsync("SELECT * FROM dbo.Authors WHERE Email=@email",new{ @email =email.ToLower().Trim()});
+            var user =await _context.QuerySingleOrDefaultAsync("SELECT * FROM dbo.Authors WHERE isDelete=0 and Email=@email", new{ @email =email.ToLower().Trim()});
 
             if (user!=null)
             {
@@ -68,7 +68,7 @@ namespace Blog.DataAccessQuery.AuthorClasses.Repository
 
         public async Task<bool> IsUserNameExist(string userName)
         {
-            var user = await _context.QuerySingleOrDefaultAsync<int>("SELECT count(*) FROM dbo.Authors WHERE UserName=@userName",new{ @userName = userName .ToLower().Trim()});
+            var user = await _context.QuerySingleOrDefaultAsync<int>("SELECT count(*) FROM dbo.Authors WHERE isDelete=0 and UserName=@userName", new{ @userName = userName .ToLower().Trim()});
             if (user>0)
             {
                 return true;
@@ -86,7 +86,7 @@ namespace Blog.DataAccessQuery.AuthorClasses.Repository
 
         public async Task<IEnumerable<Author>> GetAllAuthorForCombobox()
         {
-            return await _context.QueryAsync<Author>("SELECT * FROM dbo.Authors");
+            return await _context.QueryAsync<Author>("SELECT * FROM dbo.Authors where isDelete=0");
         }
 
 

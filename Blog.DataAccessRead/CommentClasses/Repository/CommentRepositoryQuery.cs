@@ -28,7 +28,7 @@ namespace Blog.DataAccessQuery.CommentClasses.Repository
         #region GetAllComment
         public async Task<IEnumerable<Domain.CommentClasses.Comment>> GetAllComment()
         {
-            return await _context.QueryAsync<Domain.CommentClasses.Comment>("SELECT * FROM dbo.Comments");
+            return await _context.QueryAsync<Domain.CommentClasses.Comment>("SELECT * FROM dbo.Comments WHERE isDelete=0");
         }
         #endregion
 
@@ -36,7 +36,7 @@ namespace Blog.DataAccessQuery.CommentClasses.Repository
         #region GetCommentById
         public async Task<Domain.CommentClasses.Comment> GetCommentById(long CommentId)
         {
-            return await _context.QuerySingleOrDefaultAsync<Domain.CommentClasses.Comment>(@"SELECT * FROM dbo.Comments WHERE Id=@CommentId", new { CommentId });
+            return await _context.QuerySingleOrDefaultAsync<Domain.CommentClasses.Comment>(@"SELECT * FROM dbo.Comments WHERE  isDelete=0 AND Id=@CommentId", new { CommentId });
         }
         #endregion
 

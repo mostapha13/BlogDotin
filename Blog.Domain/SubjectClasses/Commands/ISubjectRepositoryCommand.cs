@@ -10,8 +10,8 @@ namespace Blog.Domain.SubjectClasses.Commands
     {
 
         Task AddSubject(Subject subject);
-        // Task UpdateSubject(Subject subject);
-        void RemoveSubject(Subject subject);
+         void UpdateSubject(Subject subject);
+        Task RemoveSubject(Subject subject);
         // Task RemoveSubjectById(long subjectId);
         Task Save();
     }

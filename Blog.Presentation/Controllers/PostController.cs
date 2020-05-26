@@ -38,7 +38,7 @@ namespace Blog.Presentation.Controllers
         {
             var query = new GetAllPostQuery();
             var result = await _mediator.Send(query);
-            return result != null ? Success(result) : null;
+            return result != null ? Success(result) : Error(new { info = "خطایی رخ داده است" });
         }
 
 
@@ -53,7 +53,7 @@ namespace Blog.Presentation.Controllers
             var query = new GetPostByIdQuery(postId);
             var result = await _mediator.Send(query);
 
-            return result != null ? Success(result) : null;
+            return result != null ? Success(result) : Error(new { info = "خطایی رخ داده است" });
         }
 
 
@@ -67,7 +67,7 @@ namespace Blog.Presentation.Controllers
         {
             var query = new GetPostBySubjectIdQuery(subjectId);
             var result = await _mediator.Send(query);
-            return result != null ? Success(result) : null;
+            return result != null ? Success(result) : Error(new { info = "خطایی رخ داده است" });
         }
 
 

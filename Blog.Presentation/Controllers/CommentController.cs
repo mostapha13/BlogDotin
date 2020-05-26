@@ -39,7 +39,7 @@ namespace Blog.Presentation.Controllers
             var query = new GetAllCommentQuery();
             var result = await _mediator.Send(query);
 
-            return result == null ? Error() : Success(result);
+            return result == null ? Error(new { info = "خطایی رخ داده است" }) : Success(result);
 
         }
 
@@ -52,7 +52,7 @@ namespace Blog.Presentation.Controllers
         {
             var query = new GetCommentByIdQuery(commentId);
             var result = await _mediator.Send(query);
-            return result != null ? Success(result) : null;
+            return result != null ? Success(result) : Error(new { info = "خطایی رخ داده است" });
         }
 
         #endregion
@@ -72,7 +72,7 @@ namespace Blog.Presentation.Controllers
             }
 
             var result = await _mediator.Send(commentDto);
-            return result == ResultStatus.Success ? Success(result) : null;
+            return result == ResultStatus.Success ? Success(result) : Error(new { info = "خطایی رخ داده است" });
         }
 
         #endregion

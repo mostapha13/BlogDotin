@@ -31,15 +31,27 @@ namespace Blog.DataAccessCommand.SubjectClasses.Repository
 
         #region RemoveSubject
 
-        public void RemoveSubject(Subject subject)
+        public async Task RemoveSubject(Subject subject)
         {
 
             subject.IsDelete = true;
-            Save();
-            _context.Subjects.Remove(subject);
+            UpdateSubject(subject);
+           await Save();
+             
         }
 
         #endregion
+
+        #region UpdateSubject
+
+        public void UpdateSubject(Subject subject)
+        {
+            _context.Subjects.Update(subject);
+        }
+
+
+        #endregion
+
 
         #region Save
         public async Task Save()

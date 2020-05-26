@@ -28,6 +28,7 @@ namespace Blog.Presentation.Handler.PostClasses
         }
         #endregion
 
+        #region Handle
 
         public async Task<Post> Handle(GetPostByIdQuery request, CancellationToken cancellationToken)
         {
@@ -35,9 +36,10 @@ namespace Blog.Presentation.Handler.PostClasses
             string functionName = "GetPostById:Get:" + request.Id;
             Log.ForContext("Message", functionName)
                 .ForContext("Error", "").Information(functionName);
-            
-                return await _read.GetPostById(request.Id);
-           
-        }
+
+            return await _read.GetPostById(request.Id);
+
+        } 
+        #endregion
     }
 }

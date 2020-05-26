@@ -29,6 +29,7 @@ namespace Blog.Presentation.Handler.CommentClasses
         }
         #endregion
 
+        #region Handle
 
         public async Task<ResultStatus> Handle(CommentDTO request, CancellationToken cancellationToken)
         {
@@ -47,5 +48,8 @@ namespace Blog.Presentation.Handler.CommentClasses
 
 
         }
+
+
+        #endregion
     }
 }

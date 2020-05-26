@@ -28,15 +28,18 @@ namespace Blog.Presentation.Handler.PostClasses
         }
         #endregion
 
+        #region Handle
+
         public async Task<IEnumerable<Post>> Handle(GetPostBySubjectIdQuery request, CancellationToken cancellationToken)
         {
             string functionName = "GetPostBySubjectId:Get:" + request.SubjectId;
             Log.ForContext("Message", functionName)
                 .ForContext("Error", "").Information(functionName);
 
-            
-                return await _read.GetPostBySubjectId(request.SubjectId);
-         
-        }
+
+            return await _read.GetPostBySubjectId(request.SubjectId);
+
+        } 
+        #endregion
     }
 }

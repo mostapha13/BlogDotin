@@ -28,6 +28,9 @@ namespace Blog.Presentation.Handler.AuthorClasses
 
         #endregion
 
+
+        #region Handle
+
         public async Task<IEnumerable<Author>> Handle(GetAllAuthorQuery request, CancellationToken cancellationToken)
         {
             string functionName = "GetAllAuthour:Get";
@@ -37,6 +40,7 @@ namespace Blog.Presentation.Handler.AuthorClasses
 
             return await _read.GetAllAuthor();
 
-        }
+        } 
+        #endregion
     }
 }

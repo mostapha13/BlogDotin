@@ -29,6 +29,9 @@ namespace Blog.Presentation.Handler.AuthorClasses
           
         }
         #endregion
+
+        #region 
+
         public async Task<ResultStatus> Handle(RemoveAuthorById request, CancellationToken cancellationToken)
         {
             string functionName = "RemoveAuthor:Get:" + request.Id;
@@ -51,5 +54,8 @@ namespace Blog.Presentation.Handler.AuthorClasses
 
 
         }
+
+
+        #endregion
     }
 }

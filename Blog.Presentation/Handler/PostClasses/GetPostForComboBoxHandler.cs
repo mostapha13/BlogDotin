@@ -29,6 +29,7 @@ namespace Blog.Presentation.Handler.PostClasses
         }
         #endregion
 
+        #region Handle
 
         public async Task<IEnumerable<PostForComboboxDTO>> Handle(GetPostForComboBoxQuery request, CancellationToken cancellationToken)
         {
@@ -49,6 +50,7 @@ namespace Blog.Presentation.Handler.PostClasses
             }
 
             return listPost;
-        }
+        } 
+        #endregion
     }
 }

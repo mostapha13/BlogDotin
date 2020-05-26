@@ -26,6 +26,9 @@ namespace Blog.Presentation.Handler.CommentClasses
 
         }
         #endregion
+
+        #region Handle
+
         public async Task<ResultStatus> Handle(RemoveCommentCommand request, CancellationToken cancellationToken)
         {
 
@@ -46,6 +49,7 @@ namespace Blog.Presentation.Handler.CommentClasses
             await _write.Save();
             return ResultStatus.Success;
 
-        }
+        } 
+        #endregion
     }
 }

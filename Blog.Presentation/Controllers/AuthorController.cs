@@ -26,11 +26,9 @@ namespace Blog.Presentation.Controllers
         #region Constructor
        
         private readonly IMediator _mediator;
-
-
-        public AuthorController(IMediator mediator)
-        {
          
+        public AuthorController(IMediator mediator)
+        { 
             _mediator = mediator;
         }
         #endregion
@@ -159,8 +157,7 @@ namespace Blog.Presentation.Controllers
             {
                 case ResultStatus.Success:
                     return Success();
-                case ResultStatus.Error:
-                    return Error(new { info = "خطایی رخ داده است" });
+           
                 default:
                     return Error(new { info = "خطایی رخ داده است" });
             }

@@ -25,6 +25,7 @@ namespace Blog.Presentation.Handler.SubjectClasses
         }
         #endregion
 
+        #region Handle
 
         public async Task<IEnumerable<Subject>> Handle(GetAllSubjectQuery request, CancellationToken cancellationToken)
         {
@@ -33,9 +34,10 @@ namespace Blog.Presentation.Handler.SubjectClasses
             Log.ForContext("Message", functionName)
                 .ForContext("Error", "")
                 .Information(functionName);
-         
-                return await _read.GetAllSubject();
-       
-        }
+
+            return await _read.GetAllSubject();
+
+        } 
+        #endregion
     }
 }

@@ -25,6 +25,7 @@ namespace Blog.Presentation.Handler.PostClasses
         }
         #endregion
 
+        #region Handle
 
         public async Task<IEnumerable<Post>> Handle(GetAllPostQuery request, CancellationToken cancellationToken)
         {
@@ -33,11 +34,12 @@ namespace Blog.Presentation.Handler.PostClasses
             Log.ForContext("Message", functionName)
                 .ForContext("Error", "")
                 .Information(functionName);
-             
 
 
-                return await _read.GetAllPost();
-           
-        }
+
+            return await _read.GetAllPost();
+
+        } 
+        #endregion
     }
 }

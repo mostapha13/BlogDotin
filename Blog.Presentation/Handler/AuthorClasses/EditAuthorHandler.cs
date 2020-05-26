@@ -28,6 +28,11 @@ namespace Blog.Presentation.Handler.AuthorClasses
        
         }
         #endregion
+
+
+        #region Handle
+
+
         public async Task<ResultStatus> Handle(AuthorForEditDTO request, CancellationToken cancellationToken)
         {
             string functionName = "EditAuthor:Post" + JsonConvert.SerializeObject(request);
@@ -46,20 +51,14 @@ namespace Blog.Presentation.Handler.AuthorClasses
 
             };
 
-            try
-            {
+           
                 _write.UpdateAuthor(author);
                 await _write.Save();
                 return ResultStatus.Success;
-            }
-            catch (Exception e)
-            {
-                Log.ForContext("Message", functionName)
-                    .ForContext("Error", e.Message).Information(functionName);
-                return ResultStatus.Error;
-            }
+     
 
 
-        }
+        } 
+        #endregion
     }
 }

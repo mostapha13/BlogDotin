@@ -28,6 +28,7 @@ namespace Blog.Presentation.Handler.SubjectClasses
         }
         #endregion
 
+        #region Handle
 
         public async Task<List<SubjectForComboboxDTO>> Handle(GetSubjectForComboBoxQuery request, CancellationToken cancellationToken)
         {
@@ -51,6 +52,7 @@ namespace Blog.Presentation.Handler.SubjectClasses
             }
 
             return subjectList;
-        }
+        } 
+        #endregion
     }
 }

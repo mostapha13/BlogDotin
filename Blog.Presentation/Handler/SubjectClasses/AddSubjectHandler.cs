@@ -28,6 +28,8 @@ namespace Blog.Presentation.Handler.SubjectClasses
         }
         #endregion
 
+        #region Handle
+
         public async Task<ResultStatus> Handle(SubjectDTO request, CancellationToken cancellationToken)
         {
             string functionName = "AddSubject:Post:" + JsonConvert.SerializeObject(request);
@@ -42,6 +44,7 @@ namespace Blog.Presentation.Handler.SubjectClasses
             return ResultStatus.Success;
 
 
-        }
+        } 
+        #endregion
     }
 }

@@ -30,6 +30,9 @@ namespace Blog.Presentation.Handler.AuthorClasses
         }
         #endregion
 
+
+        #region Handle
+
         public async Task<ResultStatus> Handle(AuthorDTO request, CancellationToken cancellationToken)
         {
             string functionName = "AddAuthor:Post:" + JsonConvert.SerializeObject(request);
@@ -64,6 +67,7 @@ namespace Blog.Presentation.Handler.AuthorClasses
         }
 
 
+        #endregion
 
 
     }

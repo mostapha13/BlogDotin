@@ -28,6 +28,8 @@ namespace Blog.Presentation.Handler.PostClasses
         }
         #endregion
 
+        #region Handle
+
         public async Task<ResultStatus> Handle(RemovePostCommand request, CancellationToken cancellationToken)
         {
 
@@ -52,6 +54,7 @@ namespace Blog.Presentation.Handler.PostClasses
 
 
 
-        }
+        } 
+        #endregion
     }
 }

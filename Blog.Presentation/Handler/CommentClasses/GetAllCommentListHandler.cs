@@ -29,6 +29,7 @@ namespace Blog.Presentation.Handler.CommentClasses
         }
         #endregion
 
+        #region Handle
 
         public async Task<IEnumerable<CommentListDTO>> Handle(GetAllCommentListQuery request, CancellationToken cancellationToken)
         {
@@ -37,6 +38,7 @@ namespace Blog.Presentation.Handler.CommentClasses
                 .ForContext("Error", "")
                 .Information(functionName);
             return await _read.GetAllCommentList();
-        }
+        } 
+        #endregion
     }
 }

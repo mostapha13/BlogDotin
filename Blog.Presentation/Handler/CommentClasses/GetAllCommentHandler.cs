@@ -12,31 +12,35 @@ using Serilog;
 
 namespace Blog.Presentation.Handler.CommentClasses
 {
-    public class GetAllCommentHandler:IRequestHandler<GetAllCommentQuery, IEnumerable<Comment>>
+    public class GetAllCommentHandler : IRequestHandler<GetAllCommentQuery, IEnumerable<Comment>>
     {
         #region Constructor
         private readonly ICommentRepositoryQuery _read;
         private readonly ICommentRepositoryCommand _write;
-       
+
 
         public GetAllCommentHandler(ICommentRepositoryQuery read, ICommentRepositoryCommand write)
         {
             _read = read;
             _write = write;
-           
+
         }
         #endregion
+
+        #region Handle
+
         public async Task<IEnumerable<Comment>> Handle(GetAllCommentQuery request, CancellationToken cancellationToken)
         {
             string functionName = "GetAllComment:Get:";
 
             Log.ForContext("Message", functionName)
                 .ForContext("Error", "").Information(functionName);
-           
-                return await _read.GetAllComment();
-            
-      
 
-    }
+            return await _read.GetAllComment();
+
+
+
+        } 
+        #endregion
     }
 }

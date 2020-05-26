@@ -25,15 +25,20 @@ namespace Blog.Presentation.Handler.AuthorClasses
            
         }
         #endregion
+
+        #region Handle
+
         public async Task<Author> Handle(GetAuthorByIdQuery request, CancellationToken cancellationToken)
         {
             string functionName = "GetAuthorById:Get:" + request.Id;
             Log.ForContext("Message", functionName)
                 .ForContext("Error", "").Information(functionName);
 
-          var author=await _read.GetAuthorById(request.Id);
+            var author = await _read.GetAuthorById(request.Id);
 
-          return author is null ? null : author;
-        }
+            return author is null ? null : author;
+        } 
+
+        #endregion
     }
 }

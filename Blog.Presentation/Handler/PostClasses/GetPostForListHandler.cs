@@ -29,6 +29,8 @@ namespace Blog.Presentation.Handler.PostClasses
         }
         #endregion
 
+        #region Handle
+
         public async Task<IEnumerable<PostListDTO>> Handle(GetPostForListQuery request, CancellationToken cancellationToken)
         {
             string functionName = "GetPostForList:Get:";
@@ -36,6 +38,7 @@ namespace Blog.Presentation.Handler.PostClasses
                 .ForContext("Error", "")
                 .Information(functionName);
             return await _read.GetPostList();
-        }
+        } 
+        #endregion
     }
 }

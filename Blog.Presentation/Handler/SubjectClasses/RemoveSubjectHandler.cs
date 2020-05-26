@@ -26,6 +26,8 @@ namespace Blog.Presentation.Handler.SubjectClasses
         }
         #endregion
 
+        #region Handle
+
         public async Task<ResultStatus> Handle(RemoveSubjectCommand request, CancellationToken cancellationToken)
         {
 
@@ -46,6 +48,7 @@ namespace Blog.Presentation.Handler.SubjectClasses
             await _write.Save();
             return ResultStatus.Success;
 
-        }
+        } 
+        #endregion
     }
 }

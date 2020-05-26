@@ -28,14 +28,17 @@ namespace Blog.Presentation.Handler.CommentClasses
         }
         #endregion
 
+        #region Handle
+
         public async Task<Comment> Handle(GetCommentByIdQuery request, CancellationToken cancellationToken)
         {
             string functionName = "GetCommentById:Get:" + request.Id;
             Log.ForContext("Message", functionName)
                 .ForContext("Error", "").Information(functionName);
-            
-                return  await _read.GetCommentById(request.Id);
-          
-        }
+
+            return await _read.GetCommentById(request.Id);
+
+        } 
+        #endregion
     }
 }

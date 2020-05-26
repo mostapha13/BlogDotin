@@ -46,6 +46,7 @@ namespace Blog.DataAccessCommand.AuthorClasses.Repository
 
         public void  UpdateAuthor(Author author)
         {
+
              _context.Authors.Update(author);
         }
 

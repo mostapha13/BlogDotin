@@ -28,25 +28,28 @@ namespace Blog.Presentation.Handler.PostClasses
         }
         #endregion
 
+        #region Handle
+
         public async Task<ResultStatus> Handle(PostDTO request, CancellationToken cancellationToken)
         {
             string functionName = "AddPost:Post:" + JsonConvert.SerializeObject(request);
 
-            
-                Domain.PostClasses.Post post = new Domain.PostClasses.Post()
-                {
-                    Title = request.Title,
-                    AuthoId = long.Parse(request.AuthorId),
-                    SubjectId = long.Parse(request.SubjectId),
-                    Text = request.Text
-                };
 
-                await _write.AddPost(post);
-                await _write.Save();
-                return ResultStatus.Success;
-          
+            Domain.PostClasses.Post post = new Domain.PostClasses.Post()
+            {
+                Title = request.Title,
+                AuthoId = long.Parse(request.AuthorId),
+                SubjectId = long.Parse(request.SubjectId),
+                Text = request.Text
+            };
+
+            await _write.AddPost(post);
+            await _write.Save();
+            return ResultStatus.Success;
 
 
-        }
+
+        } 
+        #endregion
     }
 }

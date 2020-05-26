@@ -6,6 +6,10 @@ using Blog.Domain.CommentClasses;
 using Blog.Domain.CommentClasses.Commands;
 using Blog.Domain.CommentClasses.DTOs;
 using Blog.Domain.CommentClasses.Queries;
+using Blog.Domain.Enum;
+using Blog.Service.CommentClasses.Commands;
+using Blog.Service.CommentClasses.Queries;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -19,11 +23,13 @@ namespace Blog.Presentation.Controllers
         #region Constructor
         private readonly ICommentRepositoryQuery _read;
         private readonly ICommentRepositoryCommand _write;
+        private readonly IMediator _mediator;
 
-        public CommentController(ICommentRepositoryQuery read, ICommentRepositoryCommand write)
+        public CommentController(ICommentRepositoryQuery read, ICommentRepositoryCommand write, IMediator mediator)
         {
             _read = read;
             _write = write;
+            _mediator = mediator;
         }
         #endregion
 
@@ -32,21 +38,11 @@ namespace Blog.Presentation.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllComment()
         {
-            string functionName = "GetAllComment:Get:";
-            Log.ForContext("Message", functionName)
-                .ForContext("Error", "").Information(functionName);
-            try
-            {
-                return Success(await _read.GetAllComment());
-            }
-            catch (Exception e)
-            {
+            var query = new GetAllCommentQuery();
+            var result = await _mediator.Send(query);
 
-                Log.ForContext("Message", functionName)
-                    .ForContext("Error", e.Message)
-                    .Error($"Error: {e.Message} ** {functionName}");
-                return Error(new { info = "خطایی رخ داده است" });
-            }
+            return result == null ? Error() : Success(result);
+
         }
 
         #endregion
@@ -56,29 +52,18 @@ namespace Blog.Presentation.Controllers
         [HttpGet("GetCommentById/{commentId}")]
         public async Task<IActionResult> GetCommentById(long commentId)
         {
-            string functionName = "GetCommentById:Get:"+commentId;
-            Log.ForContext("Message", functionName)
-                .ForContext("Error", "").Information(functionName);
-            try
-            {
-                return Success(await _read.GetCommentById(commentId));
-            }
-            catch (Exception e)
-            {
-                Log.ForContext("Message", functionName)
-                    .ForContext("Error", e.Message)
-                    .Error($"Error: {e.Message} ** {functionName}");
-                return Error(new { info = "خطایی رخ داده است" });
-            }
+            var query = new GetCommentByIdQuery(commentId);
+            var result = await _mediator.Send(query);
+            return result != null ? Success(result) : null;
         }
 
         #endregion
 
         #region AddComment
         [HttpPost("AddComment")]
-        public async Task<IActionResult> AddComment(Domain.CommentClasses.DTOs.CommentDTO commentDto)
+        public async Task<IActionResult> AddComment(CommentDTO commentDto)
         {
-            string functionName = "AddComment:Post:"+JsonConvert.SerializeObject(commentDto);
+            string functionName = "AddComment:Post:" + JsonConvert.SerializeObject(commentDto);
             Log.ForContext("Message", functionName)
                 .ForContext("Error", "").Information(functionName);
             if (!ModelState.IsValid)
@@ -88,26 +73,8 @@ namespace Blog.Presentation.Controllers
                 return Error(new { info = "اطلاعات بدرستی وارد نشده است." });
             }
 
-
-            try
-            {
-
-                Domain.CommentClasses.Comment comment = new Domain.CommentClasses.Comment()
-                {
-                    PostId = long.Parse(commentDto.PostId),
-                    Text = commentDto.Text
-                };
-                await _write.AddComment(comment);
-                await _write.Save();
-                return Success();
-            }
-            catch (Exception e)
-            {
-                Log.ForContext("Message", functionName)
-                    .ForContext("Error", e.Message)
-                    .Error($"Error:{e.Message} ** {functionName}");
-                return Error(new { info = "خطایی رخ داده است" });
-            }
+            var result = await _mediator.Send(commentDto);
+            return result == ResultStatus.Success ? Success(result) : null;
         }
 
         #endregion
@@ -117,11 +84,9 @@ namespace Blog.Presentation.Controllers
         [HttpGet("GetAllCommentList")]
         public async Task<IActionResult> GetAllCommentList()
         {
-            string functionName = "GetAllCommentList:Get:";
-            Log.ForContext("Message", functionName)
-                .ForContext("Error", "")
-                .Information(functionName);
-            return new ObjectResult(await _read.GetAllCommentList());
+            var query = new GetAllCommentListQuery();
+            var result = await _mediator.Send(query);
+            return result == null ? null : new ObjectResult(result);
         }
 
         #endregion
@@ -131,30 +96,19 @@ namespace Blog.Presentation.Controllers
         [HttpGet("RemoveComment/{id}")]
         public async Task<IActionResult> RemoveComment(long id)
         {
-            string functionName = "RemoveComment:Get:" + id;
-            Log.ForContext("Message", functionName)
-                .ForContext("Error", "")
-                .Information(functionName);
-            var comment =await _read.GetCommentById(id);
-            if (comment == null)
+            var query = new RemoveCommentCommand(id);
+            var result = await _mediator.Send(query);
+
+            switch (result)
             {
-                Log.ForContext("Message", functionName)
-                    .ForContext("Error", "CommentNotFound")
-                    .Error($"Error: ** {functionName}");
-                return Error(new { info = "اطلاعات بدرستی وارد نشده است." });
-            }
-            try
-            {
-                _write.RemoveComment(comment);
-                await _write.Save();
-                return Success();
-            }
-            catch (Exception e)
-            {
-                Log.ForContext("Message", functionName)
-                    .ForContext("Error", e.Message)
-                    .Error($"Error: {e.Message} ** {functionName}");
-                return Error(new { info = "خطایی رخ داده است" });
+                case ResultStatus.NotFound:
+                    return Error(new { info = "اطلاعات بدرستی وارد نشده است." });
+                case ResultStatus.Success:
+                    return Success();
+                case ResultStatus.Error:
+                    return Error(new { info = "خطایی رخ داده است" });
+                default:
+                    return Error(new { info = "خطایی رخ داده است" });
             }
         }
 

@@ -10,9 +10,9 @@ namespace Blog.Domain.CommentClasses.Commands
    {
        Task AddComment(Comment comment);
 
-      // Task UpdateComment(Comment comment);
+       void UpdateComment(Comment comment);
 
-      void RemoveComment(Comment comment);
+      Task RemoveComment(Comment comment);
 
      // Task RemoveCommentById(long commentId);
       Task Save();

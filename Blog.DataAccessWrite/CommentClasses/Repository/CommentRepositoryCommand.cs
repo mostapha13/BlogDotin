@@ -33,14 +33,26 @@ namespace Blog.DataAccessCommand.CommentClasses.Repository
 
 
         #region RemoveComment
-        public void RemoveComment(Comment comment)
+        public async Task RemoveComment(Comment comment)
         {
             comment.IsDelete = true;
+            UpdateComment(comment);
             
-            Save();
+           await Save();
 
             // _context.Comments.Remove(comment);
         }
+        #endregion
+
+
+        #region UpdateComment
+
+        public void UpdateComment(Comment comment)
+        {
+            _context.Comments.Update(comment);
+        }
+
+
         #endregion
 
         #region Save

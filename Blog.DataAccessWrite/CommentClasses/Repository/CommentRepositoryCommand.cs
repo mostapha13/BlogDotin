@@ -35,7 +35,11 @@ namespace Blog.DataAccessCommand.CommentClasses.Repository
         #region RemoveComment
         public void RemoveComment(Comment comment)
         {
-            _context.Comments.Remove(comment);
+            comment.IsDelete = true;
+            
+            Save();
+
+            // _context.Comments.Remove(comment);
         }
         #endregion
 

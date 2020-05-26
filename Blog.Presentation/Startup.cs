@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -34,6 +35,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Serilog;
 
 namespace Blog.Presentation
 {
@@ -42,6 +44,17 @@ namespace Blog.Presentation
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
+
+            #region SeriLog
+
+            Log.Logger = new LoggerConfiguration()
+
+               .ReadFrom.Configuration(Configuration)
+               .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj}{NewLine}{Exception}")
+               .CreateLogger(); 
+            #endregion
+
         }
 
         public IConfiguration Configuration { get; }
@@ -51,10 +64,8 @@ namespace Blog.Presentation
         {
             #region MediatR
            
-           // services.AddMediatR(Assembly.GetExecutingAssembly());
-            services.AddMediatR(typeof(Author).GetTypeInfo().Assembly);
+            services.AddMediatR(typeof(Startup));
 
-            services.AddScoped(typeof(IAuthorRepositoryCommand), typeof(AuthorRepositoryCommand));
             #endregion
 
 
@@ -128,7 +139,7 @@ namespace Blog.Presentation
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
             {
@@ -138,6 +149,12 @@ namespace Blog.Presentation
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            #region SeriLog
+
+            loggerFactory.AddSerilog(); 
+            
+            #endregion
 
             #region Swagger
             app.UseSwagger();
@@ -155,7 +172,9 @@ namespace Blog.Presentation
 
             app.UseRouting();
 
-            app.UseCors("Blog");
+            #region Cors
+            app.UseCors("Blog"); 
+            #endregion
 
 
             app.UseAuthorization();

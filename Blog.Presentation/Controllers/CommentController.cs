@@ -33,7 +33,8 @@ namespace Blog.Presentation.Controllers
         public async Task<IActionResult> GetAllComment()
         {
             string functionName = "GetAllComment:Get:";
-            Log.Information(functionName);
+            Log.ForContext("Message", functionName)
+                .ForContext("Error", "").Information(functionName);
             try
             {
                 return Success(await _read.GetAllComment());
@@ -41,7 +42,9 @@ namespace Blog.Presentation.Controllers
             catch (Exception e)
             {
 
-                Log.Error($"Error: {e.Message} ** {functionName}");
+                Log.ForContext("Message", functionName)
+                    .ForContext("Error", e.Message)
+                    .Error($"Error: {e.Message} ** {functionName}");
                 return Error(new { info = "خطایی رخ داده است" });
             }
         }
@@ -54,14 +57,17 @@ namespace Blog.Presentation.Controllers
         public async Task<IActionResult> GetCommentById(long commentId)
         {
             string functionName = "GetCommentById:Get:"+commentId;
-            Log.Information(functionName);
+            Log.ForContext("Message", functionName)
+                .ForContext("Error", "").Information(functionName);
             try
             {
                 return Success(await _read.GetCommentById(commentId));
             }
             catch (Exception e)
             {
-                Log.Error($"Error: {e.Message} ** {functionName}");
+                Log.ForContext("Message", functionName)
+                    .ForContext("Error", e.Message)
+                    .Error($"Error: {e.Message} ** {functionName}");
                 return Error(new { info = "خطایی رخ داده است" });
             }
         }
@@ -73,10 +79,12 @@ namespace Blog.Presentation.Controllers
         public async Task<IActionResult> AddComment(Domain.CommentClasses.DTOs.CommentDTO commentDto)
         {
             string functionName = "AddComment:Post:"+JsonConvert.SerializeObject(commentDto);
-            Log.Information(functionName);
+            Log.ForContext("Message", functionName)
+                .ForContext("Error", "").Information(functionName);
             if (!ModelState.IsValid)
             {
-                Log.Error($"Error: ** {functionName}");
+                Log.ForContext("Message", functionName)
+                    .ForContext("Error", "ModelStateNotValid").Error($"Error: ** {functionName}");
                 return Error(new { info = "اطلاعات بدرستی وارد نشده است." });
             }
 
@@ -95,7 +103,9 @@ namespace Blog.Presentation.Controllers
             }
             catch (Exception e)
             {
-                Log.Error($"Error:{e.Message} ** {functionName}");
+                Log.ForContext("Message", functionName)
+                    .ForContext("Error", e.Message)
+                    .Error($"Error:{e.Message} ** {functionName}");
                 return Error(new { info = "خطایی رخ داده است" });
             }
         }
@@ -108,7 +118,9 @@ namespace Blog.Presentation.Controllers
         public async Task<IActionResult> GetAllCommentList()
         {
             string functionName = "GetAllCommentList:Get:";
-            Log.Information(functionName);
+            Log.ForContext("Message", functionName)
+                .ForContext("Error", "")
+                .Information(functionName);
             return new ObjectResult(await _read.GetAllCommentList());
         }
 
@@ -120,11 +132,15 @@ namespace Blog.Presentation.Controllers
         public async Task<IActionResult> RemoveComment(long id)
         {
             string functionName = "RemoveComment:Get:" + id;
-            Log.Information(functionName);
+            Log.ForContext("Message", functionName)
+                .ForContext("Error", "")
+                .Information(functionName);
             var comment =await _read.GetCommentById(id);
             if (comment == null)
             {
-                Log.Error($"Error: ** {functionName}");
+                Log.ForContext("Message", functionName)
+                    .ForContext("Error", "CommentNotFound")
+                    .Error($"Error: ** {functionName}");
                 return Error(new { info = "اطلاعات بدرستی وارد نشده است." });
             }
             try
@@ -135,7 +151,9 @@ namespace Blog.Presentation.Controllers
             }
             catch (Exception e)
             {
-                Log.Error($"Error: {e.Message} ** {functionName}");
+                Log.ForContext("Message", functionName)
+                    .ForContext("Error", e.Message)
+                    .Error($"Error: {e.Message} ** {functionName}");
                 return Error(new { info = "خطایی رخ داده است" });
             }
         }

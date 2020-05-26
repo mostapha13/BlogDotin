@@ -33,6 +33,9 @@ namespace Blog.DataAccessCommand.SubjectClasses.Repository
 
         public void RemoveSubject(Subject subject)
         {
+
+            subject.IsDelete = true;
+            Save();
             _context.Subjects.Remove(subject);
         }
 

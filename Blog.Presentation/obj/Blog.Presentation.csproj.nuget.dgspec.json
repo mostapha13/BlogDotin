@@ -34,8 +34,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\ForDotin\\Backend\\Blog\\Blog.Service\\Blog.Service.csproj": {
-                "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.Service\\Blog.Service.csproj"
+              "C:\\ForDotin\\Backend\\Blog\\Blog.Domain\\Blog.Domain.csproj": {
+                "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.Domain\\Blog.Domain.csproj"
               }
             }
           }
@@ -146,8 +146,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\ForDotin\\Backend\\Blog\\Blog.Service\\Blog.Service.csproj": {
-                "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.Service\\Blog.Service.csproj"
+              "C:\\ForDotin\\Backend\\Blog\\Blog.Domain\\Blog.Domain.csproj": {
+                "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.Domain\\Blog.Domain.csproj"
               }
             }
           }
@@ -376,11 +376,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessRead\\Blog.DataAccessQuery.csproj": {
-                "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessRead\\Blog.DataAccessQuery.csproj"
-              },
-              "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessWrite\\Blog.DataAccessCommand.csproj": {
-                "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessWrite\\Blog.DataAccessCommand.csproj"
+              "C:\\ForDotin\\Backend\\Blog\\Blog.Service\\Blog.Service.csproj": {
+                "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.Service\\Blog.Service.csproj"
               }
             }
           }
@@ -509,8 +506,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\ForDotin\\Backend\\Blog\\Blog.Domain\\Blog.Domain.csproj": {
-                "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.Domain\\Blog.Domain.csproj"
+              "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessRead\\Blog.DataAccessQuery.csproj": {
+                "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessRead\\Blog.DataAccessQuery.csproj"
+              },
+              "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessWrite\\Blog.DataAccessCommand.csproj": {
+                "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessWrite\\Blog.DataAccessCommand.csproj"
               }
             }
           }

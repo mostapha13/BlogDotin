@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Blog.Domain.Enum;
+using MediatR;
 
 namespace Blog.Domain.AuthorClasses.DTOs
 {
-   public class AuthorForEditDTO
+   public class AuthorForEditDTO:IRequest<ResultStatus>
     {
         #region Propertise
 

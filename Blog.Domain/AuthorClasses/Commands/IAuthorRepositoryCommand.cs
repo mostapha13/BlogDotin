@@ -11,7 +11,7 @@ namespace Blog.Domain.AuthorClasses.Commands
 
        Task AddAuthor(Author author);
        void UpdateAuthor(Author author);
-       void RemoveAuthor(Author author);
+       Task RemoveAuthor(Author author);
 
       // Task RemoveAuthorById(long authorId);
 

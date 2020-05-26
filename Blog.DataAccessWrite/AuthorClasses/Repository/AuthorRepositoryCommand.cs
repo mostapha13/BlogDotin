@@ -33,9 +33,12 @@ namespace Blog.DataAccessCommand.AuthorClasses.Repository
 
 
         #region RemoveAuthor
-        public void RemoveAuthor(Author author)
+        public async Task RemoveAuthor(Author author)
         {
-            _context.Remove(author);
+            author.IsDelete = true;
+            UpdateAuthor(author);
+          await Save();
+            // _context.Remove(author);
         }
         #endregion
 

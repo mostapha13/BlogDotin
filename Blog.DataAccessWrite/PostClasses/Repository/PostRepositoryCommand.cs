@@ -34,7 +34,10 @@ namespace Blog.DataAccessCommand.PostClasses.Repository
         #region RemovePost
         public void RemovePost(Post post)
         {
-            _context.Remove(post);
+            post.IsDelete = true;
+            Save();
+
+            // _context.Remove(post);
         }
 
         #endregion

@@ -32,14 +32,18 @@ namespace Blog.Presentation.Controllers
         public async Task<IActionResult> GetAllSubject()
         {
             string functionName = "GetAllSubject:Get:";
-            Log.Information(functionName);
+            Log.ForContext("Message", functionName)
+                .ForContext("Error", "")
+                .Information(functionName);
             try
             {
                 return Success(await _read.GetAllSubject());
             }
             catch (Exception e)
             {
-                Log.Error($"Error:{e.Message} ** {functionName}");
+                Log.ForContext("Message", functionName)
+                    .ForContext("Error", e.Message)
+                    .Error($"Error:{e.Message} ** {functionName}");
                 return Error(new{info= "خطایی رخ داده است" });
             }
         }
@@ -50,10 +54,13 @@ namespace Blog.Presentation.Controllers
         public async Task<IActionResult> AddSubject([FromBody] Domain.SubjectClasses.DTOs.SubjectDTO subjectDto)
         {
             string functionName = "AddSubject:Post:"+JsonConvert.SerializeObject(subjectDto);
-            Log.Information(functionName);
+            Log.ForContext("Message", functionName)
+                .ForContext("Error", "").Information(functionName);
             if (!ModelState.IsValid)
             {
-                Log.Error($"Error: ** {functionName}");
+                Log.ForContext("Message", functionName)
+                    .ForContext("Error", "ModelStateNotValid")
+                    .Error($"Error: ** {functionName}");
                 return Error(new{info= "اطلاعات بدرستی وارد نشده است." });
             }
 
@@ -72,7 +79,9 @@ namespace Blog.Presentation.Controllers
             }
             catch (Exception e)
             {
-                Log.Error($"Error:{e.Message} ** {functionName}");
+                Log.ForContext("Message", functionName)
+                    .ForContext("Error", e.Message)
+                    .Error($"Error:{e.Message} ** {functionName}");
                 return Error(new{info= "خطایی رخ داده است" });
             }
         }
@@ -83,11 +92,15 @@ namespace Blog.Presentation.Controllers
         public async Task<IActionResult> RemoveSubject(int id)
         {
             string functionName = "RemoveSubject:Get:" + id;
-            Log.Information(functionName);
+            Log.ForContext("Message", functionName)
+                .ForContext("Error", "")
+                .Information(functionName);
             var subject =await _read.GetSubjectById(id);
             if (subject == null)
             {
-                Log.Error($"Error ** {functionName}");
+                Log.ForContext("Message", functionName)
+                    .ForContext("Error", "SubjectNotFound")
+                    .Error($"Error ** {functionName}");
                 return Error(new{info= "اطلاعات بدرستی وارد نشده است." });
             }
             try
@@ -99,7 +112,9 @@ namespace Blog.Presentation.Controllers
             }
             catch (Exception e)
             {
-                Log.Error($"Error:{e.Message} ** {functionName}");
+                Log.ForContext("Message", functionName)
+                    .ForContext("Error", e.Message)
+                    .Error($"Error:{e.Message} ** {functionName}");
                 return Error(new{info= "خطایی رخ داده است" });
             }
         }
@@ -111,14 +126,18 @@ namespace Blog.Presentation.Controllers
         public async Task<IActionResult> AllSubjectPost(long id)
         {
             string functionName = "AllSubjectPost:Get:" + id;
-            Log.Information(functionName);
+            Log.ForContext("Message", functionName)
+                .ForContext("Error", "")
+                .Information(functionName);
             try
             {
                 return Success(await _read.GetAllSubjectPost(id));
             }
             catch (Exception e)
             {
-                Log.Error($"Error:{e.Message} ** {functionName}");
+                Log.ForContext("Message", functionName)
+                    .ForContext("Error", e.Message)
+                    .Error($"Error:{e.Message} ** {functionName}");
                 return Error(new { info = "خطایی رخ داده است" });
             }
         }
@@ -132,7 +151,9 @@ namespace Blog.Presentation.Controllers
         public async Task<IActionResult> GetSubjectForComboBox()
         {
             string functionName = "GetSubjectForComboBox:Get:";
-            Log.Information(functionName);
+            Log.ForContext("Message", functionName)
+                .ForContext("Error", "")
+                .Information(functionName);
             var subjectListCombo=await _read.GetSubjectForComboBox();
 
             List<SubjectForComboboxDTO> subjectList=new List<SubjectForComboboxDTO>();

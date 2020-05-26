@@ -33,7 +33,9 @@ namespace Blog.Presentation.Controllers
         public async Task<IActionResult> GetAllPost()
         {
             string functionName = "GetAllPost:Get:";
-            Log.Information(functionName);
+            Log.ForContext("Message", functionName)
+                .ForContext("Error", "")
+                .Information(functionName);
             try
             {
                
@@ -42,7 +44,9 @@ namespace Blog.Presentation.Controllers
             }
             catch (Exception e)
             {
-                Log.Error($"Error: {e.Message} ** {functionName}");
+                Log.ForContext("Message", functionName)
+                    .ForContext("Error", e.Message)
+                    .Error($"Error: {e.Message} ** {functionName}");
                 return Error(new {info= "خطایی رخ داده است" });
             }
         }
@@ -57,14 +61,17 @@ namespace Blog.Presentation.Controllers
         public async Task<IActionResult> GetPostById(long postId)
         {
             string functionName = "GetPostById:Get:" + postId;
-            Log.Information(functionName);
+            Log.ForContext("Message", functionName)
+                .ForContext("Error","").Information(functionName);
             try
             {
                 return Success(await _read.GetPostById(postId));
             }
             catch (Exception e)
             {
-                Log.Error($"Error:{e.Message} ** {functionName}");
+                Log.ForContext("Message", functionName)
+                    .ForContext("Error", e.Message)
+                    .Error($"Error:{e.Message} ** {functionName}");
                 return Error(new{info= "خطایی رخ داده است" });
             }
         }
@@ -79,7 +86,8 @@ namespace Blog.Presentation.Controllers
         public async Task<IActionResult> GetPostBySubjectId(long subjectId)
         {
             string functionName = "GetPostBySubjectId:Get:" + subjectId;
-            Log.Information(functionName);
+            Log.ForContext("Message", functionName)
+                .ForContext("Error", "").Information(functionName);
 
             try
             {
@@ -87,7 +95,9 @@ namespace Blog.Presentation.Controllers
             }
             catch (Exception e)
             {
-                Log.Error($"Error:{e.Message} ** {functionName}");
+                Log.ForContext("Message", functionName)
+                    .ForContext("Error", e.Message)
+                    .Error($"Error:{e.Message} ** {functionName}");
                 return Error(new{info= "خطایی رخ داده است" });
             }
         }
@@ -101,10 +111,14 @@ namespace Blog.Presentation.Controllers
         public async Task<IActionResult> AddPost([FromBody] Domain.PostClasses.DTOs.PostDTO postDto)
         {
             string functionName = "AddPost:Post:" + JsonConvert.SerializeObject(postDto);
-            Log.Information(functionName);
+            Log.ForContext("Message", functionName)
+                .ForContext("Error", "")
+                .Information(functionName);
             if (!ModelState.IsValid)
             {
-                Log.Error($"Error: ** {functionName}");
+                Log.ForContext("Message", functionName)
+                    .ForContext("Error", "ModelStateNotFound")
+                    .Error($"Error: ** {functionName}");
                 return Error(new{info= "اطلاعات بدرستی وارد نشده است." });
             }
             try
@@ -123,7 +137,9 @@ namespace Blog.Presentation.Controllers
             }
             catch (Exception e)
             {
-                Log.Error($"Error:{e.Message} ** {functionName}");
+                Log.ForContext("Message", functionName)
+                    .ForContext("Error", e.Message)
+                    .Error($"Error:{e.Message} ** {functionName}");
                 return Error(new{info= "خطایی رخ داده است" });
             }
         }
@@ -135,7 +151,9 @@ namespace Blog.Presentation.Controllers
         public async Task<IActionResult> GetPostForList()
         {
             string functionName = "GetPostForList:Get:";
-            Log.Information(functionName);
+            Log.ForContext("Message", functionName)
+                .ForContext("Error", "")
+                .Information(functionName);
             return new ObjectResult(await _read.GetPostList());
         }
 
@@ -148,11 +166,15 @@ namespace Blog.Presentation.Controllers
         public async Task<IActionResult> RemovePost(long postId)
         {
             string functionName = "RemovePost:Get:"+postId;
-            Log.Information(functionName);
+            Log.ForContext("Message", functionName)
+                .ForContext("Error","")
+                .Information(functionName);
             var post =await _read.GetPostById(postId);
             if (post == null)
             {
-                Log.Error($"Error: ** {functionName}");
+                Log.ForContext("Message", functionName)
+                    .ForContext("Error", "PostNotFound")
+                    .Error($"Error: ** {functionName}");
                 return Error(new{info= "کاربری یافت نشد." });
             }
 
@@ -164,7 +186,9 @@ namespace Blog.Presentation.Controllers
             }
             catch (Exception e)
             {
-                Log.Error($"Error:{e.Message} ** {functionName}");
+                Log.ForContext("Message", functionName)
+                    .ForContext("Error", e.Message)
+                    .Error($"Error:{e.Message} ** {functionName}");
                 return Error(new{info= "خطایی رخ داده است" });
             }
         }
@@ -176,7 +200,9 @@ namespace Blog.Presentation.Controllers
         public async Task<IActionResult> GetPostForComboBox()
         {
             string functionName = "GetPostForComboBox:Get:";
-            Log.Information(functionName);
+            Log.ForContext("Message", functionName)
+                .ForContext("Error", "")
+                .Information(functionName);
             List<PostForComboboxDTO> listPost=new List<PostForComboboxDTO>();
             var posts =await _read.GetAllPost();
 

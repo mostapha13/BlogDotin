@@ -43,7 +43,8 @@ namespace Blog.DataAccessCommand.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-          
+
+            #region Validator
 
             #region ValidatorAuthor
 
@@ -64,9 +65,20 @@ namespace Blog.DataAccessCommand.Context
             #endregion
 
             #region ValidatorComment
-            modelBuilder.ApplyConfiguration(new CommentValidator()); 
+            modelBuilder.ApplyConfiguration(new CommentValidator());
             #endregion
 
+
+            #endregion
+
+            #region QueryFilterIsDelete
+
+            modelBuilder.Entity<Author>().HasQueryFilter(a => !a.IsDelete);
+            modelBuilder.Entity<Subject>().HasQueryFilter(s => !s.IsDelete);
+            modelBuilder.Entity<Post>().HasQueryFilter(p => !p.IsDelete);
+            modelBuilder.Entity<Comment>().HasQueryFilter(c => !c.IsDelete); 
+
+            #endregion
 
 
 

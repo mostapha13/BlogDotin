@@ -6,6 +6,10 @@ using Blog.Domain.AuthorClasses;
 using Blog.Domain.AuthorClasses.Commands;
 using Blog.Domain.AuthorClasses.DTOs;
 using Blog.Domain.AuthorClasses.Queries;
+using Blog.Domain.Enum;
+using Blog.Presentation.Filter;
+using Blog.Service.AuthorClasses.Commands;
+using Blog.Service.AuthorClasses.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -15,18 +19,18 @@ using Serilog.Events;
 
 namespace Blog.Presentation.Controllers
 {
+    [CustomException]
+    [CustomAction]
     public class AuthorController : BaseController
     {
         #region Constructor
-        private readonly IAuthorRepositoryQuery _read;
-        private readonly IAuthorRepositoryCommand _write;
+       
         private readonly IMediator _mediator;
 
 
-        public AuthorController(IAuthorRepositoryQuery read, IAuthorRepositoryCommand write, IMediator mediator)
+        public AuthorController(IMediator mediator)
         {
-            _read = read;
-            _write = write;
+         
             _mediator = mediator;
         }
         #endregion
@@ -36,20 +40,12 @@ namespace Blog.Presentation.Controllers
         [HttpGet("GetAllAuthour")]
         public async Task<IActionResult> GetAllAuthour()
         {
-            string functionName = "GetAllAuthour:Get";
-            Log.Information(functionName);
-            try
-            {
-                return Success(await _read.GetAllAuthor());
+            var query = new GetAllAuthorQuery();
+            var result = await _mediator.Send(query);
+
+            return result != null ? Success(result) : Error(new { info = "خطایی رخ داده است" });
 
 
-            }
-            catch (Exception e)
-            {
-
-                Log.Error($"Error::{e.Message} ** {functionName}");
-                return Error(new { info = "خطایی رخ داده است" });
-            }
         }
         #endregion
 
@@ -58,17 +54,10 @@ namespace Blog.Presentation.Controllers
         public async Task<IActionResult> GetAuthorById(long id)
         {
 
-            string functionName = "GetAuthorById:Get:" + id;
-            Log.Information(functionName);
-            try
-            {
-                return Success(await _read.GetAuthorById(id));
-            }
-            catch (Exception e)
-            {
-                Log.Error($"Error:{e.Message} ** {functionName}");
-                return Error(new { info = "خطایی رخ داده است" });
-            }
+            var query = new GetAuthorByIdQuery(id);
+            var result = await _mediator.Send(query);
+            return result != null ? Success(new { data = result }) : Error(new { info = "کاربری یافت نشد" });
+
         }
 
 
@@ -80,47 +69,39 @@ namespace Blog.Presentation.Controllers
         public async Task<IActionResult> AddAuthor([FromBody] Domain.AuthorClasses.DTOs.AuthorDTO author)
         {
             string functionName = "AddAuthor:Post:" + JsonConvert.SerializeObject(author);
-            Log.Information(functionName);
+            Log.ForContext("Message", functionName)
+                .ForContext("Error", "").Information(functionName);
+
+
             if (!ModelState.IsValid)
             {
 
-                Log.Error($"Error: ** {functionName}");
+                Log.ForContext("Message", functionName)
+                    .ForContext("Error", "ModelStateNotValid").Error($"Error: ** {functionName}");
 
                 return Error(new { info = "اطلاعات بدرستی وارد نشده است." });
             }
 
-            try
+            var result = await _mediator.Send(author);
+
+
+
+            switch (result)
             {
-                if (await _read.IsEmailExist(author.Email.Trim().ToLower()))
-                {
-                    Log.Error($"Error: ** {functionName}");
+                case ResultStatus.EmailExist:
                     return Error(new { info = "ایمیل وارد شده تکراری می باشد." });
-                }
 
-                if (await _read.IsUserNameExist(author.UserName.Trim().ToLower()))
-                {
-                    Log.Error($"Error: ** {functionName}");
+                case ResultStatus.UserNameExist:
                     return Error(new { info = "نام کاربری وارد شده تکراری می باشد." });
-                }
-                Domain.AuthorClasses.Author auth = new Domain.AuthorClasses.Author()
-                {
-                    FirstName = author.FirstName,
-                    LastName = author.LastName,
-                    UserName = author.UserName.Trim().ToLower(),
-                    Email = author.Email.Trim().ToLower(),
 
+                case ResultStatus.Success:
+                    return Success();
 
-                };
-                await _write.AddAuthor(auth);
-                await _write.Save();
-                return Success();
+                default:
+                    return Error(new { info = "خطایی رخ داده است" });
             }
-            catch (Exception e)
-            {
 
-                Log.Error($"Error:{e.Message} ** {functionName}");
-                return Error(new { info = "خطایی رخ داده است" });
-            }
+
         }
 
         #endregion
@@ -130,25 +111,23 @@ namespace Blog.Presentation.Controllers
         public async Task<IActionResult> RemoveAuthor(int authorId)
         {
             string functionName = "RemoveAuthor:Get:" + authorId;
-            Log.Information(functionName);
-            var author = await _read.GetAuthorById(authorId);
-            if (author == null)
-            {
+            Log.ForContext("Message", functionName)
+                .ForContext("Error", "").Information(functionName);
 
-                Log.Error($"Error: ** {functionName}");
-                return Error(new { info = "کاربری یافت نشد." });
-            }
-            try
+            var author = new RemoveAuthorById(authorId);
+            var result = await _mediator.Send(author);
+
+            switch (result)
             {
-                _write.RemoveAuthor(author);
-                await _write.Save();
-                return Success();
+                case ResultStatus.NotFound:
+                    return Error(new { info = "کاربری یافت نشد." });
+                case ResultStatus.Success:
+                    return Success();
+                default:
+                    return Error(new { info = "خطایی رخ داده است" });
             }
-            catch (Exception e)
-            {
-                Log.Error($"Error:{e.Message} ** {functionName}");
-                return Error(new { info = "خطایی رخ داده است" });
-            }
+
+
         }
         #endregion
 
@@ -160,40 +139,34 @@ namespace Blog.Presentation.Controllers
 
 
             string functionName = "EditAuthor:Post" + JsonConvert.SerializeObject(authorEdit);
-            Log.Information(functionName);
+            Log.ForContext("Message", functionName)
+                .ForContext("Error", "").Information(functionName);
+
+
             if (!ModelState.IsValid)
             {
 
-                Log.Error($"Error: ** {functionName}");
+                Log.ForContext("Message", functionName)
+                    .ForContext("Error", "ModelstateIsNotValid")
+                    .Error($"Error: ** {functionName}");
                 return Error(new { info = "اطلاعات بدرستی وارد نشده است." });
 
             }
 
 
-            try
+            var result = await _mediator.Send(authorEdit);
+            switch (result)
             {
-
-                Domain.AuthorClasses.Author author = new Domain.AuthorClasses.Author()
-                {
-                    Id = authorEdit.Id,
-                    CreateDate = authorEdit.CreateDate,
-                    Email = authorEdit.Email.Trim().ToLower(),
-                    FirstName = authorEdit.FirstName,
-                    LastName = authorEdit.LastName,
-
-                    UserName = authorEdit.UserName,
-                   
-                };
-
-                _write.UpdateAuthor(author);
-                await _write.Save();
-                return Success();
+                case ResultStatus.Success:
+                    return Success();
+                case ResultStatus.Error:
+                    return Error(new { info = "خطایی رخ داده است" });
+                default:
+                    return Error(new { info = "خطایی رخ داده است" });
             }
-            catch (Exception e)
-            {
-                Log.Error($"Error:{e.Message} ** {functionName}");
-                return Error(new { info = "خطایی رخ داده است" });
-            }
+
+             
+
         }
 
         #endregion
@@ -203,24 +176,11 @@ namespace Blog.Presentation.Controllers
         [HttpGet("GetAuthorForComboBox")]
         public async Task<IActionResult> GetAuthorForComboBox()
         {
-            string functionName = "GetAuthorForComboBox:Get";
-            Log.Information(functionName);
+          
+            var query=new GetAuthorForComboBoxQuery();
+            var result = await _mediator.Send(query);
 
-            var listAuthor = await _read.GetAllAuthorForCombobox();
-
-            List<AuthorForComboboxDTO> listAuthorCombo = new List<AuthorForComboboxDTO>();
-            foreach (var author in listAuthor)
-            {
-                listAuthorCombo.Add(new AuthorForComboboxDTO()
-                {
-                    Id = author.Id,
-                    FullName = author.FirstName + ' ' + author.LastName
-                });
-            }
-
-            return new ObjectResult(listAuthorCombo);
-
-            //  return new JsonResult(JsonConvert.SerializeObject(listAuthorCombo));
+            return result == null ? null : new ObjectResult(result);
         }
 
         #endregion

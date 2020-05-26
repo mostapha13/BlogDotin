@@ -3669,7 +3669,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
-          "Blog.Service": "1.0.0",
+          "Blog.Domain": "1.0.0",
           "FluentValidation.AspNetCore": "8.6.2",
           "MediatR": "8.0.1",
           "MediatR.Extensions.Microsoft.DependencyInjection": "8.0.0",
@@ -3696,7 +3696,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
-          "Blog.Service": "1.0.0",
+          "Blog.Domain": "1.0.0",
           "Dapper": "2.0.35",
           "FluentValidation.AspNetCore": "8.6.2",
           "MediatR": "8.0.1",
@@ -3750,7 +3750,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
-          "Blog.Domain": "1.0.0",
+          "Blog.DataAccessCommand": "1.0.0",
+          "Blog.DataAccessQuery": "1.0.0",
           "FluentValidation.AspNetCore": "8.6.2",
           "MediatR": "8.0.1",
           "MediatR.Extensions.Microsoft.DependencyInjection": "8.0.0",
@@ -10910,8 +10911,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Blog.DataAccessCommand >= 1.0.0",
-      "Blog.DataAccessQuery >= 1.0.0",
+      "Blog.Service >= 1.0.0",
       "FluentValidation.AspNetCore >= 8.6.2",
       "MediatR >= 8.0.1",
       "MediatR.Extensions.Microsoft.DependencyInjection >= 8.0.0",
@@ -10964,11 +10964,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessRead\\Blog.DataAccessQuery.csproj": {
-              "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessRead\\Blog.DataAccessQuery.csproj"
-            },
-            "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessWrite\\Blog.DataAccessCommand.csproj": {
-              "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessWrite\\Blog.DataAccessCommand.csproj"
+            "C:\\ForDotin\\Backend\\Blog\\Blog.Service\\Blog.Service.csproj": {
+              "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.Service\\Blog.Service.csproj"
             }
           }
         }

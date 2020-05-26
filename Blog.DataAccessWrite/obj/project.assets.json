@@ -3253,32 +3253,6 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
-      },
-      "Blog.Service/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
-        "dependencies": {
-          "Blog.Domain": "1.0.0",
-          "FluentValidation.AspNetCore": "8.6.2",
-          "MediatR": "8.0.1",
-          "MediatR.Extensions.Microsoft.DependencyInjection": "8.0.0",
-          "Newtonsoft.Json": "12.0.3",
-          "Serilog.AspNetCore": "3.2.0",
-          "Serilog.Settings.Configuration": "3.1.0",
-          "Serilog.Sinks.MSSqlServer": "5.4.0",
-          "Swashbuckle.AspNetCore": "5.4.1",
-          "Swashbuckle.AspNetCore.SwaggerGen": "5.4.1",
-          "Swashbuckle.AspNetCore.SwaggerUI": "5.4.1"
-        },
-        "compile": {
-          "bin/placeholder/Blog.Service.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Blog.Service.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
       }
     }
   },
@@ -9761,16 +9735,11 @@
       "type": "project",
       "path": "../Blog.Domain/Blog.Domain.csproj",
       "msbuildProject": "../Blog.Domain/Blog.Domain.csproj"
-    },
-    "Blog.Service/1.0.0": {
-      "type": "project",
-      "path": "../Blog.Service/Blog.Service.csproj",
-      "msbuildProject": "../Blog.Service/Blog.Service.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Blog.Service >= 1.0.0",
+      "Blog.Domain >= 1.0.0",
       "FluentValidation.AspNetCore >= 8.6.2",
       "MediatR >= 8.0.1",
       "MediatR.Extensions.Microsoft.DependencyInjection >= 8.0.0",
@@ -9819,8 +9788,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\ForDotin\\Backend\\Blog\\Blog.Service\\Blog.Service.csproj": {
-              "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.Service\\Blog.Service.csproj"
+            "C:\\ForDotin\\Backend\\Blog\\Blog.Domain\\Blog.Domain.csproj": {
+              "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.Domain\\Blog.Domain.csproj"
             }
           }
         }

@@ -21,14 +21,12 @@ namespace Blog.Presentation.Controllers
     public class CommentController : BaseController
     {
         #region Constructor
-        private readonly ICommentRepositoryQuery _read;
-        private readonly ICommentRepositoryCommand _write;
+       
         private readonly IMediator _mediator;
 
-        public CommentController(ICommentRepositoryQuery read, ICommentRepositoryCommand write, IMediator mediator)
+        public CommentController(IMediator mediator)
         {
-            _read = read;
-            _write = write;
+           
             _mediator = mediator;
         }
         #endregion

@@ -6,12 +6,12 @@ using Blog.Domain.PostClasses;
 
 namespace Blog.Domain.PostClasses.Commands
 {
-    public interface IPostRepositoryCommand:IDisposable
+    public interface IPostRepositoryCommand : IDisposable
     {
         Task AddPost(Post post);
-        //  Task UpdatePost(Post post);
-        void RemovePost(Post post);
-      //  Task RemovePostById(long postId);
+        void UpdatePost(Post post);
+        Task RemovePost(Post post);
+        //  Task RemovePostById(long postId);
 
         Task Save();
     }

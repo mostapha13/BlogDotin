@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using Blog.Domain.Enum;
+using MediatR;
 
 namespace Blog.Domain.PostClasses.DTOs
 {
-   public class PostDTO
+   public class PostDTO:IRequest<ResultStatus>
     {
 
 

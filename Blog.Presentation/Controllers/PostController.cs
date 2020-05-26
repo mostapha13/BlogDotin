@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Blog.Domain.Enum;
 using Blog.Domain.PostClasses;
 using Blog.Domain.PostClasses.Commands;
 using Blog.Domain.PostClasses.DTOs;
 using Blog.Domain.PostClasses.Queries;
+using Blog.Service.PostClasses.Commands;
+using Blog.Service.PostClasses.Queries;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -13,17 +17,17 @@ using Serilog;
 
 namespace Blog.Presentation.Controllers
 {
-   
+
     public class PostController : BaseController
     {
         #region Constructor
-        private readonly IPostRepositoryQuery _read;
-        private readonly IPostRepositoryCommand _write;
+     
+        private readonly IMediator _mediator;
 
-        public PostController(IPostRepositoryQuery read, IPostRepositoryCommand write)
+        public PostController(IMediator mediator)
         {
-            _read = read;
-            _write = write;
+         
+            _mediator = mediator;
         }
         #endregion
 
@@ -32,23 +36,9 @@ namespace Blog.Presentation.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllPost()
         {
-            string functionName = "GetAllPost:Get:";
-            Log.ForContext("Message", functionName)
-                .ForContext("Error", "")
-                .Information(functionName);
-            try
-            {
-               
-               
-                return Success( await _read.GetAllPost());
-            }
-            catch (Exception e)
-            {
-                Log.ForContext("Message", functionName)
-                    .ForContext("Error", e.Message)
-                    .Error($"Error: {e.Message} ** {functionName}");
-                return Error(new {info= "خطایی رخ داده است" });
-            }
+            var query = new GetAllPostQuery();
+            var result = await _mediator.Send(query);
+            return result != null ? Success(result) : null;
         }
 
 
@@ -60,20 +50,10 @@ namespace Blog.Presentation.Controllers
         [HttpGet("GetPostById/{postId}")]
         public async Task<IActionResult> GetPostById(long postId)
         {
-            string functionName = "GetPostById:Get:" + postId;
-            Log.ForContext("Message", functionName)
-                .ForContext("Error","").Information(functionName);
-            try
-            {
-                return Success(await _read.GetPostById(postId));
-            }
-            catch (Exception e)
-            {
-                Log.ForContext("Message", functionName)
-                    .ForContext("Error", e.Message)
-                    .Error($"Error:{e.Message} ** {functionName}");
-                return Error(new{info= "خطایی رخ داده است" });
-            }
+            var query = new GetPostByIdQuery(postId);
+            var result = await _mediator.Send(query);
+
+            return result != null ? Success(result) : null;
         }
 
 
@@ -85,21 +65,9 @@ namespace Blog.Presentation.Controllers
         [HttpGet("GetPostBySubjectId/{subjectId}")]
         public async Task<IActionResult> GetPostBySubjectId(long subjectId)
         {
-            string functionName = "GetPostBySubjectId:Get:" + subjectId;
-            Log.ForContext("Message", functionName)
-                .ForContext("Error", "").Information(functionName);
-
-            try
-            {
-                return Success(await _read.GetPostBySubjectId(subjectId));
-            }
-            catch (Exception e)
-            {
-                Log.ForContext("Message", functionName)
-                    .ForContext("Error", e.Message)
-                    .Error($"Error:{e.Message} ** {functionName}");
-                return Error(new{info= "خطایی رخ داده است" });
-            }
+            var query = new GetPostBySubjectIdQuery(subjectId);
+            var result = await _mediator.Send(query);
+            return result != null ? Success(result) : null;
         }
 
 
@@ -108,7 +76,7 @@ namespace Blog.Presentation.Controllers
         #region AddPost
 
         [HttpPost("AddPost")]
-        public async Task<IActionResult> AddPost([FromBody] Domain.PostClasses.DTOs.PostDTO postDto)
+        public async Task<IActionResult> AddPost([FromBody] PostDTO postDto)
         {
             string functionName = "AddPost:Post:" + JsonConvert.SerializeObject(postDto);
             Log.ForContext("Message", functionName)
@@ -119,28 +87,16 @@ namespace Blog.Presentation.Controllers
                 Log.ForContext("Message", functionName)
                     .ForContext("Error", "ModelStateNotFound")
                     .Error($"Error: ** {functionName}");
-                return Error(new{info= "اطلاعات بدرستی وارد نشده است." });
+                return Error(new { info = "اطلاعات بدرستی وارد نشده است." });
             }
-            try
-            {
-                Domain.PostClasses.Post post=new Domain.PostClasses.Post()
-                {
-                    Title = postDto.Title,
-                    AuthoId = long.Parse(postDto.AuthorId),
-                    SubjectId = long.Parse(postDto.SubjectId),
-                    Text = postDto.Text
-                };
 
-                await _write.AddPost(post);
-                await _write.Save();
-                return Success();
-            }
-            catch (Exception e)
+            var result = await _mediator.Send(postDto);
+            switch (result)
             {
-                Log.ForContext("Message", functionName)
-                    .ForContext("Error", e.Message)
-                    .Error($"Error:{e.Message} ** {functionName}");
-                return Error(new{info= "خطایی رخ داده است" });
+                case ResultStatus.Success:
+                    return Success();
+                default:
+                    return Error(new { info = "خطایی رخ داده است" });
             }
         }
 
@@ -150,11 +106,9 @@ namespace Blog.Presentation.Controllers
         [HttpGet("GetPostForList")]
         public async Task<IActionResult> GetPostForList()
         {
-            string functionName = "GetPostForList:Get:";
-            Log.ForContext("Message", functionName)
-                .ForContext("Error", "")
-                .Information(functionName);
-            return new ObjectResult(await _read.GetPostList());
+            var query = new GetPostForListQuery();
+            var result = await _mediator.Send(query);
+            return result != null ? new ObjectResult(result) : null;
         }
 
         #endregion
@@ -165,31 +119,17 @@ namespace Blog.Presentation.Controllers
         [HttpGet("RemovePost/{postId}")]
         public async Task<IActionResult> RemovePost(long postId)
         {
-            string functionName = "RemovePost:Get:"+postId;
-            Log.ForContext("Message", functionName)
-                .ForContext("Error","")
-                .Information(functionName);
-            var post =await _read.GetPostById(postId);
-            if (post == null)
-            {
-                Log.ForContext("Message", functionName)
-                    .ForContext("Error", "PostNotFound")
-                    .Error($"Error: ** {functionName}");
-                return Error(new{info= "کاربری یافت نشد." });
-            }
+            var query = new RemovePostCommand(postId);
+            var result = await _mediator.Send(query);
 
-            try
+            switch (result)
             {
-                 _write.RemovePost(post);
-                await _write.Save();
-                return Success();
-            }
-            catch (Exception e)
-            {
-                Log.ForContext("Message", functionName)
-                    .ForContext("Error", e.Message)
-                    .Error($"Error:{e.Message} ** {functionName}");
-                return Error(new{info= "خطایی رخ داده است" });
+                case ResultStatus.NotFound:
+                    return Error(new { info = "کاربری یافت نشد." });
+                case ResultStatus.Success:
+                    return Success();
+                default:
+                    return Error(new { info = "خطایی رخ داده است" });
             }
         }
 
@@ -199,23 +139,10 @@ namespace Blog.Presentation.Controllers
         [HttpGet("GetPostForComboBox")]
         public async Task<IActionResult> GetPostForComboBox()
         {
-            string functionName = "GetPostForComboBox:Get:";
-            Log.ForContext("Message", functionName)
-                .ForContext("Error", "")
-                .Information(functionName);
-            List<PostForComboboxDTO> listPost=new List<PostForComboboxDTO>();
-            var posts =await _read.GetAllPost();
+            var query = new GetPostForComboBoxQuery();
+            var result = await _mediator.Send(query);
 
-            foreach (var post in posts)
-            {
-                listPost.Add(new PostForComboboxDTO()
-                {
-                    Id = post.Id,
-                    Post =post.Title
-                });
-            }
-
-            return new ObjectResult(listPost);
+            return result != null ? new ObjectResult(result) : null;
         }
 
         #endregion

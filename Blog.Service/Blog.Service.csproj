@@ -22,4 +22,8 @@
     <ProjectReference Include="..\Blog.DataAccessWrite\Blog.DataAccessCommand.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="SubjectClasses\Commands\" />
+  </ItemGroup>
+
 </Project>

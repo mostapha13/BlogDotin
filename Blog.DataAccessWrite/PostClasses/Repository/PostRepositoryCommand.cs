@@ -32,16 +32,25 @@ namespace Blog.DataAccessCommand.PostClasses.Repository
 
 
         #region RemovePost
-        public void RemovePost(Post post)
+        public async Task RemovePost(Post post)
         {
             post.IsDelete = true;
-            Save();
+            UpdatePost(post);
+           await Save();
 
             // _context.Remove(post);
         }
 
         #endregion
 
+        #region UpdatePost
+
+        public void UpdatePost(Post post)
+        {
+             _context.Posts.Update(post);
+        }
+
+        #endregion
 
         #region Save
         public async Task Save()

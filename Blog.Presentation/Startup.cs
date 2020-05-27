@@ -78,7 +78,6 @@ namespace Blog.Presentation
             var assembly = AppDomain.CurrentDomain.Load("Blog.Service");
             services.AddMediatR(assembly);
 
-
             #endregion
 
             #region Validation

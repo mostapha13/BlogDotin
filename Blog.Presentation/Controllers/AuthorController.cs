@@ -64,7 +64,7 @@ namespace Blog.Presentation.Controllers
         #region AddAuthor
 
         [HttpPost("AddAuthor")]
-        public async Task<IActionResult> AddAuthor([FromBody] Domain.AuthorClasses.DTOs.AuthorDTO author)
+        public async Task<IActionResult> AddAuthor([FromBody] AuthorDTO author)
         {
             string functionName = "AddAuthor:Post:" + JsonConvert.SerializeObject(author);
             Log.ForContext("Message", functionName)

@@ -7,6 +7,7 @@ using Blog.Domain.CommentClasses.Commands;
 using Blog.Domain.CommentClasses.DTOs;
 using Blog.Domain.CommentClasses.Queries;
 using Blog.Domain.Enum;
+using Blog.Presentation.Filter;
 using Blog.Service.CommentClasses.Commands;
 using Blog.Service.CommentClasses.Queries;
 using MediatR;
@@ -17,7 +18,8 @@ using Serilog;
 
 namespace Blog.Presentation.Controllers
 {
-
+    [CustomException]
+    [CustomAction]
     public class CommentController : BaseController
     {
         #region Constructor

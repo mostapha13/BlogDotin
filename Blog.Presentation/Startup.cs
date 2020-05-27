@@ -22,6 +22,7 @@ using Blog.Domain.PostClasses.Commands;
 using Blog.Domain.PostClasses.Queries;
 using Blog.Domain.SubjectClasses.Commands;
 using Blog.Domain.SubjectClasses.Queries;
+using Blog.Service.PipelineBehaviors;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using MediatR;
@@ -68,6 +69,11 @@ namespace Blog.Presentation
 
             #endregion
 
+            #region Validation
+
+            services.AddTransient(typeof(IPipelineBehavior<,>),typeof(ValidationBehavior<,>));
+            services.AddValidatorsFromAssembly(typeof(Startup).Assembly);
+            #endregion
 
             services.AddControllers();
 

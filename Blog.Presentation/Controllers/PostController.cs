@@ -7,6 +7,7 @@ using Blog.Domain.PostClasses;
 using Blog.Domain.PostClasses.Commands;
 using Blog.Domain.PostClasses.DTOs;
 using Blog.Domain.PostClasses.Queries;
+using Blog.Presentation.Filter;
 using Blog.Service.PostClasses.Commands;
 using Blog.Service.PostClasses.Queries;
 using MediatR;
@@ -17,7 +18,8 @@ using Serilog;
 
 namespace Blog.Presentation.Controllers
 {
-
+    [CustomException]
+    [CustomAction]
     public class PostController : BaseController
     {
         #region Constructor

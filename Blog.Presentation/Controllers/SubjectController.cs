@@ -7,6 +7,7 @@ using Blog.Domain.SubjectClasses;
 using Blog.Domain.SubjectClasses.Commands;
 using Blog.Domain.SubjectClasses.DTOs;
 using Blog.Domain.SubjectClasses.Queries;
+using Blog.Presentation.Filter;
 using Blog.Service.SubjectClasses.Commands;
 using Blog.Service.SubjectClasses.Queries;
 using MediatR;
@@ -17,7 +18,8 @@ using Serilog;
 
 namespace Blog.Presentation.Controllers
 {
-
+    [CustomException]
+    [CustomAction]
     public class SubjectController : BaseController
     {
         #region Constructor

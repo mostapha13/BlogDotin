@@ -15,20 +15,12 @@ namespace Blog.Domain.PostClasses
 
 
         #region Propertise
-
- 
-
-        public string Title { get; set; }
-
- 
-
-        public long SubjectId { get; set; }
-
          
-
+        public string Title { get; set; }
+         
+        public long SubjectId { get; set; }
+         
         public string Text { get; set; }
-
-
 
         public long AuthoId { get; set; }
 

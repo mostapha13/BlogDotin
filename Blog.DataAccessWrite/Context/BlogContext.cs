@@ -54,33 +54,7 @@ namespace Blog.DataAccessCommand.Context
             #endregion
 
 
-            #region Validator
-
-            #region ValidatorAuthor
-
-            modelBuilder.ApplyConfiguration(new AuthorValidator());
-
-            #endregion
-
-            #region ValidatorPost
-
-            modelBuilder.ApplyConfiguration(new PostValidator());
-
-            #endregion
-
-            #region ValidatorSubject
-
-            modelBuilder.ApplyConfiguration(new SubjectValidator());
-
-            #endregion
-
-            #region ValidatorComment
-            modelBuilder.ApplyConfiguration(new CommentValidator());
-            #endregion
-
-
-            #endregion
-
+           
 
          //   base.OnModelCreating(modelBuilder);
         }

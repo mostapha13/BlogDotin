@@ -32,7 +32,7 @@ namespace Blog.Service.PipelineBehaviors
 
             if (failures.Any())
             {
-                
+
                 throw new ValidationException(failures);
             }
 

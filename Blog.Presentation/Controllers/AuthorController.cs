@@ -2,14 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Blog.Domain.AuthorClasses;
-using Blog.Domain.AuthorClasses.Commands;
 using Blog.Domain.AuthorClasses.DTOs;
-using Blog.Domain.AuthorClasses.Queries;
 using Blog.Domain.Enum;
 using Blog.Presentation.Filter;
-using Blog.Service.AuthorClasses.Commands;
-using Blog.Service.AuthorClasses.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -112,7 +107,7 @@ namespace Blog.Presentation.Controllers
             Log.ForContext("Message", functionName)
                 .ForContext("Error", "").Information(functionName);
 
-            var author = new RemoveAuthorById(authorId);
+            var author = new RemoveAuthorCommand(authorId);
             var result = await _mediator.Send(author);
 
             switch (result)

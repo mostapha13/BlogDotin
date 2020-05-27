@@ -9,7 +9,6 @@ using Blog.Domain.PostClasses.DTOs;
 using Blog.Domain.PostClasses.Queries;
 using Blog.Presentation.Filter;
 using Blog.Service.PostClasses.Commands;
-using Blog.Service.PostClasses.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

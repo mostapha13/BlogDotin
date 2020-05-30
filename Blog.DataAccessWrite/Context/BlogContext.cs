@@ -57,7 +57,7 @@ namespace Blog.DataAccessCommand.Context
 
 
 
-            //   base.OnModelCreating(modelBuilder);
+                base.OnModelCreating(modelBuilder);
         }
 
         #endregion

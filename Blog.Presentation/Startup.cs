@@ -82,12 +82,13 @@ namespace Blog.Presentation
             #endregion
 
             #region Validation
+
             services.AddMvc().AddFluentValidation();
             
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
            // services.AddValidatorsFromAssembly(typeof(Startup).Assembly);
 
-            services.AddValidatorsFromAssembly(assembly);
+             services.AddValidatorsFromAssembly(assembly);
 
             services.AddTransient<IValidator<Author>, AuthorValidator>();
             services.AddTransient<IValidator<AuthorDTO>, AuthorDtoValidator>();

@@ -14,7 +14,7 @@ namespace Blog.DataAccessCommand.CommentClasses.Config
         {
             RuleFor(c => c.PostId).NotNull().WithName("پست");
            
-            RuleFor(a => a.Text).NotNull().WithMessage("متن را وارد نمایید")
+            RuleFor(a => a.Text).NotNull().WithMessage("{PropertyName} را وارد نمایید")
                 .MaximumLength(1500).WithMessage("حداکثر 1500 کاراکتر وارد نمایید")
                 .WithName("متن");
         }

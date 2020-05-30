@@ -24,11 +24,14 @@ namespace Blog.Service.PipelineBehaviors
         public Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
         {
             var context = new ValidationContext(request);
+         
+
             var failures = _validators
-                .Select(x => x.Validate(context))
-                .SelectMany(x => x.Errors)
-                .Where(x => x != null)
+                .Select(v => v.Validate(context))
+                .SelectMany(e => e.Errors)
+                .Where(e => e != null)
                 .ToList();
+
 
             if (failures.Any())
             {

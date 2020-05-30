@@ -14,16 +14,16 @@ using Serilog.Events;
 
 namespace Blog.Presentation.Controllers
 {
-    
+
     [CustomAction]
     public class AuthorController : BaseController
     {
         #region Constructor
-       
+
         private readonly IMediator _mediator;
-         
+
         public AuthorController(IMediator mediator)
-        { 
+        {
             _mediator = mediator;
         }
         #endregion
@@ -36,8 +36,7 @@ namespace Blog.Presentation.Controllers
             var query = new GetAllAuthorQuery();
             var result = await _mediator.Send(query);
 
-           return result != null ? Success(result) : Error(new { info = "خطایی رخ داده است" });
- 
+            return result != null ? Success(result) : Error(new { info = "خطایی رخ داده است" });
 
         }
         #endregion
@@ -64,8 +63,7 @@ namespace Blog.Presentation.Controllers
             string functionName = "AddAuthor:Post:" + JsonConvert.SerializeObject(author);
             Log.ForContext("Message", functionName)
                 .ForContext("Error", "").Information(functionName);
-
-
+ 
             if (!ModelState.IsValid)
             {
 
@@ -152,12 +150,12 @@ namespace Blog.Presentation.Controllers
             {
                 case ResultStatus.Success:
                     return Success();
-           
+
                 default:
                     return Error(new { info = "خطایی رخ داده است" });
             }
 
-             
+
 
         }
 
@@ -168,8 +166,8 @@ namespace Blog.Presentation.Controllers
         [HttpGet("GetAuthorForComboBox")]
         public async Task<IActionResult> GetAuthorForComboBox()
         {
-          
-            var query=new GetAuthorForComboBoxQuery();
+
+            var query = new GetAuthorForComboBoxQuery();
             var result = await _mediator.Send(query);
 
             return result == null ? null : new ObjectResult(result);

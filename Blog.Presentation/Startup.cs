@@ -32,6 +32,7 @@ using Blog.Domain.SubjectClasses;
 using Blog.Domain.SubjectClasses.Commands;
 using Blog.Domain.SubjectClasses.DTOs;
 using Blog.Domain.SubjectClasses.Queries;
+using Blog.Presentation.Middleware;
 using Blog.Service.PipelineBehaviors;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -180,10 +181,12 @@ namespace Blog.Presentation
         {
             if (env.IsDevelopment())
             {
+                app.UseDirectoryBrowser();
                 app.UseDeveloperExceptionPage();
 
             }
-
+            
+            app.UseStatusCodePages();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -215,6 +218,8 @@ namespace Blog.Presentation
 
 
             app.UseAuthorization();
+
+            app.UseMiddleware(typeof(ErrorHandling));
 
             app.UseEndpoints(endpoints =>
             {

@@ -14,7 +14,7 @@ using Serilog.Events;
 
 namespace Blog.Presentation.Controllers
 {
-    [CustomException]
+    
     [CustomAction]
     public class AuthorController : BaseController
     {
@@ -36,8 +36,8 @@ namespace Blog.Presentation.Controllers
             var query = new GetAllAuthorQuery();
             var result = await _mediator.Send(query);
 
-            return result != null ? Success(result) : Error(new { info = "خطایی رخ داده است" });
-
+           return result != null ? Success(result) : Error(new { info = "خطایی رخ داده است" });
+ 
 
         }
         #endregion

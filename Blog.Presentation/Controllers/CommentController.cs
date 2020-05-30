@@ -16,7 +16,7 @@ using Serilog;
 
 namespace Blog.Presentation.Controllers
 {
-    [CustomException]
+ 
     [CustomAction]
     public class CommentController : BaseController
     {

@@ -13,7 +13,7 @@ using Serilog;
 
 namespace Blog.Presentation.Controllers
 {
-    [CustomException]
+   
     [CustomAction]
     public class SubjectController : BaseController
     {

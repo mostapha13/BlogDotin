@@ -17,6 +17,7 @@ namespace Blog.Service.Comment.Handler
     {
 
         #region Constructor
+
         private readonly ICommentRepositoryQuery _read;
         private readonly ICommentRepositoryCommand _write;
 

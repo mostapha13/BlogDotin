@@ -64,12 +64,15 @@ namespace Blog.Presentation.Controllers
             string functionName = "AddComment:Post:" + JsonConvert.SerializeObject(commentDto);
             Log.ForContext("Message", functionName)
                 .ForContext("Error", "").Information(functionName);
+
+
             if (!ModelState.IsValid)
             {
                 Log.ForContext("Message", functionName)
                     .ForContext("Error", "ModelStateNotValid").Error($"Error: ** {functionName}");
                 return Error(new { info = "اطلاعات بدرستی وارد نشده است." });
             }
+
 
             var result = await _mediator.Send(commentDto);
             return result == ResultStatus.Success ? Success(result) : Error(new { info = "خطایی رخ داده است" });

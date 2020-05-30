@@ -11,7 +11,7 @@ namespace Blog.DataAccessCommand.SubjectClasses.Config
         public SubjectDtoValidator()
         {
            
-            RuleFor(s => s.Title).NotNull().WithMessage("{PropertyName} را وارد نمایید")
+            RuleFor(s => s.Title).NotEmpty().WithMessage("{PropertyName} را وارد نمایید").NotNull().WithMessage("{PropertyName} را وارد نمایید")
                 .MaximumLength(250).WithMessage("حداکثر 250 کاراکتر وارد نمایید")
                 .WithName("عنوان موضوع");
         }

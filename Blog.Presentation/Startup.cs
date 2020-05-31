@@ -4,36 +4,37 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using Blog.DataAccessCommand.AuthorClasses.Config;
-using Blog.DataAccessCommand.AuthorClasses.Repository;
-using Blog.DataAccessCommand.CommentClasses.Config;
-using Blog.DataAccessCommand.CommentClasses.Repository;
-using Blog.DataAccessCommand.PostClasses.Config;
-using Blog.DataAccessCommand.PostClasses.Repository;
-using Blog.DataAccessCommand.SubjectClasses.Config;
-using Blog.DataAccessCommand.SubjectClasses.Repository;
-using Blog.DataAccessQuery.AuthorClasses.Repository;
-using Blog.DataAccessQuery.CommentClasses.Repository;
-using Blog.DataAccessQuery.PostClasses.Repository;
-using Blog.DataAccessQuery.SubjectClasses.Repository;
-using Blog.Domain.AuthorClasses;
-using Blog.Domain.AuthorClasses.Commands;
-using Blog.Domain.AuthorClasses.DTOs;
-using Blog.Domain.AuthorClasses.Queries;
-using Blog.Domain.CommentClasses;
-using Blog.Domain.CommentClasses.Commands;
-using Blog.Domain.CommentClasses.DTOs;
-using Blog.Domain.CommentClasses.Queries;
-using Blog.Domain.PostClasses;
-using Blog.Domain.PostClasses.Commands;
-using Blog.Domain.PostClasses.DTOs;
-using Blog.Domain.PostClasses.Queries;
-using Blog.Domain.SubjectClasses;
-using Blog.Domain.SubjectClasses.Commands;
-using Blog.Domain.SubjectClasses.DTOs;
-using Blog.Domain.SubjectClasses.Queries;
+using Blog.DataAccessCommands.Context;
+using Blog.DataAccessCommands.Authors.Config;
+using Blog.DataAccessCommands.Authors.Repository;
+using Blog.DataAccessCommands.Comments.Config;
+using Blog.DataAccessCommands.Comments.Repository;
+using Blog.DataAccessCommands.Posts.Config;
+using Blog.DataAccessCommands.Posts.Repository;
+using Blog.DataAccessCommands.Subjects.Config;
+using Blog.DataAccessCommands.Subjects.Repository;
+using Blog.DataAccessQueries.Authors.Repository;
+using Blog.DataAccessQueries.Comments.Repository;
+using Blog.DataAccessQueries.Posts.Repository;
+using Blog.DataAccessQueries.Subjects.Repository;
+using Blog.Domains.Authors;
+using Blog.Domains.Authors.Commands;
+using Blog.Domains.Authors.DTOs;
+using Blog.Domains.Authors.Queries;
+using Blog.Domains.Comments;
+using Blog.Domains.Comments.Commands;
+using Blog.Domains.Comments.DTOs;
+using Blog.Domains.Comments.Queries;
+using Blog.Domains.Posts;
+using Blog.Domains.Posts.Commands;
+using Blog.Domains.Posts.DTOs;
+using Blog.Domains.Posts.Queries;
+using Blog.Domains.Subjects;
+using Blog.Domains.Subjects.Commands;
+using Blog.Domains.Subjects.DTOs;
+using Blog.Domains.Subjects.Queries;
 using Blog.Presentation.Middleware;
-using Blog.Service.PipelineBehaviors;
+using Blog.Services.PipelineBehaviors;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using MediatR;
@@ -76,7 +77,7 @@ namespace Blog.Presentation
         {
             #region MediatR
 
-            var assembly = AppDomain.CurrentDomain.Load("Blog.Service");
+            var assembly = AppDomain.CurrentDomain.Load("Blog.Services");
             services.AddMediatR(assembly);
 
             #endregion
@@ -113,7 +114,7 @@ namespace Blog.Presentation
             #region DBContext
 
 
-            services.AddDbContext<Blog.DataAccessCommand.Context.BlogContext>(options =>
+            services.AddDbContext<BlogContext>(options =>
             {
                 options.UseSqlServer(Configuration["ConnectionStrings:CommandConnection"]);
             });

@@ -5,21 +5,21 @@ VisualStudioVersion = 16.0.30104.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog.Presentation", "Blog.Presentation\Blog.Presentation.csproj", "{05D9196F-E30B-4173-AEC8-58ECE0AD99BA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog.Domain", "Blog.Domain\Blog.Domain.csproj", "{2D0353C3-20AB-4014-828C-A7EB8573BC68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog.Domains", "Blog.Domain\Blog.Domains.csproj", "{2D0353C3-20AB-4014-828C-A7EB8573BC68}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-Domain", "01-Domain", "{DBB60284-C0D6-40B9-91D4-113C2A12F16E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-Domains", "01-Domains", "{DBB60284-C0D6-40B9-91D4-113C2A12F16E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04-Presentation", "04-Presentation", "{919D36D2-5772-4501-A43B-E49134474DA2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02-AppService", "02-AppService", "{1E386D9B-F36D-4D75-9AAE-7B775E63E4D6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02-AppServices", "02-AppServices", "{1E386D9B-F36D-4D75-9AAE-7B775E63E4D6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog.Service", "Blog.Service\Blog.Service.csproj", "{741F476D-27AC-49D2-967A-8433DD5B1269}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog.Services", "Blog.Service\Blog.Services.csproj", "{741F476D-27AC-49D2-967A-8433DD5B1269}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03-DataAccess", "03-DataAccess", "{E7082128-69E7-4D2D-A399-D6BE3F1F73AF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog.DataAccessCommand", "Blog.DataAccessWrite\Blog.DataAccessCommand.csproj", "{1A176B29-815C-49D9-8A60-634B62B4AB7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog.DataAccessCommands", "Blog.DataAccessWrite\Blog.DataAccessCommands.csproj", "{1A176B29-815C-49D9-8A60-634B62B4AB7E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog.DataAccessQuery", "Blog.DataAccessRead\Blog.DataAccessQuery.csproj", "{8736CBCE-29FF-4E0C-93E2-0993C0BFC27E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog.DataAccessQueries", "Blog.DataAccessRead\Blog.DataAccessQueries.csproj", "{8736CBCE-29FF-4E0C-93E2-0993C0BFC27E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

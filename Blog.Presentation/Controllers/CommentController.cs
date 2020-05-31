@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Blog.Domain.CommentClasses;
-using Blog.Domain.CommentClasses.Commands;
-using Blog.Domain.CommentClasses.DTOs;
-using Blog.Domain.CommentClasses.Queries;
-using Blog.Domain.Enum;
+using Blog.Domains.Comments.DTOs;
+using Blog.Domains.Enums;
 using Blog.Presentation.Filter;
 using MediatR;
 using Microsoft.AspNetCore.Http;

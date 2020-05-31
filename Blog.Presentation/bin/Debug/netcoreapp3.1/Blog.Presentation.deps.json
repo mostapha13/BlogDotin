@@ -24,8 +24,8 @@
     ".NETCoreApp,Version=v3.1": {
       "Blog.Presentation/1.0.0": {
         "dependencies": {
-          "Blog.DataAccessCommand": "1.0.0",
-          "Blog.DataAccessQuery": "1.0.0",
+          "Blog.DataAccessCommands": "1.0.0",
+          "Blog.DataAccessQueries": "1.0.0",
           "FluentValidation.AspNetCore": "8.6.2",
           "MediatR": "8.0.1",
           "MediatR.Extensions.Microsoft.DependencyInjection": "8.0.0",
@@ -3034,13 +3034,15 @@
           "System.Xml.XmlDocument": "4.3.0"
         }
       },
-      "Blog.DataAccessCommand/1.0.0": {
+      "Blog.DataAccessCommands/1.0.0": {
         "dependencies": {
-          "Blog.Service": "1.0.0",
+          "Blog.Services": "1.0.0",
           "FluentValidation.AspNetCore": "8.6.2",
           "MediatR": "8.0.1",
           "MediatR.Extensions.Microsoft.DependencyInjection": "8.0.0",
           "Microsoft.AspNetCore.Mvc.Razor": "2.2.0",
+          "Microsoft.EntityFrameworkCore": "3.1.4",
+          "Microsoft.EntityFrameworkCore.SqlServer": "3.1.4",
           "Newtonsoft.Json": "12.0.3",
           "Serilog.AspNetCore": "3.2.0",
           "Serilog.Settings.Configuration": "3.1.0",
@@ -3050,36 +3052,16 @@
           "Swashbuckle.AspNetCore.SwaggerUI": "5.4.1"
         },
         "runtime": {
-          "Blog.DataAccessCommand.dll": {}
+          "Blog.DataAccessCommands.dll": {}
         },
         "compile": {
-          "Blog.DataAccessCommand.dll": {}
+          "Blog.DataAccessCommands.dll": {}
         }
       },
-      "Blog.DataAccessQuery/1.0.0": {
+      "Blog.DataAccessQueries/1.0.0": {
         "dependencies": {
-          "Blog.Service": "1.0.0",
+          "Blog.Services": "1.0.0",
           "Dapper": "2.0.35",
-          "FluentValidation.AspNetCore": "8.6.2",
-          "MediatR": "8.0.1",
-          "MediatR.Extensions.Microsoft.DependencyInjection": "8.0.0",
-          "Newtonsoft.Json": "12.0.3",
-          "Serilog.AspNetCore": "3.2.0",
-          "Serilog.Settings.Configuration": "3.1.0",
-          "Serilog.Sinks.MSSqlServer": "5.4.0",
-          "Swashbuckle.AspNetCore": "5.4.1",
-          "Swashbuckle.AspNetCore.SwaggerGen": "5.4.1",
-          "Swashbuckle.AspNetCore.SwaggerUI": "5.4.1"
-        },
-        "runtime": {
-          "Blog.DataAccessQuery.dll": {}
-        },
-        "compile": {
-          "Blog.DataAccessQuery.dll": {}
-        }
-      },
-      "Blog.Domain/1.0.0": {
-        "dependencies": {
           "FluentValidation.AspNetCore": "8.6.2",
           "MediatR": "8.0.1",
           "MediatR.Extensions.Microsoft.DependencyInjection": "8.0.0",
@@ -3094,31 +3076,38 @@
           "Swashbuckle.AspNetCore.SwaggerUI": "5.4.1"
         },
         "runtime": {
-          "Blog.Domain.dll": {}
+          "Blog.DataAccessQueries.dll": {}
         },
         "compile": {
-          "Blog.Domain.dll": {}
+          "Blog.DataAccessQueries.dll": {}
         }
       },
-      "Blog.Service/1.0.0": {
+      "Blog.Domains/1.0.0": {
         "dependencies": {
-          "Blog.Domain": "1.0.0",
-          "FluentValidation.AspNetCore": "8.6.2",
           "MediatR": "8.0.1",
-          "MediatR.Extensions.Microsoft.DependencyInjection": "8.0.0",
+          "MediatR.Extensions.Microsoft.DependencyInjection": "8.0.0"
+        },
+        "runtime": {
+          "Blog.Domains.dll": {}
+        },
+        "compile": {
+          "Blog.Domains.dll": {}
+        }
+      },
+      "Blog.Services/1.0.0": {
+        "dependencies": {
+          "Blog.Domains": "1.0.0",
+          "FluentValidation.AspNetCore": "8.6.2",
           "Newtonsoft.Json": "12.0.3",
           "Serilog.AspNetCore": "3.2.0",
           "Serilog.Settings.Configuration": "3.1.0",
-          "Serilog.Sinks.MSSqlServer": "5.4.0",
-          "Swashbuckle.AspNetCore": "5.4.1",
-          "Swashbuckle.AspNetCore.SwaggerGen": "5.4.1",
-          "Swashbuckle.AspNetCore.SwaggerUI": "5.4.1"
+          "Serilog.Sinks.MSSqlServer": "5.4.0"
         },
         "runtime": {
-          "Blog.Service.dll": {}
+          "Blog.Services.dll": {}
         },
         "compile": {
-          "Blog.Service.dll": {}
+          "Blog.Services.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery.Reference/3.1.0.0": {
@@ -6361,22 +6350,22 @@
       "path": "system.xml.xmlserializer/4.3.0",
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
     },
-    "Blog.DataAccessCommand/1.0.0": {
+    "Blog.DataAccessCommands/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Blog.DataAccessQuery/1.0.0": {
+    "Blog.DataAccessQueries/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Blog.Domain/1.0.0": {
+    "Blog.Domains/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Blog.Service/1.0.0": {
+    "Blog.Services/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

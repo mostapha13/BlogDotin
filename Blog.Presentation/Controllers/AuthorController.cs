@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Blog.Domain.AuthorClasses.DTOs;
-using Blog.Domain.Enum;
+using Blog.Domains.Authors.DTOs;
+using Blog.Domains.Enums;
 using Blog.Presentation.Filter;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

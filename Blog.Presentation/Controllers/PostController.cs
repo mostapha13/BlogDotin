@@ -2,13 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Blog.Domain.Enum;
-using Blog.Domain.PostClasses;
-using Blog.Domain.PostClasses.Commands;
-using Blog.Domain.PostClasses.DTOs;
-using Blog.Domain.PostClasses.Queries;
+using Blog.Domains.Enums;
+using Blog.Domains.Posts.DTOs;
 using Blog.Presentation.Filter;
-using Blog.Service.PostClasses.Commands;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

@@ -26,8 +26,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Blog.DataAccessRead\Blog.DataAccessQuery.csproj" />
-    <ProjectReference Include="..\Blog.DataAccessWrite\Blog.DataAccessCommand.csproj" />
+    <ProjectReference Include="..\Blog.DataAccessRead\Blog.DataAccessQueries.csproj" />
+    <ProjectReference Include="..\Blog.DataAccessWrite\Blog.DataAccessCommands.csproj" />
   </ItemGroup>
 
 

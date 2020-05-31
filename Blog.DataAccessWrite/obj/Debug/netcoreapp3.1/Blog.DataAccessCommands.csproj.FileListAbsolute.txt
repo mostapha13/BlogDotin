@@ -1,0 +1,17 @@
+C:\ForDotin\Backend\Blog\Blog.DataAccessWrite\obj\Debug\netcoreapp3.1\Blog.DataAccessCommands.csprojAssemblyReference.cache
+C:\ForDotin\Backend\Blog\Blog.DataAccessWrite\obj\Debug\netcoreapp3.1\Blog.DataAccessCommands.csproj.CoreCompileInputs.cache
+C:\ForDotin\Backend\Blog\Blog.DataAccessWrite\obj\Debug\netcoreapp3.1\Blog.DataAccessCommands.AssemblyInfoInputs.cache
+C:\ForDotin\Backend\Blog\Blog.DataAccessWrite\obj\Debug\netcoreapp3.1\Blog.DataAccessCommands.AssemblyInfo.cs
+C:\ForDotin\Backend\Blog\Blog.DataAccessWrite\bin\Debug\netcoreapp3.1\Blog.DataAccessCommands.deps.json
+C:\ForDotin\Backend\Blog\Blog.DataAccessWrite\bin\Debug\netcoreapp3.1\Blog.DataAccessCommands.dll
+C:\ForDotin\Backend\Blog\Blog.DataAccessWrite\bin\Debug\netcoreapp3.1\Blog.Domains.dll
+C:\ForDotin\Backend\Blog\Blog.DataAccessWrite\bin\Debug\netcoreapp3.1\Blog.Services.dll
+C:\ForDotin\Backend\Blog\Blog.DataAccessWrite\bin\Debug\netcoreapp3.1\Blog.Services.pdb
+C:\ForDotin\Backend\Blog\Blog.DataAccessWrite\bin\Debug\netcoreapp3.1\Blog.Domains.pdb
+C:\ForDotin\Backend\Blog\Blog.DataAccessWrite\obj\Debug\netcoreapp3.1\Blog.DataAccessCommands.csproj.CopyComplete
+C:\ForDotin\Backend\Blog\Blog.DataAccessWrite\bin\Debug\netcoreapp3.1\Blog.DataAccessCommands.runtimeconfig.json
+C:\ForDotin\Backend\Blog\Blog.DataAccessWrite\bin\Debug\netcoreapp3.1\Blog.DataAccessCommands.runtimeconfig.dev.json
+C:\ForDotin\Backend\Blog\Blog.DataAccessWrite\bin\Debug\netcoreapp3.1\Blog.DataAccessCommands.pdb
+C:\ForDotin\Backend\Blog\Blog.DataAccessWrite\obj\Debug\netcoreapp3.1\Blog.DataAccessCommands.dll
+C:\ForDotin\Backend\Blog\Blog.DataAccessWrite\obj\Debug\netcoreapp3.1\Blog.DataAccessCommands.pdb
+C:\ForDotin\Backend\Blog\Blog.DataAccessWrite\obj\Debug\netcoreapp3.1\Blog.DataAccessCommands.genruntimeconfig.cache

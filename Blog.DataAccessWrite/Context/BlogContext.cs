@@ -4,20 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Blog.DataAccessCommand.AuthorClasses.Config;
-using Blog.DataAccessCommand.CommentClasses.Config;
-using Blog.DataAccessCommand.PostClasses.Config;
-using Blog.DataAccessCommand.SubjectClasses.Config;
-using Blog.Domain;
-using Blog.Domain.AuthorClasses;
-using Blog.Domain.BaseEntityClasses;
-using Blog.Domain.CommentClasses;
-using Blog.Domain.PostClasses;
-using Blog.Domain.SubjectClasses;
+using Blog.DataAccessCommands.Authors.Config;
+using Blog.DataAccessCommands.Comments.Config;
+using Blog.DataAccessCommands.Posts.Config;
+using Blog.DataAccessCommands.Subjects.Config;
+using Blog.Domains.Authors;
+using Blog.Domains.Base;
+using Blog.Domains.Comments;
+using Blog.Domains.Posts;
+using Blog.Domains.Subjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 
-namespace Blog.DataAccessCommand.Context
+namespace Blog.DataAccessCommands.Context
 {
     public class BlogContext : DbContext
     {

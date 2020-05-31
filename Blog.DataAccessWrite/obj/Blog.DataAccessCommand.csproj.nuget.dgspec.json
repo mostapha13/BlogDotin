@@ -80,18 +80,6 @@
             "Serilog.Sinks.MSSqlServer": {
               "target": "Package",
               "version": "[5.4.0, )"
-            },
-            "Swashbuckle.AspNetCore": {
-              "target": "Package",
-              "version": "[5.4.1, )"
-            },
-            "Swashbuckle.AspNetCore.SwaggerGen": {
-              "target": "Package",
-              "version": "[5.4.1, )"
-            },
-            "Swashbuckle.AspNetCore.SwaggerUI": {
-              "target": "Package",
-              "version": "[5.4.1, )"
             }
           },
           "imports": [
@@ -116,12 +104,12 @@
         }
       }
     },
-    "C:\\ForDotin\\Backend\\Blog\\Blog.Domain\\Blog.Domain.csproj": {
+    "C:\\ForDotin\\Backend\\Blog\\Blog.Domain\\Blog.Domains.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ForDotin\\Backend\\Blog\\Blog.Domain\\Blog.Domain.csproj",
-        "projectName": "Blog.Domain",
-        "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.Domain\\Blog.Domain.csproj",
+        "projectUniqueName": "C:\\ForDotin\\Backend\\Blog\\Blog.Domain\\Blog.Domains.csproj",
+        "projectName": "Blog.Domains",
+        "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.Domain\\Blog.Domains.csproj",
         "packagesPath": "C:\\Users\\mostapha\\.nuget\\packages\\",
         "outputPath": "C:\\ForDotin\\Backend\\Blog\\Blog.Domain\\obj\\",
         "projectStyle": "PackageReference",
@@ -157,10 +145,6 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
-            "FluentValidation.AspNetCore": {
-              "target": "Package",
-              "version": "[8.6.2, )"
-            },
             "MediatR": {
               "target": "Package",
               "version": "[8.0.1, )"
@@ -168,48 +152,6 @@
             "MediatR.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[8.0.0, )"
-            },
-            "Microsoft.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[3.1.4, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[3.1.4, )"
-            },
-            "Microsoft.EntityFrameworkCore.Tools": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[3.1.4, )"
-            },
-            "Newtonsoft.Json": {
-              "target": "Package",
-              "version": "[12.0.3, )"
-            },
-            "Serilog.AspNetCore": {
-              "target": "Package",
-              "version": "[3.2.0, )"
-            },
-            "Serilog.Settings.Configuration": {
-              "target": "Package",
-              "version": "[3.1.0, )"
-            },
-            "Serilog.Sinks.MSSqlServer": {
-              "target": "Package",
-              "version": "[5.4.0, )"
-            },
-            "Swashbuckle.AspNetCore": {
-              "target": "Package",
-              "version": "[5.4.1, )"
-            },
-            "Swashbuckle.AspNetCore.SwaggerGen": {
-              "target": "Package",
-              "version": "[5.4.1, )"
-            },
-            "Swashbuckle.AspNetCore.SwaggerUI": {
-              "target": "Package",
-              "version": "[5.4.1, )"
             }
           },
           "imports": [
@@ -223,9 +165,6 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
@@ -264,8 +203,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\ForDotin\\Backend\\Blog\\Blog.Domain\\Blog.Domain.csproj": {
-                "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.Domain\\Blog.Domain.csproj"
+              "C:\\ForDotin\\Backend\\Blog\\Blog.Domain\\Blog.Domains.csproj": {
+                "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.Domain\\Blog.Domains.csproj"
               }
             }
           }
@@ -278,48 +217,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "dependencies": {
-            "FluentValidation.AspNetCore": {
-              "target": "Package",
-              "version": "[8.6.2, )"
-            },
-            "MediatR": {
-              "target": "Package",
-              "version": "[8.0.1, )"
-            },
-            "MediatR.Extensions.Microsoft.DependencyInjection": {
-              "target": "Package",
-              "version": "[8.0.0, )"
-            },
-            "Newtonsoft.Json": {
-              "target": "Package",
-              "version": "[12.0.3, )"
-            },
-            "Serilog.AspNetCore": {
-              "target": "Package",
-              "version": "[3.2.0, )"
-            },
-            "Serilog.Settings.Configuration": {
-              "target": "Package",
-              "version": "[3.1.0, )"
-            },
-            "Serilog.Sinks.MSSqlServer": {
-              "target": "Package",
-              "version": "[5.4.0, )"
-            },
-            "Swashbuckle.AspNetCore": {
-              "target": "Package",
-              "version": "[5.4.1, )"
-            },
-            "Swashbuckle.AspNetCore.SwaggerGen": {
-              "target": "Package",
-              "version": "[5.4.1, )"
-            },
-            "Swashbuckle.AspNetCore.SwaggerUI": {
-              "target": "Package",
-              "version": "[5.4.1, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -331,9 +228,6 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

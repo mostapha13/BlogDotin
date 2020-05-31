@@ -3665,15 +3665,17 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Blog.DataAccessCommand/1.0.0": {
+      "Blog.DataAccessCommands/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
-          "Blog.Service": "1.0.0",
+          "Blog.Services": "1.0.0",
           "FluentValidation.AspNetCore": "8.6.2",
           "MediatR": "8.0.1",
           "MediatR.Extensions.Microsoft.DependencyInjection": "8.0.0",
           "Microsoft.AspNetCore.Mvc.Razor": "2.2.0",
+          "Microsoft.EntityFrameworkCore": "3.1.4",
+          "Microsoft.EntityFrameworkCore.SqlServer": "3.1.4",
           "Newtonsoft.Json": "12.0.3",
           "Serilog.AspNetCore": "3.2.0",
           "Serilog.Settings.Configuration": "3.1.0",
@@ -3683,46 +3685,21 @@
           "Swashbuckle.AspNetCore.SwaggerUI": "5.4.1"
         },
         "compile": {
-          "bin/placeholder/Blog.DataAccessCommand.dll": {}
+          "bin/placeholder/Blog.DataAccessCommands.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Blog.DataAccessCommand.dll": {}
+          "bin/placeholder/Blog.DataAccessCommands.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
       },
-      "Blog.DataAccessQuery/1.0.0": {
+      "Blog.DataAccessQueries/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
-          "Blog.Service": "1.0.0",
+          "Blog.Services": "1.0.0",
           "Dapper": "2.0.35",
-          "FluentValidation.AspNetCore": "8.6.2",
-          "MediatR": "8.0.1",
-          "MediatR.Extensions.Microsoft.DependencyInjection": "8.0.0",
-          "Newtonsoft.Json": "12.0.3",
-          "Serilog.AspNetCore": "3.2.0",
-          "Serilog.Settings.Configuration": "3.1.0",
-          "Serilog.Sinks.MSSqlServer": "5.4.0",
-          "Swashbuckle.AspNetCore": "5.4.1",
-          "Swashbuckle.AspNetCore.SwaggerGen": "5.4.1",
-          "Swashbuckle.AspNetCore.SwaggerUI": "5.4.1"
-        },
-        "compile": {
-          "bin/placeholder/Blog.DataAccessQuery.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Blog.DataAccessQuery.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
-      },
-      "Blog.Domain/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
-        "dependencies": {
           "FluentValidation.AspNetCore": "8.6.2",
           "MediatR": "8.0.1",
           "MediatR.Extensions.Microsoft.DependencyInjection": "8.0.0",
@@ -3737,36 +3714,45 @@
           "Swashbuckle.AspNetCore.SwaggerUI": "5.4.1"
         },
         "compile": {
-          "bin/placeholder/Blog.Domain.dll": {}
+          "bin/placeholder/Blog.DataAccessQueries.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Blog.Domain.dll": {}
+          "bin/placeholder/Blog.DataAccessQueries.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
       },
-      "Blog.Service/1.0.0": {
+      "Blog.Domains/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
-          "Blog.Domain": "1.0.0",
-          "FluentValidation.AspNetCore": "8.6.2",
           "MediatR": "8.0.1",
-          "MediatR.Extensions.Microsoft.DependencyInjection": "8.0.0",
+          "MediatR.Extensions.Microsoft.DependencyInjection": "8.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Blog.Domains.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Blog.Domains.dll": {}
+        }
+      },
+      "Blog.Services/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Blog.Domains": "1.0.0",
+          "FluentValidation.AspNetCore": "8.6.2",
           "Newtonsoft.Json": "12.0.3",
           "Serilog.AspNetCore": "3.2.0",
           "Serilog.Settings.Configuration": "3.1.0",
-          "Serilog.Sinks.MSSqlServer": "5.4.0",
-          "Swashbuckle.AspNetCore": "5.4.1",
-          "Swashbuckle.AspNetCore.SwaggerGen": "5.4.1",
-          "Swashbuckle.AspNetCore.SwaggerUI": "5.4.1"
+          "Serilog.Sinks.MSSqlServer": "5.4.0"
         },
         "compile": {
-          "bin/placeholder/Blog.Service.dll": {}
+          "bin/placeholder/Blog.Services.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Blog.Service.dll": {}
+          "bin/placeholder/Blog.Services.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
@@ -10887,31 +10873,31 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
-    "Blog.DataAccessCommand/1.0.0": {
+    "Blog.DataAccessCommands/1.0.0": {
       "type": "project",
-      "path": "../Blog.DataAccessWrite/Blog.DataAccessCommand.csproj",
-      "msbuildProject": "../Blog.DataAccessWrite/Blog.DataAccessCommand.csproj"
+      "path": "../Blog.DataAccessWrite/Blog.DataAccessCommands.csproj",
+      "msbuildProject": "../Blog.DataAccessWrite/Blog.DataAccessCommands.csproj"
     },
-    "Blog.DataAccessQuery/1.0.0": {
+    "Blog.DataAccessQueries/1.0.0": {
       "type": "project",
-      "path": "../Blog.DataAccessRead/Blog.DataAccessQuery.csproj",
-      "msbuildProject": "../Blog.DataAccessRead/Blog.DataAccessQuery.csproj"
+      "path": "../Blog.DataAccessRead/Blog.DataAccessQueries.csproj",
+      "msbuildProject": "../Blog.DataAccessRead/Blog.DataAccessQueries.csproj"
     },
-    "Blog.Domain/1.0.0": {
+    "Blog.Domains/1.0.0": {
       "type": "project",
-      "path": "../Blog.Domain/Blog.Domain.csproj",
-      "msbuildProject": "../Blog.Domain/Blog.Domain.csproj"
+      "path": "../Blog.Domain/Blog.Domains.csproj",
+      "msbuildProject": "../Blog.Domain/Blog.Domains.csproj"
     },
-    "Blog.Service/1.0.0": {
+    "Blog.Services/1.0.0": {
       "type": "project",
-      "path": "../Blog.Service/Blog.Service.csproj",
-      "msbuildProject": "../Blog.Service/Blog.Service.csproj"
+      "path": "../Blog.Service/Blog.Services.csproj",
+      "msbuildProject": "../Blog.Service/Blog.Services.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Blog.DataAccessCommand >= 1.0.0",
-      "Blog.DataAccessQuery >= 1.0.0",
+      "Blog.DataAccessCommands >= 1.0.0",
+      "Blog.DataAccessQueries >= 1.0.0",
       "FluentValidation.AspNetCore >= 8.6.2",
       "MediatR >= 8.0.1",
       "MediatR.Extensions.Microsoft.DependencyInjection >= 8.0.0",
@@ -10964,11 +10950,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessRead\\Blog.DataAccessQuery.csproj": {
-              "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessRead\\Blog.DataAccessQuery.csproj"
+            "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessRead\\Blog.DataAccessQueries.csproj": {
+              "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessRead\\Blog.DataAccessQueries.csproj"
             },
-            "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessWrite\\Blog.DataAccessCommand.csproj": {
-              "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessWrite\\Blog.DataAccessCommand.csproj"
+            "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessWrite\\Blog.DataAccessCommands.csproj": {
+              "projectPath": "C:\\ForDotin\\Backend\\Blog\\Blog.DataAccessWrite\\Blog.DataAccessCommands.csproj"
             }
           }
         }

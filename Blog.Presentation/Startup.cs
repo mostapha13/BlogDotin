@@ -204,7 +204,7 @@ namespace Blog.Presentation
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Blog");
-                // c.RoutePrefix = string.Empty;
+               
             });
 
 

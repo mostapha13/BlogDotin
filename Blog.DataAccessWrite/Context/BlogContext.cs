@@ -110,7 +110,7 @@ namespace Blog.DataAccessCommand.Context
 
         #region CustomSaveChangeMethod
 
-        public void CustomSaveChange()
+        private void CustomSaveChange()
         {
 
             var entries = ChangeTracker

@@ -25,7 +25,6 @@ namespace Blog.DataAccessCommand.AuthorClasses.Repository
         #region AddAuthor
         public async Task AddAuthor(Author author)
         {
-            
 
             await _context.Authors.AddAsync(author);
         }
@@ -37,17 +36,17 @@ namespace Blog.DataAccessCommand.AuthorClasses.Repository
         {
             author.IsDelete = true;
             UpdateAuthor(author);
-          await Save();
+            await Save();
             // _context.Remove(author);
         }
         #endregion
 
         #region UpdateAuthor
 
-        public void  UpdateAuthor(Author author)
+        public void UpdateAuthor(Author author)
         {
 
-             _context.Authors.Update(author);
+            _context.Authors.Update(author);
         }
 
         #endregion
@@ -59,9 +58,9 @@ namespace Blog.DataAccessCommand.AuthorClasses.Repository
         }
         #endregion
 
- 
 
-        
+
+
 
         #region Dispose
         public void Dispose()

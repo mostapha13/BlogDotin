@@ -8,8 +8,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Blog.DataAccessCommand.PostClasses.Config
 {
-    public class PostValidator : AbstractValidator<Post>
+    public class PostValidator : AbstractValidator<Post>,IEntityTypeConfiguration<Post>
     {
+    
         public PostValidator()
         {
 
@@ -27,10 +28,30 @@ namespace Blog.DataAccessCommand.PostClasses.Config
             RuleFor(p => p.AuthoId).NotEmpty().WithMessage("{PropertyName} را وارد نمایید").NotNull().WithMessage("{PropertyName} را وارد نمایید")
                 .WithName("نویسنده");
 
+           
+
         }
 
 
+        public void Configure(EntityTypeBuilder<Post> builder)
+        {
+            builder.HasQueryFilter(p => !p.IsDelete);
+
+            builder.HasOne(p => p.Author)
+                .WithMany(p => p.Posts)
+                .HasForeignKey(p => p.AuthoId)
+                .OnDelete(deleteBehavior: DeleteBehavior.Restrict);
 
 
+            builder.HasOne(p => p.Subject)
+                .WithMany(p => p.Posts)
+                .HasForeignKey(p => p.SubjectId)
+                .OnDelete(deleteBehavior: DeleteBehavior.Restrict);
+
+            builder.HasMany(p => p.Comments)
+                .WithOne(p => p.Post)
+                .HasForeignKey(p => p.PostId)
+                .OnDelete(DeleteBehavior.Restrict);
+        }
     }
 }

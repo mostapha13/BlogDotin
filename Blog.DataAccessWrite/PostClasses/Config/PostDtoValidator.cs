@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Blog.Domain.PostClasses;
 using Blog.Domain.PostClasses.DTOs;
 using FluentValidation;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Blog.DataAccessCommand.PostClasses.Config
 {
-    public class PostDtoValidator : AbstractValidator<PostDTO>
+    public class PostDtoValidator : AbstractValidator<PostDTO>,IEntityTypeConfiguration<Post>
     {
 
+        
         public PostDtoValidator()
         {
             RuleFor(p => p.Title).NotEmpty().WithMessage("{PropertyName} را وارد نمایید").NotNull().WithMessage("{PropertyName} را وارد نمایید")
@@ -23,8 +27,14 @@ namespace Blog.DataAccessCommand.PostClasses.Config
 
             RuleFor(p => p.AuthorId).NotEmpty().WithMessage("{PropertyName} را وارد نمایید").NotNull().WithMessage("{PropertyName} را وارد نمایید")
                 .WithName("نویسنده");
+
+          
         }
 
 
+        public void Configure(EntityTypeBuilder<Post> builder)
+        {
+            builder.HasQueryFilter(p => !p.IsDelete);
+        }
     }
 }

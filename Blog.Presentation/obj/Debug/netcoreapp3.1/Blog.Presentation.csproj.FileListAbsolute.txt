@@ -167,10 +167,10 @@ C:\ForDotin\Backend\Blog\Blog.Presentation\bin\Debug\netcoreapp3.1\Blog.DataAcce
 C:\ForDotin\Backend\Blog\Blog.Presentation\bin\Debug\netcoreapp3.1\Blog.DataAccessQuery.dll
 C:\ForDotin\Backend\Blog\Blog.Presentation\bin\Debug\netcoreapp3.1\Blog.Domain.dll
 C:\ForDotin\Backend\Blog\Blog.Presentation\bin\Debug\netcoreapp3.1\Blog.Service.dll
-C:\ForDotin\Backend\Blog\Blog.Presentation\bin\Debug\netcoreapp3.1\Blog.Service.pdb
-C:\ForDotin\Backend\Blog\Blog.Presentation\bin\Debug\netcoreapp3.1\Blog.DataAccessCommand.pdb
 C:\ForDotin\Backend\Blog\Blog.Presentation\bin\Debug\netcoreapp3.1\Blog.DataAccessQuery.pdb
+C:\ForDotin\Backend\Blog\Blog.Presentation\bin\Debug\netcoreapp3.1\Blog.DataAccessCommand.pdb
 C:\ForDotin\Backend\Blog\Blog.Presentation\bin\Debug\netcoreapp3.1\Blog.Domain.pdb
+C:\ForDotin\Backend\Blog\Blog.Presentation\bin\Debug\netcoreapp3.1\Blog.Service.pdb
 C:\ForDotin\Backend\Blog\Blog.Presentation\obj\Debug\netcoreapp3.1\Blog.Presentation.csprojAssemblyReference.cache
 C:\ForDotin\Backend\Blog\Blog.Presentation\obj\Debug\netcoreapp3.1\Blog.Presentation.csproj.CoreCompileInputs.cache
 C:\ForDotin\Backend\Blog\Blog.Presentation\obj\Debug\netcoreapp3.1\Blog.Presentation.MvcApplicationPartsAssemblyInfo.cs

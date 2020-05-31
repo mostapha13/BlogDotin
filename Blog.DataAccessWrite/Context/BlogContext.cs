@@ -12,7 +12,6 @@ using Blog.Domain;
 using Blog.Domain.AuthorClasses;
 using Blog.Domain.BaseEntityClasses;
 using Blog.Domain.CommentClasses;
-using Blog.Domain.LogClasses;
 using Blog.Domain.PostClasses;
 using Blog.Domain.SubjectClasses;
 using Microsoft.EntityFrameworkCore;
@@ -35,7 +34,7 @@ namespace Blog.DataAccessCommand.Context
 
         public DbSet<Subject> Subjects { get; set; }
 
-        public DbSet<Log> Log { get; set; }
+
 
 
 
@@ -45,19 +44,24 @@ namespace Blog.DataAccessCommand.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-            #region QueryFilterIsDelete
 
-            modelBuilder.Entity<Author>().HasQueryFilter(a => !a.IsDelete);
-            modelBuilder.Entity<Subject>().HasQueryFilter(s => !s.IsDelete);
-            modelBuilder.Entity<Post>().HasQueryFilter(p => !p.IsDelete);
-            modelBuilder.Entity<Comment>().HasQueryFilter(c => !c.IsDelete);
+
+            #region Configuration
+
+            modelBuilder.ApplyConfiguration(new AuthorValidator());
+
+            modelBuilder.ApplyConfiguration(new SubjectValidator());
+
+            modelBuilder.ApplyConfiguration(new PostValidator());
+
+            modelBuilder.ApplyConfiguration(new CommentValidator());
+
+           
 
             #endregion
 
 
-
-
-                base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);
         }
 
         #endregion

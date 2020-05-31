@@ -24,7 +24,8 @@
     ".NETCoreApp,Version=v3.1": {
       "Blog.Presentation/1.0.0": {
         "dependencies": {
-          "Blog.Service": "1.0.0",
+          "Blog.DataAccessCommand": "1.0.0",
+          "Blog.DataAccessQuery": "1.0.0",
           "FluentValidation.AspNetCore": "8.6.2",
           "MediatR": "8.0.1",
           "MediatR.Extensions.Microsoft.DependencyInjection": "8.0.0",
@@ -3035,7 +3036,7 @@
       },
       "Blog.DataAccessCommand/1.0.0": {
         "dependencies": {
-          "Blog.Domain": "1.0.0",
+          "Blog.Service": "1.0.0",
           "FluentValidation.AspNetCore": "8.6.2",
           "MediatR": "8.0.1",
           "MediatR.Extensions.Microsoft.DependencyInjection": "8.0.0",
@@ -3057,7 +3058,7 @@
       },
       "Blog.DataAccessQuery/1.0.0": {
         "dependencies": {
-          "Blog.Domain": "1.0.0",
+          "Blog.Service": "1.0.0",
           "Dapper": "2.0.35",
           "FluentValidation.AspNetCore": "8.6.2",
           "MediatR": "8.0.1",
@@ -3101,8 +3102,7 @@
       },
       "Blog.Service/1.0.0": {
         "dependencies": {
-          "Blog.DataAccessCommand": "1.0.0",
-          "Blog.DataAccessQuery": "1.0.0",
+          "Blog.Domain": "1.0.0",
           "FluentValidation.AspNetCore": "8.6.2",
           "MediatR": "8.0.1",
           "MediatR.Extensions.Microsoft.DependencyInjection": "8.0.0",

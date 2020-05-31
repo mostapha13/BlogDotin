@@ -44,8 +44,8 @@ namespace Blog.Service.Author.Handler
                 Id = request.Id,
                 CreateDate = request.CreateDate,
                 Email = request.Email.Trim().ToLower(),
-                FirstName = request.FirstName,
-                LastName = request.LastName,
+                FirstName = request.FirstName.Trim(),
+                LastName = request.LastName.Trim(),
                 IsDelete = request.IsDelete,
                 UserName = request.UserName,
 

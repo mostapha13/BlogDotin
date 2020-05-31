@@ -2,6 +2,8 @@ C:\ForDotin\Backend\Blog\Blog.DataAccessWrite\bin\Debug\netcoreapp3.1\Blog.DataA
 C:\ForDotin\Backend\Blog\Blog.DataAccessWrite\bin\Debug\netcoreapp3.1\Blog.DataAccessCommand.dll
 C:\ForDotin\Backend\Blog\Blog.DataAccessWrite\bin\Debug\netcoreapp3.1\Blog.DataAccessCommand.pdb
 C:\ForDotin\Backend\Blog\Blog.DataAccessWrite\bin\Debug\netcoreapp3.1\Blog.Domain.dll
+C:\ForDotin\Backend\Blog\Blog.DataAccessWrite\bin\Debug\netcoreapp3.1\Blog.Service.dll
+C:\ForDotin\Backend\Blog\Blog.DataAccessWrite\bin\Debug\netcoreapp3.1\Blog.Service.pdb
 C:\ForDotin\Backend\Blog\Blog.DataAccessWrite\bin\Debug\netcoreapp3.1\Blog.Domain.pdb
 C:\ForDotin\Backend\Blog\Blog.DataAccessWrite\obj\Debug\netcoreapp3.1\Blog.DataAccessCommand.csprojAssemblyReference.cache
 C:\ForDotin\Backend\Blog\Blog.DataAccessWrite\obj\Debug\netcoreapp3.1\Blog.DataAccessCommand.csproj.CoreCompileInputs.cache

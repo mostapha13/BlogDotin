@@ -50,11 +50,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="BaseEntityClasses\" />
+    <ProjectReference Include="..\Blog.Service\Blog.Service.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Blog.Domain\Blog.Domain.csproj" />
+    <Folder Include="BaseEntityClasses\" />
   </ItemGroup>
 
 </Project>

@@ -21,7 +21,7 @@ namespace Blog.Domain.CommentClasses
 
 
         #region Relations
-        [ForeignKey("PostId")]
+      
         public virtual Post Post { get; set; }
 
         #endregion

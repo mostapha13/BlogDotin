@@ -53,8 +53,8 @@ namespace Blog.Service.Author.Handler
             }
             Domain.AuthorClasses.Author auth = new Domain.AuthorClasses.Author()
             {
-                FirstName = request.FirstName,
-                LastName = request.LastName,
+                FirstName = request.FirstName.Trim(),
+                LastName = request.LastName.Trim(),
                 UserName = request.UserName.Trim().ToLower(),
                 Email = request.Email.Trim().ToLower(),
 

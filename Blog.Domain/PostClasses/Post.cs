@@ -31,13 +31,11 @@ namespace Blog.Domain.PostClasses
 
         #region Relations
 
-        [ForeignKey("AuthoId")]
+       
         public virtual Author Author { get; set; }
 
         public virtual List<Comment> Comments { get; set; }
 
-
-        [ForeignKey("SubjectId")]
         public virtual Subject Subject { get; set; }
 
 

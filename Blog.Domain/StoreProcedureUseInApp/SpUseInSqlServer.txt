@@ -1,0 +1,91 @@
+﻿
+                        ******** GetAllCommentList ********
+
+CREATE PROCEDURE [dbo].[GetAllCommentList]
+ 
+AS
+BEGIN
+
+SELECT        Comments.Id, Comments.PostId, Posts.Title AS PostTitle,
+Comments.Text, Comments.CreateDate, Comments.UpdateDate
+FROM  Comments  INNER JOIN
+                         Posts ON Comments.PostId = Posts.Id
+						 WHERE Comments.IsDelete=0 AND Posts.IsDelete=0
+END
+GO
+
+=====================================================================================
+
+                        ******** GetAllPostList ********
+
+CREATE PROCEDURE [dbo].[GetAllPostList]
+ 
+AS
+BEGIN
+SELECT       dbo.Posts.Id, Posts.Title, 
+dbo.Authors.id AS AuthorId,
+ Authors.FirstName+' '+ Authors.LastName AS AuthorName,
+ dbo.Subjects.Id AS SubjectId,
+  Subjects.Title AS SubjectName ,Posts.Text,Posts.CreateDate,
+  dbo.Posts.UpdateDate,
+  dbo.Posts.id AS CommentPost
+FROM            dbo.Posts LEFT OUTER JOIN
+              dbo.Authors 
+			  ON dbo.Posts.AuthoId=dbo.Authors.id
+			  LEFT OUTER JOIN dbo.Subjects
+			  ON dbo.Posts.SubjectId=dbo.Subjects.Id
+			WHERE	Posts.isDelete=0
+			AND  Authors.IsDelete=0
+			AND Subjects.IsDelete=0
+			  
+              
+
+END
+GO
+
+=====================================================================================
+
+                        ******** GetAllSubjectPost ********
+
+
+CREATE PROCEDURE [dbo].[GetAllSubjectPost] @subjectId INT = 1
+AS
+    BEGIN
+        SELECT
+                Subjects.Id         AS SubjectsId,
+                Subjects.CreateDate AS SubjectsCreateDate,
+                Subjects.UpdateDate AS SubjectsUpdateDate,
+                Subjects.Title      AS SubjectsTitle,
+                Posts.Id            AS PostsId,
+                Posts.CreateDate    AS PostsCreateDate,
+                Posts.UpdateDate    AS PostsUpdateDate,
+                Posts.Title         AS PostsTitle,
+                Posts.Text          AS PostsText,
+                (
+                    SELECT
+                        COUNT(*)
+                    FROM
+                        dbo.Posts
+                    WHERE
+                        dbo.Subjects.IsDelete = 0
+                        AND dbo.Posts.IsDelete = 0
+                        AND dbo.Subjects.Id = @subjectId
+                        OR 1 = @subjectId
+                )                   AS CntPostSubject,
+                Posts.AuthoId       AS PostsAuthoId
+        FROM
+                Subjects
+            INNER JOIN
+                Posts
+                    ON Subjects.Id = Posts.SubjectId
+        WHERE
+                dbo.Subjects.IsDelete = 0
+                AND dbo.Posts.IsDelete = 0
+                AND dbo.Subjects.Id = @subjectId
+                OR 1 = @subjectId;
+    END;
+GO
+
+
+
+=====================================================================================

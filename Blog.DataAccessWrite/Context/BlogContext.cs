@@ -14,7 +14,7 @@ using Blog.Domains.Comments;
 using Blog.Domains.Posts;
 using Blog.Domains.Subjects;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Diagnostics;
+
 
 namespace Blog.DataAccessCommands.Context
 {
@@ -47,15 +47,13 @@ namespace Blog.DataAccessCommands.Context
 
             #region Configuration
 
-            modelBuilder.ApplyConfiguration(new AuthorValidator());
+            modelBuilder.ApplyConfiguration(new AuthorConfig());
 
-            modelBuilder.ApplyConfiguration(new SubjectValidator());
+            modelBuilder.ApplyConfiguration(new SubjectConfig());
 
-            modelBuilder.ApplyConfiguration(new PostValidator());
+            modelBuilder.ApplyConfiguration(new PostConfig());
 
-            modelBuilder.ApplyConfiguration(new CommentValidator());
-
-           
+            modelBuilder.ApplyConfiguration(new CommentConfig());
 
             #endregion
 

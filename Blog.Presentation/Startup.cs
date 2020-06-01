@@ -5,13 +5,9 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Blog.DataAccessCommands.Context;
-using Blog.DataAccessCommands.Authors.Config;
 using Blog.DataAccessCommands.Authors.Repository;
-using Blog.DataAccessCommands.Comments.Config;
 using Blog.DataAccessCommands.Comments.Repository;
-using Blog.DataAccessCommands.Posts.Config;
 using Blog.DataAccessCommands.Posts.Repository;
-using Blog.DataAccessCommands.Subjects.Config;
 using Blog.DataAccessCommands.Subjects.Repository;
 using Blog.DataAccessQueries.Authors.Repository;
 using Blog.DataAccessQueries.Comments.Repository;
@@ -34,7 +30,11 @@ using Blog.Domains.Subjects.Commands;
 using Blog.Domains.Subjects.DTOs;
 using Blog.Domains.Subjects.Queries;
 using Blog.Presentation.Middleware;
+using Blog.Services.Authors.Validation;
+using Blog.Services.Comments.Validation;
 using Blog.Services.PipelineBehaviors;
+using Blog.Services.Posts.Validation;
+using Blog.Services.Subjects.Validation;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using MediatR;
@@ -87,9 +87,9 @@ namespace Blog.Presentation
             services.AddMvc().AddFluentValidation();
             
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
-           // services.AddValidatorsFromAssembly(typeof(Startup).Assembly);
+           
 
-             services.AddValidatorsFromAssembly(assembly);
+             services.AddValidatorsFromAssembly(typeof(Startup).Assembly);
 
             services.AddTransient<IValidator<Author>, AuthorValidator>();
             services.AddTransient<IValidator<AuthorDTO>, AuthorDtoValidator>();

@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using Blog.Domains.Comments;
 using FluentValidation;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Blog.DataAccessCommands.Comments.Config
+namespace Blog.Services.Comments.Validation
 {
-    public class CommentValidator : AbstractValidator<Comment>,IEntityTypeConfiguration<Comment>
+    public class CommentValidator : AbstractValidator<Comment>
     {
-       
+
         public CommentValidator()
         {
             RuleFor(c => c.PostId).NotNull().WithName("پست");
@@ -19,18 +17,9 @@ namespace Blog.DataAccessCommands.Comments.Config
                 .NotNull().WithMessage("{PropertyName} را وارد نمایید")
                 .MaximumLength(1500).WithMessage("حداکثر 1500 کاراکتر وارد نمایید")
                 .WithName("متن");
- 
+
         }
 
-        public void Configure(EntityTypeBuilder<Comment> builder)
-        {
-            builder.HasQueryFilter(c => !c.IsDelete);
 
-
-            builder.HasOne(c => c.Post)
-                .WithMany(c => c.Comments)
-                .HasForeignKey(c => c.PostId)
-                .OnDelete(DeleteBehavior.Restrict);
-        }
     }
 }

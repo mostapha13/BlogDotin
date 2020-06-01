@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Text;
 using Blog.Domains.Posts;
 using FluentValidation;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Blog.DataAccessCommands.Posts.Config
+namespace Blog.Services.Posts.Validation
 {
-    public class PostValidator : AbstractValidator<Post>,IEntityTypeConfiguration<Post>
+
+    public class PostValidator : AbstractValidator<Post>
     {
-    
+
         public PostValidator()
         {
 
@@ -20,7 +19,7 @@ namespace Blog.DataAccessCommands.Posts.Config
                 .WithName("عنوان");
 
             RuleFor(p => p.SubjectId).NotEmpty().WithMessage("{PropertyName} را وارد نمایید").NotNull().WithMessage("{PropertyName} را وارد نمایید")
-               .WithName("موضوع");
+                .WithName("موضوع");
 
             RuleFor(p => p.Text).NotEmpty().WithMessage("{PropertyName} را وارد نمایید").NotNull().WithMessage("{PropertyName} را وارد نمایید")
                 .WithName("متن");
@@ -28,30 +27,10 @@ namespace Blog.DataAccessCommands.Posts.Config
             RuleFor(p => p.AuthoId).NotEmpty().WithMessage("{PropertyName} را وارد نمایید").NotNull().WithMessage("{PropertyName} را وارد نمایید")
                 .WithName("نویسنده");
 
-           
+
 
         }
 
 
-        public void Configure(EntityTypeBuilder<Post> builder)
-        {
-            builder.HasQueryFilter(p => !p.IsDelete);
-
-            builder.HasOne(p => p.Author)
-                .WithMany(p => p.Posts)
-                .HasForeignKey(p => p.AuthoId)
-                .OnDelete(deleteBehavior: DeleteBehavior.Restrict);
-
-
-            builder.HasOne(p => p.Subject)
-                .WithMany(p => p.Posts)
-                .HasForeignKey(p => p.SubjectId)
-                .OnDelete(deleteBehavior: DeleteBehavior.Restrict);
-
-            builder.HasMany(p => p.Comments)
-                .WithOne(p => p.Post)
-                .HasForeignKey(p => p.PostId)
-                .OnDelete(DeleteBehavior.Restrict);
-        }
     }
 }

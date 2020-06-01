@@ -6,3 +6,4 @@ C:\ForDotin\Backend\Blog\Blog.Domain\obj\Debug\netcoreapp3.1\Blog.Domains.Assemb
 C:\ForDotin\Backend\Blog\Blog.Domain\obj\Debug\netcoreapp3.1\Blog.Domains.AssemblyInfo.cs
 C:\ForDotin\Backend\Blog\Blog.Domain\obj\Debug\netcoreapp3.1\Blog.Domains.dll
 C:\ForDotin\Backend\Blog\Blog.Domain\obj\Debug\netcoreapp3.1\Blog.Domains.pdb
+C:\ForDotin\Backend\Blog\Blog.Domain\obj\Debug\netcoreapp3.1\Blog.Domains.csprojAssemblyReference.cache

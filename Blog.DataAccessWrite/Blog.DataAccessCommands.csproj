@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="BaseEntityClasses\**" />
+    <EmbeddedResource Remove="BaseEntityClasses\**" />
+    <None Remove="BaseEntityClasses\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Migrations\20200520151634_init_0022.cs" />
     <Compile Remove="Migrations\20200520151634_init_0022.Designer.cs" />
     <Compile Remove="Migrations\20200523063113_ini.cs" />
@@ -53,10 +59,6 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.4.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.4.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="5.4.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="BaseEntityClasses\" />
   </ItemGroup>
 
   <ItemGroup>

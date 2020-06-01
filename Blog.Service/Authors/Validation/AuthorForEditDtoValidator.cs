@@ -1,20 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Blog.Domains.Authors;
 using Blog.Domains.Authors.DTOs;
 using FluentValidation;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Blog.DataAccessCommands.Authors.Config
+namespace Blog.Services.Authors.Validation
 {
-   public class AuthorForEditDtoValidator:AbstractValidator<AuthorForEditDTO>,IEntityTypeConfiguration<Author>
+    public class AuthorForEditDtoValidator : AbstractValidator<AuthorForEditDTO>
     {
-      
+
         public AuthorForEditDtoValidator()
         {
-            RuleFor(a=>a.Id).NotNull();
+            RuleFor(a => a.Id).NotNull();
 
             RuleFor(a => a.FirstName).NotEmpty().WithMessage("{PropertyName} را وارد نمایید").NotNull().WithMessage("{PropertyName} را وارد نمایید.")
                 .MaximumLength(250).WithMessage("حداکثر 250 کاراکتر وارد نمایید").WithName("نام");
@@ -29,14 +26,10 @@ namespace Blog.DataAccessCommands.Authors.Config
                 .MaximumLength(500).WithMessage("حداکثر 500 کاراکتر وارد نمایید").EmailAddress()
                 .WithMessage("فرمت ایمیل وارد نمایید.").WithName("ایمیل");
 
- 
+
 
 
         }
 
-        public void Configure(EntityTypeBuilder<Author> builder)
-        {
-            builder.HasQueryFilter(a => !a.IsDelete);
-        }
     }
 }

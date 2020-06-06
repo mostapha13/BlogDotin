@@ -1,12 +1,12 @@
+C:\ForDotin\Backend\Blog\Blog.Service\obj\Debug\netcoreapp3.1\Blog.Services.csprojAssemblyReference.cache
+C:\ForDotin\Backend\Blog\Blog.Service\obj\Debug\netcoreapp3.1\Blog.Services.AssemblyInfoInputs.cache
+C:\ForDotin\Backend\Blog\Blog.Service\obj\Debug\netcoreapp3.1\Blog.Services.AssemblyInfo.cs
+C:\ForDotin\Backend\Blog\Blog.Service\obj\Debug\netcoreapp3.1\Blog.Services.csproj.CoreCompileInputs.cache
 C:\ForDotin\Backend\Blog\Blog.Service\bin\Debug\netcoreapp3.1\Blog.Services.deps.json
 C:\ForDotin\Backend\Blog\Blog.Service\bin\Debug\netcoreapp3.1\Blog.Services.dll
 C:\ForDotin\Backend\Blog\Blog.Service\bin\Debug\netcoreapp3.1\Blog.Services.pdb
 C:\ForDotin\Backend\Blog\Blog.Service\bin\Debug\netcoreapp3.1\Blog.Domains.dll
 C:\ForDotin\Backend\Blog\Blog.Service\bin\Debug\netcoreapp3.1\Blog.Domains.pdb
-C:\ForDotin\Backend\Blog\Blog.Service\obj\Debug\netcoreapp3.1\Blog.Services.csprojAssemblyReference.cache
-C:\ForDotin\Backend\Blog\Blog.Service\obj\Debug\netcoreapp3.1\Blog.Services.AssemblyInfoInputs.cache
-C:\ForDotin\Backend\Blog\Blog.Service\obj\Debug\netcoreapp3.1\Blog.Services.AssemblyInfo.cs
-C:\ForDotin\Backend\Blog\Blog.Service\obj\Debug\netcoreapp3.1\Blog.Services.csproj.CoreCompileInputs.cache
 C:\ForDotin\Backend\Blog\Blog.Service\obj\Debug\netcoreapp3.1\Blog.Services.csproj.CopyComplete
 C:\ForDotin\Backend\Blog\Blog.Service\obj\Debug\netcoreapp3.1\Blog.Services.dll
 C:\ForDotin\Backend\Blog\Blog.Service\obj\Debug\netcoreapp3.1\Blog.Services.pdb

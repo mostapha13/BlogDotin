@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
-using Blog.Domains.Enums;
+
 using MediatR;
 
 namespace Blog.Domains.Comments.DTOs
 {
-   public class CommentDTO:IRequest<ResultStatus>
+   public class CommentDTO
     {
 
         #region Propertise

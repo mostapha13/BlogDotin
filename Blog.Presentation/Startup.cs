@@ -15,12 +15,14 @@ using Blog.DataAccessQueries.Posts.Repository;
 using Blog.DataAccessQueries.Subjects.Repository;
 using Blog.Domains.Authors;
 using Blog.Domains.Authors.Commands;
-using Blog.Domains.Authors.DTOs;
+using Blog.Domains.Authors.Commands.AddAuthor;
 using Blog.Domains.Authors.Queries;
 using Blog.Domains.Comments;
 using Blog.Domains.Comments.Commands;
+using Blog.Domains.Comments.Commands.AddComment;
 using Blog.Domains.Comments.DTOs;
 using Blog.Domains.Comments.Queries;
+using Blog.Domains.Enums;
 using Blog.Domains.Posts;
 using Blog.Domains.Posts.Commands;
 using Blog.Domains.Posts.DTOs;
@@ -33,6 +35,7 @@ using Blog.Presentation.Middleware;
 using Blog.Services.Authors.Validation;
 using Blog.Services.Comments.Validation;
 using Blog.Services.PipelineBehaviors;
+using Blog.Services.PipelineBehaviors.Author;
 using Blog.Services.Posts.Validation;
 using Blog.Services.Subjects.Validation;
 using FluentValidation;
@@ -85,21 +88,30 @@ namespace Blog.Presentation
             #region Validation
 
             services.AddMvc().AddFluentValidation();
-            
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
-           
 
-             services.AddValidatorsFromAssembly(typeof(Startup).Assembly);
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
+
+            services.AddTransient(typeof(IPipelineBehavior<AddAuthorCommand, ResultStatus>), typeof(AddAuthorBehavior<AddAuthorCommand, ResultStatus>));
+
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+
+
+            services.AddValidatorsFromAssembly(typeof(Startup).Assembly);
 
             services.AddTransient<IValidator<Author>, AuthorValidator>();
-            services.AddTransient<IValidator<AuthorDTO>, AuthorDtoValidator>();
+            services.AddTransient<IValidator<AddAuthorCommand>, AddAuthorValidator>();
+           // services.AddTransient<IValidator<AuthorDTO>, AuthorDtoValidator>();
+
+
 
             services.AddTransient<IValidator<Post>, PostValidator>();
             services.AddTransient<IValidator<PostDTO>, PostDtoValidator>();
 
 
             services.AddTransient<IValidator<Comment>, CommentValidator>();
+            services.AddTransient<IValidator<AddCommentCommand>,AddCommentValidator>();
             services.AddTransient<IValidator<CommentDTO>, CommentDtoValidator>();
+
 
 
             services.AddTransient<IValidator<Subject>, SubjectValidator>();
@@ -187,7 +199,7 @@ namespace Blog.Presentation
                 app.UseDeveloperExceptionPage();
 
             }
-            
+
             app.UseStatusCodePages();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -205,7 +217,7 @@ namespace Blog.Presentation
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Blog");
-               
+
             });
 
 

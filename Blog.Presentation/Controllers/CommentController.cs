@@ -2,7 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Blog.Domains.Comments.Commands.AddComment;
+using Blog.Domains.Comments.Commands.RemoveComment;
 using Blog.Domains.Comments.DTOs;
+using Blog.Domains.Comments.Queries.GetAllComment;
+using Blog.Domains.Comments.Queries.GetAllCommentList;
+using Blog.Domains.Comments.Queries.GetCommentById;
 using Blog.Domains.Enums;
 using Blog.Presentation.Filters;
 using MediatR;
@@ -13,17 +18,17 @@ using Serilog;
 
 namespace Blog.Presentation.Controllers
 {
- 
+
     [CustomAction]
     public class CommentController : BaseController
     {
         #region Constructor
-       
+
         private readonly IMediator _mediator;
 
         public CommentController(IMediator mediator)
         {
-           
+
             _mediator = mediator;
         }
         #endregion
@@ -56,22 +61,23 @@ namespace Blog.Presentation.Controllers
 
         #region AddComment
         [HttpPost("AddComment")]
-        public async Task<IActionResult> AddComment(CommentDTO commentDto)
+        public async Task<IActionResult> AddComment(AddCommentCommand commentDto)
         {
-            string functionName = "AddComment:Post:" + JsonConvert.SerializeObject(commentDto);
-            Log.ForContext("Message", functionName)
-                .ForContext("Error", "").Information(functionName);
 
 
             if (!ModelState.IsValid)
             {
-                Log.ForContext("Message", functionName)
-                    .ForContext("Error", "ModelStateNotValid").Error($"Error: ** {functionName}");
+                Log.ForContext("Message", "AddComment")
+                    .ForContext("Error", "ModelStateNotValid").Error($"Error: ** AddComment");
                 return Error(new { info = "اطلاعات بدرستی وارد نشده است." });
             }
 
 
-            var result = await _mediator.Send(commentDto);
+            var result = await _mediator.Send(new AddCommentCommand()
+            {
+                PostId = commentDto.PostId,
+                Text = commentDto.Text
+            });
             return result == ResultStatus.Success ? Success(result) : Error(new { info = "خطایی رخ داده است" });
         }
 

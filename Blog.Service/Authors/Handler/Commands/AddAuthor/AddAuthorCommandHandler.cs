@@ -30,22 +30,7 @@ namespace Blog.Services.Authors.Handler.Commands.AddAuthor
         public async Task<ResultStatus> Handle(AddAuthorCommand request, CancellationToken cancellationToken)
         {
 
-            string functionName = "AddAuthor:Post:" + JsonConvert.SerializeObject(request);
 
-            if (await _read.IsEmailExist(request.Email.Trim().ToLower()))
-            {
-                Log.ForContext("Message", functionName)
-                    .ForContext("Error", "EmailIsExist").Error($"Error: ** {functionName}");
-                return ResultStatus.EmailExist;
-            }
-
-            if (await _read.IsUserNameExist(request.UserName.Trim().ToLower()))
-            {
-                Log.ForContext("Message", functionName)
-                    .ForContext("Error", "UserNameIsExist")
-                    .Error($"Error: ** {functionName}");
-                return ResultStatus.UserNameExist;
-            }
             Author auth = new Author()
             {
                 FirstName = request.FirstName.Trim(),

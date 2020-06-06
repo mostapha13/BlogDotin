@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Blog.Domains.Subjects.DTOs
 {
-   public class SubjectDTO:IRequest<ResultStatus>
+   public class SubjectDTO
     {
 
         #region Propertise

@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Blog.Domains.Posts.DTOs
 {
-   public class PostDTO:IRequest<ResultStatus>
+   public class PostDTO
     {
 
 

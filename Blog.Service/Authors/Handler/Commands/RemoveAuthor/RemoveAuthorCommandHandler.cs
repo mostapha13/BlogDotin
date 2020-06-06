@@ -33,15 +33,15 @@ namespace Blog.Services.Authors.Handler.Commands.RemoveAuthor
 
         public async Task<ResultStatus> Handle(RemoveAuthorCommand request, CancellationToken cancellationToken)
         {
-            string functionName = "RemoveAuthor:Get:" + request.Id;
+           
 
             var author = await _read.GetAuthorById(request.Id);
             if (author == null)
             {
 
-                Log.ForContext("Message", functionName)
+                Log.ForContext("Message", "RemoveAuthor:Get:" + request.Id)
                     .ForContext("Error", "UserNotFound")
-                    .Error($"Error: ** {functionName}");
+                    .Error($"Error: ** RemoveAuthor: Get: {request.Id}");
                 return ResultStatus.NotFound;
             }
 

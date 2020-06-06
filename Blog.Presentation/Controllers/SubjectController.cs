@@ -3,7 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Blog.Domains.Enums;
+using Blog.Domains.Subjects.Commands.AddSubject;
+using Blog.Domains.Subjects.Commands.RemoveSubject;
 using Blog.Domains.Subjects.DTOs;
+using Blog.Domains.Subjects.Queries.GetAllSubject;
+using Blog.Domains.Subjects.Queries.GetAllSubjectPost;
+using Blog.Domains.Subjects.Queries.GetSubjectForComboBox;
 using Blog.Presentation.Filters;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -42,18 +47,19 @@ namespace Blog.Presentation.Controllers
         [HttpPost("AddSubject")]
         public async Task<IActionResult> AddSubject([FromBody] SubjectDTO subjectDto)
         {
-            string functionName = "AddSubject:Post:" + JsonConvert.SerializeObject(subjectDto);
-            Log.ForContext("Message", functionName)
-                .ForContext("Error", "").Information(functionName);
+          
             if (!ModelState.IsValid)
             {
-                Log.ForContext("Message", functionName)
+                Log.ForContext("Message", "AddSubject")
                     .ForContext("Error", "ModelStateNotValid")
-                    .Error($"Error: ** {functionName}");
+                    .Error($"Error: ** AddSubject");
                 return Error(new { info = "اطلاعات بدرستی وارد نشده است." });
             }
 
-            var result = await _mediator.Send(subjectDto);
+            var result = await _mediator.Send(new AddSubjectCommand()
+            {
+                Title = subjectDto.Title
+            });
             switch (result)
             {
                 case ResultStatus.Success:
@@ -90,7 +96,7 @@ namespace Blog.Presentation.Controllers
         [HttpGet("AllSubjectPost/{id}")]
         public async Task<IActionResult> AllSubjectPost(long id)
         {
-            var query=new AllSubjectPostQuery(id);
+            var query=new GetAllSubjectPostQuery(id);
             var result = await _mediator.Send(query);
             return result != null ? Success(result) : Error(new { info = "خطایی رخ داده است" });
         }

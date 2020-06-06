@@ -3,7 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Blog.Domains.Enums;
+using Blog.Domains.Posts.Commands.AddPost;
+using Blog.Domains.Posts.Commands.RemovePost;
 using Blog.Domains.Posts.DTOs;
+using Blog.Domains.Posts.Queries.GetAllPost;
+using Blog.Domains.Posts.Queries.GetPostById;
+using Blog.Domains.Posts.Queries.GetPostBySubjectId;
+using Blog.Domains.Posts.Queries.GetPostForComboBox;
+using Blog.Domains.Posts.Queries.GetPostForList;
 using Blog.Presentation.Filters;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -75,19 +82,22 @@ namespace Blog.Presentation.Controllers
         [HttpPost("AddPost")]
         public async Task<IActionResult> AddPost([FromBody] PostDTO postDto)
         {
-            string functionName = "AddPost:Post:" + JsonConvert.SerializeObject(postDto);
-            Log.ForContext("Message", functionName)
-                .ForContext("Error", "")
-                .Information(functionName);
+         
             if (!ModelState.IsValid)
             {
-                Log.ForContext("Message", functionName)
+                Log.ForContext("Message", "AddPost")
                     .ForContext("Error", "ModelStateNotFound")
-                    .Error($"Error: ** {functionName}");
+                    .Error($"Error: ** AddPost");
                 return Error(new { info = "اطلاعات بدرستی وارد نشده است." });
             }
 
-            var result = await _mediator.Send(postDto);
+            var result = await _mediator.Send(new AddPostCommand()
+            {
+                SubjectId = postDto.SubjectId,
+                Text = postDto.Text,
+                Title = postDto.Title,
+                AuthorId = postDto.AuthorId
+            });
             switch (result)
             {
                 case ResultStatus.Success:

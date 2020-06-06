@@ -64,17 +64,13 @@ namespace Blog.Presentation.Controllers
         #region AddAuthor
 
         [HttpPost("AddAuthor")]
-        public async Task<IActionResult> AddAuthor([FromBody] AuthorDTO author)
+        public async Task<IActionResult> AddAuthor([FromBody] AddAuthorCommand author)
         {
-            string functionName = "AddAuthor:Post:" + JsonConvert.SerializeObject(author);
-            Log.ForContext("Message", functionName)
-                .ForContext("Error", "").Information(functionName);
- 
             if (!ModelState.IsValid)
             {
 
-                Log.ForContext("Message", functionName)
-                    .ForContext("Error", "ModelStateNotValid").Error($"Error: ** {functionName}");
+                Log.ForContext("Message", "AddAuthor")
+                    .ForContext("Error", "ModelStateNotValid").Error($"Error: ** AddAuthor");
 
                 return Error(new { info = "اطلاعات بدرستی وارد نشده است." });
             }
@@ -113,10 +109,7 @@ namespace Blog.Presentation.Controllers
         [HttpGet("RemoveAuthor/{authorId}")]
         public async Task<IActionResult> RemoveAuthor(int authorId)
         {
-            string functionName = "RemoveAuthor:Get:" + authorId;
-            Log.ForContext("Message", functionName)
-                .ForContext("Error", "").Information(functionName);
-
+         
             var author = new RemoveAuthorCommand(authorId);
             var result = await _mediator.Send(author);
 
@@ -141,17 +134,13 @@ namespace Blog.Presentation.Controllers
         {
 
 
-            string functionName = "EditAuthor:Post" + JsonConvert.SerializeObject(authorEdit);
-            Log.ForContext("Message", functionName)
-                .ForContext("Error", "").Information(functionName);
-
-
+     
             if (!ModelState.IsValid)
             {
 
-                Log.ForContext("Message", functionName)
+                Log.ForContext("Message", "EditAuthor")
                     .ForContext("Error", "ModelstateIsNotValid")
-                    .Error($"Error: ** {functionName}");
+                    .Error($"Error: ** EditAuthor");
                 return Error(new { info = "اطلاعات بدرستی وارد نشده است." });
 
             }

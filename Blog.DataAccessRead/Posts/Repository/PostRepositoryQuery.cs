@@ -35,7 +35,7 @@ namespace Blog.DataAccessQueries.Posts.Repository
 
         public async Task<IEnumerable<Post>> GetAllPost()
         {
-            return await _context.QueryAsync<Post>(@"SELECT * FROM dbo.Posts WHERE isDelete=0");
+            return await _context.QueryAsync<Post>(@"EXEC GetAllPostList");
         }
 
         #endregion

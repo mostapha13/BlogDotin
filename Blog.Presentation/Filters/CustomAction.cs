@@ -11,14 +11,14 @@ namespace Blog.Presentation.Filters
     {
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            Log.Information($"StartAction: {context.ActionDescriptor.DisplayName}");
+         //   Log.Information($"StartAction: {context.ActionDescriptor.DisplayName}");
          
         }
 
 
         public override void OnActionExecuted(ActionExecutedContext context)
         {
-           Log.Information($"EndAction: {context.ActionDescriptor.DisplayName}");
+         //  Log.Information($"EndAction: {context.ActionDescriptor.DisplayName}");
         }
     }
 }

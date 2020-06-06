@@ -19,7 +19,7 @@ namespace Blog.DataAccessCommand.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Blog.Domain.AuthorClasses.Author", b =>
+            modelBuilder.Entity("Blog.Domains.Authors.Author", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -30,37 +30,29 @@ namespace Blog.DataAccessCommand.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(250)")
-                        .HasMaxLength(250);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(250)")
-                        .HasMaxLength(250);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(250)")
-                        .HasMaxLength(250);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(250)")
-                        .HasMaxLength(250);
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Authors");
                 });
 
-            modelBuilder.Entity("Blog.Domain.CommentClasses.Comment", b =>
+            modelBuilder.Entity("Blog.Domains.Comments.Comment", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -77,8 +69,7 @@ namespace Blog.DataAccessCommand.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("Text")
-                        .HasColumnType("nvarchar(1500)")
-                        .HasMaxLength(1500);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
@@ -90,44 +81,14 @@ namespace Blog.DataAccessCommand.Migrations
                     b.ToTable("Comments");
                 });
 
-            modelBuilder.Entity("Blog.Domain.LogClasses.Log", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Exception")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Level")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Message")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MessageTemplate")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Properties")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("TimeStamp")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Log");
-                });
-
-            modelBuilder.Entity("Blog.Domain.PostClasses.Post", b =>
+            modelBuilder.Entity("Blog.Domains.Posts.Post", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<long>("AuthoId")
+                    b.Property<long>("AuthorId")
                         .HasColumnType("bigint");
 
                     b.Property<DateTime>("CreateDate")
@@ -140,27 +101,24 @@ namespace Blog.DataAccessCommand.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("Text")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(250)")
-                        .HasMaxLength(250);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AuthoId");
+                    b.HasIndex("AuthorId");
 
                     b.HasIndex("SubjectId");
 
                     b.ToTable("Posts");
                 });
 
-            modelBuilder.Entity("Blog.Domain.SubjectClasses.Subject", b =>
+            modelBuilder.Entity("Blog.Domains.Subjects.Subject", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -174,9 +132,7 @@ namespace Blog.DataAccessCommand.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(250)")
-                        .HasMaxLength(250);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
@@ -186,27 +142,27 @@ namespace Blog.DataAccessCommand.Migrations
                     b.ToTable("Subjects");
                 });
 
-            modelBuilder.Entity("Blog.Domain.CommentClasses.Comment", b =>
+            modelBuilder.Entity("Blog.Domains.Comments.Comment", b =>
                 {
-                    b.HasOne("Blog.Domain.PostClasses.Post", "Post")
+                    b.HasOne("Blog.Domains.Posts.Post", "Post")
                         .WithMany("Comments")
                         .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Blog.Domain.PostClasses.Post", b =>
+            modelBuilder.Entity("Blog.Domains.Posts.Post", b =>
                 {
-                    b.HasOne("Blog.Domain.AuthorClasses.Author", "Author")
+                    b.HasOne("Blog.Domains.Authors.Author", "Author")
                         .WithMany("Posts")
-                        .HasForeignKey("AuthoId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Blog.Domain.SubjectClasses.Subject", "Subject")
+                    b.HasOne("Blog.Domains.Subjects.Subject", "Subject")
                         .WithMany("Posts")
                         .HasForeignKey("SubjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

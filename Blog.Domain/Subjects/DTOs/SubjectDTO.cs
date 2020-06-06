@@ -12,8 +12,6 @@ namespace Blog.Domains.Subjects.DTOs
 
         #region Propertise
 
-        
-
         public string Title { get; set; }
 
         #endregion

@@ -24,7 +24,7 @@ namespace Blog.Services.Posts.Validation
             RuleFor(p => p.Text).NotEmpty().WithMessage("{PropertyName} را وارد نمایید").NotNull().WithMessage("{PropertyName} را وارد نمایید")
                 .WithName("متن");
 
-            RuleFor(p => p.AuthoId).NotEmpty().WithMessage("{PropertyName} را وارد نمایید").NotNull().WithMessage("{PropertyName} را وارد نمایید")
+            RuleFor(p => p.AuthorId).NotEmpty().WithMessage("{PropertyName} را وارد نمایید").NotNull().WithMessage("{PropertyName} را وارد نمایید")
                 .WithName("نویسنده");
 
 

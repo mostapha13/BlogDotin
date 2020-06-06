@@ -8,11 +8,11 @@ namespace Blog.Domains.Subjects.DTOs
 {
     public class RemoveSubjectCommand : IRequest<ResultStatus>
     {
-        public int Id { get; set; }
-
         public RemoveSubjectCommand(int id)
         {
             Id = id;
         }
+        public int Id { get; set; }
+
     }
 }

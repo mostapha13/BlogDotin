@@ -15,7 +15,7 @@ namespace Blog.DataAccessCommands.Authors.Config
 
             builder.HasMany(a => a.Posts)
                 .WithOne(a => a.Author)
-                .HasForeignKey(a => a.AuthoId)
+                .HasForeignKey(a => a.AuthorId)
                 .OnDelete(DeleteBehavior.Restrict);
 
 

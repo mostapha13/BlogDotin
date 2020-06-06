@@ -5,13 +5,14 @@ using MediatR;
 
 namespace Blog.Domains.Comments.DTOs
 {
-   public class GetCommentByIdQuery:IRequest<Comment>
+    public class GetCommentByIdQuery : IRequest<Comment>
     {
-        public long Id { get; set; }
-
         public GetCommentByIdQuery(long id)
         {
             Id = id;
         }
+        public long Id { get; set; }
+
+
     }
 }

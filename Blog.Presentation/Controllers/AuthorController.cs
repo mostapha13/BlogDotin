@@ -2,9 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Blog.Domains.Authors.Commands.AddAuthor;
+using Blog.Domains.Authors.Commands.EditAuthor;
+using Blog.Domains.Authors.Commands.RemoveAuthor;
 using Blog.Domains.Authors.DTOs;
+using Blog.Domains.Authors.Queries.GetAllAuthor;
+using Blog.Domains.Authors.Queries.GetAuthorById;
+using Blog.Domains.Authors.Queries.GetAuthorForComboBox;
 using Blog.Domains.Enums;
-using Blog.Presentation.Filter;
+using Blog.Presentation.Filters;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -30,8 +36,8 @@ namespace Blog.Presentation.Controllers
 
         #region GetAllAuthour
 
-        [HttpGet("GetAllAuthour")]
-        public async Task<IActionResult> GetAllAuthour()
+        [HttpGet("GetAllAuthor")]
+        public async Task<IActionResult> GetAllAuthor()
         {
             var query = new GetAllAuthorQuery();
             var result = await _mediator.Send(query);
@@ -73,7 +79,13 @@ namespace Blog.Presentation.Controllers
                 return Error(new { info = "اطلاعات بدرستی وارد نشده است." });
             }
 
-            var result = await _mediator.Send(author);
+            var result = await _mediator.Send(new AddAuthorCommand
+            {
+                FirstName = author.FirstName,
+                LastName = author.LastName,
+                Email = author.Email,
+                UserName = author.UserName
+            });
 
 
 
@@ -125,7 +137,7 @@ namespace Blog.Presentation.Controllers
         #region EditAuthor
 
         [HttpPost("EditAuthor")]
-        public async Task<IActionResult> EditAuthor(AuthorForEditDTO authorEdit)
+        public async Task<IActionResult> EditAuthor(EditAuthorCommand authorEdit)
         {
 
 

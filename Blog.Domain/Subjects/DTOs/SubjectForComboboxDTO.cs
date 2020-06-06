@@ -7,8 +7,11 @@ namespace Blog.Domains.Subjects.DTOs
    public class SubjectForComboboxDTO
     {
 
-        public long Id { get; set; }
+        #region Properties
 
+        public long Id { get; set; }
         public string Title { get; set; }
+
+        #endregion
     }
 }

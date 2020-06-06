@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Blog.Domains.Comments.DTOs;
 using Blog.Domains.Enums;
-using Blog.Presentation.Filter;
+using Blog.Presentation.Filters;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

@@ -6,13 +6,14 @@ using MediatR;
 
 namespace Blog.Domains.Comments.DTOs
 {
-   public class RemoveCommentCommand:IRequest<ResultStatus>
+    public class RemoveCommentCommand : IRequest<ResultStatus>
     {
-        public long Id { get; set; }
-
         public RemoveCommentCommand(long id)
         {
             Id = id;
         }
+        public long Id { get; set; }
+
+
     }
 }

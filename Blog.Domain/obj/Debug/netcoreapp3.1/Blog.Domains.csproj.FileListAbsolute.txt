@@ -1,9 +1,9 @@
 C:\ForDotin\Backend\Blog\Blog.Domain\bin\Debug\netcoreapp3.1\Blog.Domains.deps.json
 C:\ForDotin\Backend\Blog\Blog.Domain\bin\Debug\netcoreapp3.1\Blog.Domains.dll
 C:\ForDotin\Backend\Blog\Blog.Domain\bin\Debug\netcoreapp3.1\Blog.Domains.pdb
-C:\ForDotin\Backend\Blog\Blog.Domain\obj\Debug\netcoreapp3.1\Blog.Domains.csproj.CoreCompileInputs.cache
+C:\ForDotin\Backend\Blog\Blog.Domain\obj\Debug\netcoreapp3.1\Blog.Domains.csprojAssemblyReference.cache
 C:\ForDotin\Backend\Blog\Blog.Domain\obj\Debug\netcoreapp3.1\Blog.Domains.AssemblyInfoInputs.cache
 C:\ForDotin\Backend\Blog\Blog.Domain\obj\Debug\netcoreapp3.1\Blog.Domains.AssemblyInfo.cs
 C:\ForDotin\Backend\Blog\Blog.Domain\obj\Debug\netcoreapp3.1\Blog.Domains.dll
 C:\ForDotin\Backend\Blog\Blog.Domain\obj\Debug\netcoreapp3.1\Blog.Domains.pdb
-C:\ForDotin\Backend\Blog\Blog.Domain\obj\Debug\netcoreapp3.1\Blog.Domains.csprojAssemblyReference.cache
+C:\ForDotin\Backend\Blog\Blog.Domain\obj\Debug\netcoreapp3.1\Blog.Domains.csproj.CoreCompileInputs.cache

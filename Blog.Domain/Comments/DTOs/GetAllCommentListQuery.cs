@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Blog.Domains.Comments.DTOs
 {
-   public class GetAllCommentListQuery:IRequest<IEnumerable<CommentListDTO>>
+    public class GetAllCommentListQuery : IRequest<IEnumerable<CommentListDTO>>
     {
     }
 }

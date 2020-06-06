@@ -37,7 +37,7 @@ namespace Blog.Services.Posts.Handler
             Post post = new Post()
             {
                 Title = request.Title,
-                AuthoId = long.Parse(request.AuthorId),
+                AuthorId = long.Parse(request.AuthorId),
                 SubjectId = long.Parse(request.SubjectId),
                 Text = request.Text
             };

@@ -8,7 +8,6 @@ namespace Blog.Domains.Authors.DTOs
     {
 
         public long Id { get; set; }
-
         public string FullName { get; set; }
 
     }

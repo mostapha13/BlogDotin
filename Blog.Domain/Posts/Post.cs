@@ -22,7 +22,7 @@ namespace Blog.Domains.Posts
          
         public string Text { get; set; }
 
-        public long AuthoId { get; set; }
+        public long AuthorId { get; set; }
 
 
 

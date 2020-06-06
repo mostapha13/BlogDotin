@@ -1,8 +1,3 @@
-C:\ForDotin\Backend\Blog\Blog.Presentation\obj\Debug\netcoreapp3.1\Blog.Presentation.csprojAssemblyReference.cache
-C:\ForDotin\Backend\Blog\Blog.Presentation\obj\Debug\netcoreapp3.1\Blog.Presentation.csproj.CoreCompileInputs.cache
-C:\ForDotin\Backend\Blog\Blog.Presentation\obj\Debug\netcoreapp3.1\Blog.Presentation.MvcApplicationPartsAssemblyInfo.cache
-C:\ForDotin\Backend\Blog\Blog.Presentation\obj\Debug\netcoreapp3.1\Blog.Presentation.AssemblyInfoInputs.cache
-C:\ForDotin\Backend\Blog\Blog.Presentation\obj\Debug\netcoreapp3.1\Blog.Presentation.AssemblyInfo.cs
 C:\ForDotin\Backend\Blog\Blog.Presentation\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\ForDotin\Backend\Blog\Blog.Presentation\bin\Debug\netcoreapp3.1\appsettings.json
 C:\ForDotin\Backend\Blog\Blog.Presentation\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -176,7 +171,12 @@ C:\ForDotin\Backend\Blog\Blog.Presentation\bin\Debug\netcoreapp3.1\Blog.DataAcce
 C:\ForDotin\Backend\Blog\Blog.Presentation\bin\Debug\netcoreapp3.1\Blog.DataAccessCommands.pdb
 C:\ForDotin\Backend\Blog\Blog.Presentation\bin\Debug\netcoreapp3.1\Blog.Domains.pdb
 C:\ForDotin\Backend\Blog\Blog.Presentation\bin\Debug\netcoreapp3.1\Blog.Services.pdb
+C:\ForDotin\Backend\Blog\Blog.Presentation\obj\Debug\netcoreapp3.1\Blog.Presentation.csprojAssemblyReference.cache
+C:\ForDotin\Backend\Blog\Blog.Presentation\obj\Debug\netcoreapp3.1\Blog.Presentation.AssemblyInfoInputs.cache
+C:\ForDotin\Backend\Blog\Blog.Presentation\obj\Debug\netcoreapp3.1\Blog.Presentation.AssemblyInfo.cs
+C:\ForDotin\Backend\Blog\Blog.Presentation\obj\Debug\netcoreapp3.1\Blog.Presentation.csproj.CoreCompileInputs.cache
 C:\ForDotin\Backend\Blog\Blog.Presentation\obj\Debug\netcoreapp3.1\Blog.Presentation.MvcApplicationPartsAssemblyInfo.cs
+C:\ForDotin\Backend\Blog\Blog.Presentation\obj\Debug\netcoreapp3.1\Blog.Presentation.MvcApplicationPartsAssemblyInfo.cache
 C:\ForDotin\Backend\Blog\Blog.Presentation\obj\Debug\netcoreapp3.1\Blog.Presentation.RazorTargetAssemblyInfo.cache
 C:\ForDotin\Backend\Blog\Blog.Presentation\obj\Debug\netcoreapp3.1\Blog.Presentation.csproj.CopyComplete
 C:\ForDotin\Backend\Blog\Blog.Presentation\obj\Debug\netcoreapp3.1\staticwebassets\Blog.Presentation.StaticWebAssets.Manifest.cache
@@ -184,3 +184,12 @@ C:\ForDotin\Backend\Blog\Blog.Presentation\obj\Debug\netcoreapp3.1\staticwebasse
 C:\ForDotin\Backend\Blog\Blog.Presentation\obj\Debug\netcoreapp3.1\Blog.Presentation.dll
 C:\ForDotin\Backend\Blog\Blog.Presentation\obj\Debug\netcoreapp3.1\Blog.Presentation.pdb
 C:\ForDotin\Backend\Blog\Blog.Presentation\obj\Debug\netcoreapp3.1\Blog.Presentation.genruntimeconfig.cache
+C:\ForDotin\Backend\Blog\Blog.Presentation\bin\Debug\netcoreapp3.1\DevExpress.Data.v19.1.dll
+C:\ForDotin\Backend\Blog\Blog.Presentation\bin\Debug\netcoreapp3.1\DevExpress.Xpo.v19.1.dll
+C:\ForDotin\Backend\Blog\Blog.Presentation\bin\Debug\netcoreapp3.1\Microsoft.Extensions.PlatformAbstractions.dll
+C:\ForDotin\Backend\Blog\Blog.Presentation\bin\Debug\netcoreapp3.1\System.Net.Http.WinHttpHandler.dll
+C:\ForDotin\Backend\Blog\Blog.Presentation\bin\Debug\netcoreapp3.1\System.ServiceModel.Http.dll
+C:\ForDotin\Backend\Blog\Blog.Presentation\bin\Debug\netcoreapp3.1\System.ServiceModel.Primitives.dll
+C:\ForDotin\Backend\Blog\Blog.Presentation\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Net.Http.WinHttpHandler.dll
+C:\ForDotin\Backend\Blog\Blog.Presentation\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netstandard2.0\System.Private.ServiceModel.dll
+C:\ForDotin\Backend\Blog\Blog.Presentation\bin\Debug\netcoreapp3.1\runtimes\win7\lib\netstandard2.0\System.Private.ServiceModel.dll

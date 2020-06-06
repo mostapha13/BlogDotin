@@ -7,11 +7,12 @@ namespace Blog.Domains.Posts.DTOs
 {
     public class GetPostBySubjectIdQuery : IRequest<IEnumerable<Post>>
     {
-        public long SubjectId { get; set; }
         public GetPostBySubjectIdQuery(long subjectId)
         {
             this.SubjectId = subjectId;
         }
+        public long SubjectId { get; set; }
+
 
 
     }

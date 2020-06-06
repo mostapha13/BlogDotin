@@ -6,13 +6,14 @@ using MediatR;
 
 namespace Blog.Domains.Posts.DTOs
 {
-   public class RemovePostCommand:IRequest<ResultStatus>
+    public class RemovePostCommand : IRequest<ResultStatus>
     {
-        public long Id { get; set; }
-
         public RemovePostCommand(long id)
         {
             Id = id;
         }
+        public long Id { get; set; }
+
+
     }
 }

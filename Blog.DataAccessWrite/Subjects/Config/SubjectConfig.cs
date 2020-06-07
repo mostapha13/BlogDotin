@@ -12,6 +12,9 @@ namespace Blog.DataAccessCommands.Subjects.Config
     {
         public void Configure(EntityTypeBuilder<Subject> builder)
         {
+            builder.Property(s => s.Title).IsRequired().HasMaxLength(250);
+         
+
             builder.HasQueryFilter(s => !s.IsDelete);
 
             builder.HasMany(s => s.Posts)

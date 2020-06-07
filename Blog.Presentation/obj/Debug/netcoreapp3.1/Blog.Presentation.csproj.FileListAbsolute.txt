@@ -192,3 +192,4 @@ C:\ForDotin\Backend\Blog\Blog.Presentation\obj\Debug\netcoreapp3.1\staticwebasse
 C:\ForDotin\Backend\Blog\Blog.Presentation\obj\Debug\netcoreapp3.1\Blog.Presentation.dll
 C:\ForDotin\Backend\Blog\Blog.Presentation\obj\Debug\netcoreapp3.1\Blog.Presentation.pdb
 C:\ForDotin\Backend\Blog\Blog.Presentation\obj\Debug\netcoreapp3.1\Blog.Presentation.genruntimeconfig.cache
+C:\ForDotin\Backend\Blog\Blog.Presentation\obj\Debug\netcoreapp3.1\Blog.Presentation.MvcApplicationPartsAssemblyInfo.cs

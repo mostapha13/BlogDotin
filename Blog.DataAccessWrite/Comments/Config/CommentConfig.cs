@@ -11,9 +11,11 @@ namespace Blog.DataAccessCommands.Comments.Config
     {
         public void Configure(EntityTypeBuilder<Comment> builder)
         {
+
+            builder.Property(c => c.Text).IsRequired().HasMaxLength(1500);
+            builder.Property(c => c.PostId).IsRequired();
+
             builder.HasQueryFilter(c => !c.IsDelete);
-
-
             builder.HasOne(c => c.Post)
                 .WithMany(c => c.Comments)
                 .HasForeignKey(c => c.PostId)

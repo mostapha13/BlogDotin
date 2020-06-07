@@ -11,7 +11,7 @@ namespace Blog.Domains.Base
 
         #region Propertise
 
-       [Key]
+   
         public long Id { get; set; }
 
         public DateTime CreateDate { get; set; }

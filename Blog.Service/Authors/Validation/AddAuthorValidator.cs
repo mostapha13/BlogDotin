@@ -13,8 +13,8 @@ namespace Blog.Services.Authors.Validation
             RuleFor(a => a.LastName).NotEmpty().WithMessage("{PropertyName} را وارد نمایید.").NotNull().WithMessage("{PropertyName} را وارد نمایید.")
                 .MaximumLength(250).WithMessage("حداکثر 250 کاراکتر وارد نمایید").WithName("نام خانوادگی");
 
-            RuleFor(a => a.UserName).NotEmpty().WithMessage("{PropertyName} را وارد نمایید.").NotNull().WithMessage("{PropertyName} را وارد نمایید")
-                .MaximumLength(250).WithMessage("حداکثر 250 کاراکتر وارد نمایید").WithName("نام کاربری");
+            RuleFor(a => a.UserName).NotEmpty().WithMessage("{PropertyName} را وارد نمایید.").NotNull().WithMessage("{PropertyName} را وارد نمایید.")
+                .MaximumLength(250).WithMessage("حداکثر 250 کاراکتر وارد نمایید").WithName("نام گاربری");
 
             RuleFor(a => a.Email).NotEmpty().WithMessage("{PropertyName} را وارد نمایید.").NotNull()
                 .WithMessage("{PropertyName} را وارد نمایید")
